@@ -7,14 +7,39 @@
     android:layout_height="match_parent"
     tools:context="io.github.superbderrick.scoreboard.MainActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/upperView"
-        android:background="@color/colortop"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dip"
         android:layout_weight="2">
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="0dip"
+                android:layout_height="match_parent">
+                <TextView
+                    android:text="User1"
+                    android:textColor="#000"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
 
-    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="User2"
+                android:textColor="#000"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/middleView"
