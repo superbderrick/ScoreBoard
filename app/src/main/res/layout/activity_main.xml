@@ -44,18 +44,86 @@
 
     </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="horizontal"
         android:id="@+id/middleView"
         android:background="@color/colormiddle"
         android:layout_width="match_parent"
         android:layout_height="0dip"
         android:layout_weight="6">
 
-    </RelativeLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:background="@color/colorDefaultBackGround">
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_weight="3"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:background="@color/colorDefaultBackGround">
+
+            <TextView
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="150dip" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_weight="2"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:background="@color/colorDefaultBackGround">
+
+            <View
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:layout_width="80dip"
+                android:layout_height="10dip"
+                android:background="@color/colorBarBackground"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_weight="3"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:background="@color/colorDefaultBackGround">
+
+            <TextView
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="150dip"
+                />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:background="@color/colorDefaultBackGround">
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/bottoView"
-        android:background="@color/colorbottom"
+        android:background="@color/colorDefaultBackGround"
         android:layout_width="match_parent"
         android:layout_height="0dip"
         android:layout_weight="2">

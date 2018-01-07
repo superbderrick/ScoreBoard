@@ -7,6 +7,7 @@
     <color name="colorDefaultBackGround">#808080</color>
     <color name="colorTextviewBackground">#fff</color>
     <color name="colorTextviewFont">#000</color>
+    <color name="colorBarBackground">#fff</color>
     <color name="colorbottom">#F04ff1</color>
 
 
