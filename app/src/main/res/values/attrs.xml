@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="NewAttr">
+        <attr name="circleX" format="dimension" />
+        <attr name="circleY" format="dimension" />
+        <attr name="circleColor" format="color" />
+    </declare-styleable>
+</resources>
+
