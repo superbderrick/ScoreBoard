@@ -93,28 +93,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <view
-                    android:background="#fff"
+                <RelativeLayout
+                    android:id="@+id/leftUpperTouchView"
                     android:layout_weight="4.9"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
 
-                </view>
+                </RelativeLayout>
 
-                <view
-                    android:background="#fff"
+                <RelativeLayout
                     android:layout_weight="0.2"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
-                </view>
+                </RelativeLayout>
 
-                <view
-                    android:background="#fff"
+                <RelativeLayout
+                    android:id="@+id/leftBottomTouchView"
                     android:layout_weight="4.9"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
 
-                </view>
+                </RelativeLayout>
 
             </LinearLayout>
 
@@ -122,6 +121,7 @@
 
 
             <TextView
+                android:id="@+id/leftScoreTextview"
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -158,30 +158,57 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <view
-                    android:background="#fff"
-                    android:layout_weight="4.9"
+                <LinearLayout
+                    android:layout_weight="4.8"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
 
-                </view>
+                </LinearLayout>
 
-                <view
-                    android:background="#fff"
+                <LinearLayout
                     android:layout_weight="0.2"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
-                </view>
 
-                <view
-                    android:background="#fff"
-                    android:layout_weight="4.9"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="4.8"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
 
-                </view>
+                </LinearLayout>
 
             </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_weight="4.8"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="0.2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip">
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="4.8"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip">
+
+                </LinearLayout>
+
+            </LinearLayout>
+
 
             <TextView
                 android:gravity="center"
