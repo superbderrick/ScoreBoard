@@ -11,13 +11,13 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RelativeLayout mLeftUpperTouchView , mLeftBottomTouchView;
+    private RelativeLayout mLeftUpperTouchView , mLeftBottomTouchView , mRightUpperTouchView , mRightBottomTouchView;
 
-    private View.OnClickListener mLeftUpperTouchListener ,mLeftBottomTouchListener;
+    private View.OnClickListener mLeftUpperTouchListener ,mLeftBottomTouchListener,mRightUpperTouchListener ,mRightBottomTouchListener;
 
-    private TextView mLeftScoreTextView;
+    private TextView mLeftScoreTextView , mRightScoreTextView;
 
-    private int testValue = 0;
+    private int testValue ,secondTestValue = 0;
 
     private Handler mMainHandler = new Handler();
 
@@ -36,6 +36,48 @@ public class MainActivity extends AppCompatActivity {
 
     private void initGuiComoment() {
         initLeftSideComponents();
+        initRightSideComponennts();
+    }
+
+    private void initRightSideComponennts() {
+        mRightUpperTouchView = (RelativeLayout)findViewById(R.id.rightUpperTouchView);
+        mRightBottomTouchView = (RelativeLayout)findViewById(R.id.rightBottomTouchView);
+        mRightScoreTextView = (TextView)findViewById(R.id.rightScoreTextview);
+
+        mRightUpperTouchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mMainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (secondTestValue < 10 || secondTestValue >0) {
+                            secondTestValue ++;
+
+                            mRightScoreTextView.setText("" +secondTestValue);
+                        }
+                    }
+                });
+
+
+            }
+        });
+        mRightBottomTouchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mMainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        if (secondTestValue >0 || secondTestValue <11 ) {
+                            secondTestValue --;
+                            mRightScoreTextView.setText("" +secondTestValue);
+                        }
+                    }
+                });
+
+            }
+        });
     }
 
     private void initLeftSideComponents() {

@@ -9,6 +9,7 @@
 
     <LinearLayout
         android:id="@+id/topView"
+        android:baselineAligned="false"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dip"
@@ -19,7 +20,7 @@
                 android:layout_width="0dip"
                 android:layout_height="match_parent">
                 <TextView
-                    android:text="User1"
+                    android:text="@string/user_first"
                     android:textColor="@color/colorTextviewFont"
                     android:background="@color/colorTextviewBackground"
                     android:layout_centerInParent="true"
@@ -33,7 +34,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:text="User2"
+                android:text="@string/user_second"
                 android:textColor="@color/colorTextviewFont"
                 android:background="@color/colorTextviewBackground"
                 android:layout_centerInParent="true"
@@ -46,6 +47,7 @@
 
     <LinearLayout
         android:orientation="horizontal"
+        android:baselineAligned="false"
         android:id="@+id/middleView"
         android:background="@color/colormiddle"
         android:layout_width="match_parent"
@@ -127,7 +129,7 @@
                 android:layout_height="match_parent"
                 android:textAlignment="center"
                 android:text="0"
-                android:textSize="150dip" />
+                android:textSize="150dp" />
 
         </RelativeLayout>
 
@@ -158,65 +160,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <LinearLayout
-                    android:layout_weight="4.8"
+                <RelativeLayout
+                    android:id="@+id/rightUpperTouchView"
+                    android:layout_weight="4.9"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
 
-                </LinearLayout>
+                </RelativeLayout>
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_weight="0.2"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
 
-                </LinearLayout>
+                </RelativeLayout>
 
-                <LinearLayout
-                    android:layout_weight="4.8"
+                <RelativeLayout
+                    android:id="@+id/rightBottomTouchView"
+                    android:layout_weight="4.9"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
 
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_weight="4.8"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dip">
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_weight="0.2"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dip">
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_weight="4.8"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dip">
-
-                </LinearLayout>
+                </RelativeLayout>
 
             </LinearLayout>
 
 
             <TextView
+                android:id="@+id/rightScoreTextview"
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textAlignment="center"
-                android:text="0"
-                android:textSize="150dip"
+                android:text="@string/zero"
+                android:textSize="150dp"
                 />
 
 
