@@ -22,7 +22,7 @@
                 <EditText
                     android:hint="@string/user_first"
                     android:textColor="@color/colorTextviewFont"
-                    android:background="@color/colorTextviewBackground"
+                    android:background="@color/colorPrimaryDark"
                     android:layout_centerInParent="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -36,7 +36,7 @@
             <EditText
                 android:hint="@string/user_second"
                 android:textColor="@color/colorTextviewFont"
-                android:background="@color/colorTextviewBackground"
+                android:background="@color/colorPrimaryDark"
                 android:layout_centerInParent="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -95,13 +95,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <RelativeLayout
+                <io.github.superbderrick.scoreboard.TouchLayout
                     android:id="@+id/leftUpperTouchView"
                     android:layout_weight="4.9"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
 
-                </RelativeLayout>
+                </io.github.superbderrick.scoreboard.TouchLayout>
 
                 <RelativeLayout
                     android:id="@+id/leftBar"
@@ -110,13 +110,13 @@
                     android:layout_height="0dip">
                 </RelativeLayout>
 
-                <RelativeLayout
+                <io.github.superbderrick.scoreboard.TouchLayout
                     android:id="@+id/leftBottomTouchView"
                     android:layout_weight="4.9"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
 
-                </RelativeLayout>
+                </io.github.superbderrick.scoreboard.TouchLayout>
 
             </LinearLayout>
 
@@ -161,13 +161,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <RelativeLayout
+                <io.github.superbderrick.scoreboard.TouchLayout
                     android:id="@+id/rightUpperTouchView"
                     android:layout_weight="4.9"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
 
-                </RelativeLayout>
+                </io.github.superbderrick.scoreboard.TouchLayout>
 
                 <RelativeLayout
                     android:id="@+id/rightbar"
@@ -177,13 +177,13 @@
 
                 </RelativeLayout>
 
-                <RelativeLayout
+                <io.github.superbderrick.scoreboard.TouchLayout
                     android:id="@+id/rightBottomTouchView"
                     android:layout_weight="4.9"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
 
-                </RelativeLayout>
+                </io.github.superbderrick.scoreboard.TouchLayout>
 
             </LinearLayout>
 

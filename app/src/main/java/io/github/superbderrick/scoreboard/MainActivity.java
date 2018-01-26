@@ -1,8 +1,11 @@
 package io.github.superbderrick.scoreboard;
 
+import android.graphics.Color;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -11,8 +14,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RelativeLayout mLeftUpperTouchView , mLeftBottomTouchView , mRightUpperTouchView , mRightBottomTouchView;
 
+    private TouchLayout mLeftUpperTouchView ,mLeftBottomTouchView , mRightUpperTouchView , mRightBottomTouchView;
     private View.OnClickListener mLeftUpperTouchListener ,mLeftBottomTouchListener,mRightUpperTouchListener ,mRightBottomTouchListener;
 
     private TextView mLeftScoreTextView , mRightScoreTextView;
@@ -40,9 +43,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initRightSideComponennts() {
-        mRightUpperTouchView = (RelativeLayout)findViewById(R.id.rightUpperTouchView);
-        mRightBottomTouchView = (RelativeLayout)findViewById(R.id.rightBottomTouchView);
+        mRightUpperTouchView = (TouchLayout)findViewById(R.id.rightUpperTouchView);
+        mRightBottomTouchView = (TouchLayout)findViewById(R.id.rightBottomTouchView);
         mRightScoreTextView = (TextView)findViewById(R.id.rightScoreTextview);
+
 
         mRightUpperTouchView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initLeftSideComponents() {
-        mLeftUpperTouchView = (RelativeLayout)findViewById(R.id.leftUpperTouchView);
-        mLeftBottomTouchView = (RelativeLayout)findViewById(R.id.leftBottomTouchView);
+        mLeftUpperTouchView = (TouchLayout) findViewById(R.id.leftUpperTouchView);
+        mLeftBottomTouchView = (TouchLayout)findViewById(R.id.leftBottomTouchView);
         mLeftScoreTextView = (TextView)findViewById(R.id.leftScoreTextview);
 
         mLeftUpperTouchView.setOnClickListener(new View.OnClickListener() {
