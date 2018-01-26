@@ -13,18 +13,20 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="2"
+        android:layout_weight="1.5"
         android:background="@color/colorDefaultBackGround">
             <RelativeLayout
                 android:layout_weight="1"
                 android:layout_width="0dip"
                 android:layout_height="match_parent">
                 <EditText
+                    android:textAlignment="center"
+                    android:id="@+id/leftUserName"
                     android:hint="@string/user_first"
-                    android:textColor="@color/colorTextviewFont"
-                    android:background="@color/colorPrimaryDark"
+                    android:textColor="@color/colorDe"
+                    android:background="@color/colorTouch"
                     android:layout_centerInParent="true"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dip"
                     android:layout_height="wrap_content" />
             </RelativeLayout>
 
@@ -34,11 +36,13 @@
             android:layout_height="match_parent">
 
             <EditText
+                android:id="@+id/rightUserEdit"
+                android:textAlignment="center"
                 android:hint="@string/user_second"
-                android:textColor="@color/colorTextviewFont"
-                android:background="@color/colorPrimaryDark"
+                android:textColor="@color/colorDe"
+                android:background="@color/colorTouch"
                 android:layout_centerInParent="true"
-                android:layout_width="wrap_content"
+                android:layout_width="150dip"
                 android:layout_height="wrap_content" />
 
         </RelativeLayout>
@@ -244,7 +248,7 @@
         android:background="@color/colorDefaultBackGround"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="2">
+        android:layout_weight="2.5">
 
     </RelativeLayout>
 

@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -16,13 +17,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     private TouchLayout mLeftUpperTouchView ,mLeftBottomTouchView , mRightUpperTouchView , mRightBottomTouchView;
-    private View.OnClickListener mLeftUpperTouchListener ,mLeftBottomTouchListener,mRightUpperTouchListener ,mRightBottomTouchListener;
 
     private TextView mLeftScoreTextView , mRightScoreTextView;
 
-    private int testValue ,secondTestValue = 0;
+    private int testValue , secondTestValue = 0;
 
     private Handler mMainHandler = new Handler();
+
+    private EditText mLeftUserName , mRightUserName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         mRightUpperTouchView = (TouchLayout)findViewById(R.id.rightUpperTouchView);
         mRightBottomTouchView = (TouchLayout)findViewById(R.id.rightBottomTouchView);
         mRightScoreTextView = (TextView)findViewById(R.id.rightScoreTextview);
-
 
         mRightUpperTouchView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
         mLeftUpperTouchView = (TouchLayout) findViewById(R.id.leftUpperTouchView);
         mLeftBottomTouchView = (TouchLayout)findViewById(R.id.leftBottomTouchView);
         mLeftScoreTextView = (TextView)findViewById(R.id.leftScoreTextview);
+        mLeftUserName = (EditText)findViewById(R.id.leftUserName) ;
+
 
         mLeftUpperTouchView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,9 +124,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
-
-
-
 
 }

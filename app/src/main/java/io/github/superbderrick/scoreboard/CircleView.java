@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 /**
@@ -16,7 +17,16 @@ import android.view.View;
 
 public class CircleView extends View {
 
-    public int mCircleColor;
+    private int mCircleColor = Color.parseColor("#ff99cc");
+
+    private final static String ORIGINALCOLOR = "#ff99cc";
+    private final static String CLICKEDCOLOR = "#ccebff";
+
+    public boolean isTouch() {
+        return isTouch;
+    }
+
+    private boolean isTouch = false;
 
     public int getmCircleColor() {
         return mCircleColor;
@@ -50,6 +60,32 @@ public class CircleView extends View {
 
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+         super.onTouchEvent(event);
+
+         if (event.getAction() == MotionEvent.ACTION_DOWN) {
+             setCircleColer();
+         }
+
+
+
+        return true;
+    }
+
+    private void setCircleColer() {
+        String tempColor = ORIGINALCOLOR;
+        if(isTouch) {
+            tempColor = ORIGINALCOLOR;
+            isTouch = false;
+        } else {
+            tempColor = CLICKEDCOLOR;
+            isTouch = true;
+        }
+
+        mCircleColor = Color.parseColor(tempColor);
+        invalidate();
+    }
 
     //Draw APIS.
 
@@ -57,7 +93,7 @@ public class CircleView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         Paint paint = new Paint();
-        paint.setColor(Color.BLUE);
+        paint.setColor(mCircleColor);
 
         canvas.drawCircle(this.getWidth()/2, 50, 20, paint);
 
