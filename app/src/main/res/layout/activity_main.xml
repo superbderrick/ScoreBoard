@@ -19,8 +19,8 @@
                 android:layout_weight="1"
                 android:layout_width="0dip"
                 android:layout_height="match_parent">
-                <TextView
-                    android:text="@string/user_first"
+                <EditText
+                    android:hint="@string/user_first"
                     android:textColor="@color/colorTextviewFont"
                     android:background="@color/colorTextviewBackground"
                     android:layout_centerInParent="true"
@@ -33,8 +33,8 @@
             android:layout_weight="1"
             android:layout_height="match_parent">
 
-            <TextView
-                android:text="@string/user_second"
+            <EditText
+                android:hint="@string/user_second"
                 android:textColor="@color/colorTextviewFont"
                 android:background="@color/colorTextviewBackground"
                 android:layout_centerInParent="true"
@@ -104,6 +104,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/leftBar"
                     android:layout_weight="0.2"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
@@ -128,8 +129,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textAlignment="center"
-                android:text="0"
-                android:textSize="150dp" />
+                android:text="@string/zero"
+                android:textSize="150sp" />
 
         </RelativeLayout>
 
@@ -169,6 +170,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/rightbar"
                     android:layout_weight="0.2"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
@@ -193,7 +195,7 @@
                 android:layout_height="match_parent"
                 android:textAlignment="center"
                 android:text="@string/zero"
-                android:textSize="150dp"
+                android:textSize="150sp"
                 />
 
 
