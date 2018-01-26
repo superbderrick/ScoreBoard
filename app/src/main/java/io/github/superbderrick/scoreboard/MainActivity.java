@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 mMainHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        if (secondTestValue < 10 || secondTestValue >0) {
+                        if (secondTestValue < 30 && secondTestValue >=0) {
                             secondTestValue ++;
 
                             mRightScoreTextView.setText("" +secondTestValue);
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
 
-                        if (secondTestValue >0 || secondTestValue <11 ) {
+                        if (secondTestValue >0 && secondTestValue <31 ) {
                             secondTestValue --;
                             mRightScoreTextView.setText("" +secondTestValue);
                         }
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 mMainHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        if (testValue < 10 || testValue >0) {
+                        if (testValue < 30 && testValue >=0) {
                             testValue ++;
                             mLeftScoreTextView.setText("" +testValue);
                         }
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 mMainHandler.post(new Runnable() {
                     @Override
                     public void run() {
-                        if (testValue >0 || testValue <11 ) {
+                        if (testValue >0 && testValue <31 ) {
                             testValue --;
                             mLeftScoreTextView.setText("" +testValue);
                         }
