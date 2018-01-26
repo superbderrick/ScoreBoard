@@ -97,6 +97,7 @@
 
                 <io.github.superbderrick.scoreboard.TouchLayout
                     android:id="@+id/leftUpperTouchView"
+                    android:background="@color/colorTouch"
                     android:layout_weight="4.9"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
@@ -112,6 +113,7 @@
 
                 <io.github.superbderrick.scoreboard.TouchLayout
                     android:id="@+id/leftBottomTouchView"
+                    android:background="@color/colorTouch"
                     android:layout_weight="4.9"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
@@ -130,6 +132,7 @@
                 android:layout_height="match_parent"
                 android:textAlignment="center"
                 android:text="@string/zero"
+                android:textColor="@color/colorDe"
                 android:textSize="150sp" />
 
         </RelativeLayout>
@@ -163,6 +166,7 @@
 
                 <io.github.superbderrick.scoreboard.TouchLayout
                     android:id="@+id/rightUpperTouchView"
+                    android:background="@color/colorTouch"
                     android:layout_weight="4.9"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
@@ -179,6 +183,7 @@
 
                 <io.github.superbderrick.scoreboard.TouchLayout
                     android:id="@+id/rightBottomTouchView"
+                    android:background="@color/colorTouch"
                     android:layout_weight="4.9"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
@@ -196,6 +201,7 @@
                 android:textAlignment="center"
                 android:text="@string/zero"
                 android:textSize="150sp"
+                android:textColor="@color/colorDe"
                 />
 
 

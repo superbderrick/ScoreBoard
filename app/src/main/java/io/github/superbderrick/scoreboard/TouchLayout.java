@@ -11,11 +11,16 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+
 /**
  * Created by derrick on 26/01/2018.
  */
 
 public class TouchLayout extends RelativeLayout {
+
+    private  final  static String DEFAULTCOLOR = "#202020";
+    private  final  static String TOUCHEDCOLOR = "#111111";
+
     public TouchLayout(Context context) {
         super(context);
     }
@@ -38,21 +43,24 @@ public class TouchLayout extends RelativeLayout {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
          super.onTouchEvent(event);
-        int color = 0;
+        String color = DEFAULTCOLOR;
         switch (event.getAction()) {
 
             case MotionEvent.ACTION_DOWN:
-                color = Color.RED;
+                color = TOUCHEDCOLOR;
                 break;
             case MotionEvent.ACTION_MOVE:
-                color = Color.GRAY;
+                color = DEFAULTCOLOR;
                 break;
             case MotionEvent.ACTION_UP:
-                color = Color.GRAY;
+                color = DEFAULTCOLOR;
                 break;
         }
 
-        setBackgroundColor(color);
+        int finalColor = Color.parseColor(color);
+
+        setBackgroundColor(finalColor);
+
         return  true;
     }
 

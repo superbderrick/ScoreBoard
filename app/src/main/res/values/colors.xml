@@ -4,11 +4,12 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colormiddle">#F04081</color>
-    <color name="colorDefaultBackGround">#808080</color>
+    <color name="colorDefaultBackGround">#000</color>
     <color name="colorTextviewBackground">#fff</color>
     <color name="colorTextviewFont">#000</color>
     <color name="colorBarBackground">#fff</color>
     <color name="colorbottom">#F04ff1</color>
-
+    <color name="colorDe">#fff</color>
+    <color name="colorTouch">#202020</color>
 
 </resources>
