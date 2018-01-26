@@ -3,4 +3,7 @@
     <string name="user_first">User1</string>
     <string name="user_second">User2</string>
     <string name="zero">0</string>
+    <string name="TIMER">TIME : </string>
+    <string name="TIME_DEFAULT">30:00 </string>
+
 </resources>

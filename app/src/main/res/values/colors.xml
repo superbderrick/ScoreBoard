@@ -11,5 +11,7 @@
     <color name="colorbottom">#F04ff1</color>
     <color name="colorDe">#fff</color>
     <color name="colorTouch">#202020</color>
+    <color name="tr">#00000000</color>
+
 
 </resources>

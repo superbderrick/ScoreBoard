@@ -11,16 +11,15 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-/**
- * Created by derrick on 07/01/2018.
- */
+
 
 public class CircleView extends View {
 
     private int mCircleColor = Color.parseColor("#ff99cc");
 
-    private final static String ORIGINALCOLOR = "#ff99cc";
-    private final static String CLICKEDCOLOR = "#ccebff";
+    private final static String CLICKEDCOLOR = "#ff99cc";
+    private final static String ORIGINALCOLOR = "#ccebff";
+    Paint mPaint = new Paint();
 
     public boolean isTouch() {
         return isTouch;
@@ -42,9 +41,7 @@ public class CircleView extends View {
 
     public CircleView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        mCircleColor = context.obtainStyledAttributes(attrs, R.styleable.NewAttr)
-                .getColor(R.styleable.NewAttr_circleColor, Color.WHITE);
-
+        mCircleColor = Color.parseColor(ORIGINALCOLOR);
     }
 
     public CircleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -74,7 +71,7 @@ public class CircleView extends View {
     }
 
     private void setCircleColer() {
-        String tempColor = ORIGINALCOLOR;
+        String tempColor = "#ccebff";
         if(isTouch) {
             tempColor = ORIGINALCOLOR;
             isTouch = false;
@@ -92,10 +89,10 @@ public class CircleView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Paint paint = new Paint();
-        paint.setColor(mCircleColor);
 
-        canvas.drawCircle(this.getWidth()/2, 50, 20, paint);
+        mPaint.setColor(mCircleColor);
+
+        canvas.drawCircle(this.getWidth()/2, 50, 20, mPaint);
 
     }
 }
