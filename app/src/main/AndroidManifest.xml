@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SettingActivity" android:screenOrientation="landscape"></activity>
+        <activity android:name=".SettingActivity" android:screenOrientation="landscape" android:theme="@android:style/Theme.Black"></activity>
     </application>
 
 </manifest>
