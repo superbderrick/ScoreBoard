@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="setscore_setting">Set Score Setting</string>
+    <string name="setscore_def_setting">Please set a game count, It will effect set circle count on the main screen.</string>
+    <string name="setscore_key">setscorekey</string>
+
+
+    <string name="gametime_setting">Game Time Setting</string>
+    <string name="gametime_def_setting">Please set a game time</string>
+    <string name="gametime_key">gameTimekey</string>
+
+</resources>

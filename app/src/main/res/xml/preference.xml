@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference android:title="@string/setscore_setting"
+        android:summary="@string/setscore_def_setting"
+        android:key="@string/setscore_key"
+        android:defaultValue="1"
+        android:entries="@array/setScoreArray"
+        android:entryValues="@array/setScoreValues" />
+
+    <ListPreference android:title="@string/gametime_setting"
+        android:summary="@string/gametime_def_setting"
+        android:key="@string/gametime_key"
+        android:defaultValue="1"
+        android:entries="@array/gameTimeArray"
+        android:entryValues="@array/gameTimeValues" />
+
+</PreferenceScreen>

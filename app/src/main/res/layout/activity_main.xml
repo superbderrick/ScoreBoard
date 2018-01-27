@@ -350,6 +350,7 @@
                 android:layout_width="50dip"
                 android:layout_height="wrap_content">
                 <ImageButton
+                    android:id="@+id/settingButton"
                     android:layout_gravity="center"
                     android:background="@color/tr"
                     android:src="@drawable/ic_settings_white_24dp"

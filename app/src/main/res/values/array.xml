@@ -1,0 +1,29 @@
+<resources>
+    <string-array name="gameTimeArray">
+        <item>5 minutes</item>
+        <item>10 minutes</item>
+        <item>15 minutes</item>
+        <item>20 minutes</item>
+        <item>30 minutes</item>
+    </string-array>
+
+    <string-array name="gameTimeValues">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>30</item>
+    </string-array>
+
+    <string-array name="setScoreArray">
+        <item>1 Set</item>
+        <item>2 Set</item>
+        <item>5 Set</item>
+    </string-array>
+
+    <string-array name="setScoreValues">
+        <item>1</item>
+        <item>2</item>
+        <item>5</item>
+    </string-array>
+</resources>

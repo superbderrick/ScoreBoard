@@ -1,5 +1,7 @@
 package io.github.superbderrick.scoreboard;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -10,10 +12,11 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private TouchLayout mLeftUpperTouchView ,mLeftBottomTouchView , mRightUpperTouchView , mRightBottomTouchView;
 
@@ -23,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
     private Handler mMainHandler = new Handler();
 
     private EditText mLeftUserName , mRightUserName;
-
+    private ImageButton mSettingButton;
     private ScoreManager mScoreManager;
+
 
 
 
@@ -51,8 +55,19 @@ public class MainActivity extends AppCompatActivity {
     private void initGuiComoment() {
         initLeftSideComponents();
         initRightSideComponents();
+        initSettingButton();
     }
 
+    private void initSettingButton() {
+        mSettingButton = (ImageButton)findViewById(R.id.settingButton);
+        mSettingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext() , SettingActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
     private void initRightSideComponents() {
         mRightUpperTouchView = (TouchLayout)findViewById(R.id.rightUpperTouchView);
         mRightBottomTouchView = (TouchLayout)findViewById(R.id.rightBottomTouchView);
