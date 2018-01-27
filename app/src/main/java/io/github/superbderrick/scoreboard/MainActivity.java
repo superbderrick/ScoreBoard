@@ -1,9 +1,12 @@
 package io.github.superbderrick.scoreboard;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,8 +51,25 @@ public class MainActivity extends Activity {
 
         mScoreManager.setListener(mScoreListener);
 
+
+        setSettingValues();
         initGuiComoment();
 
+
+
+    }
+
+    private void setSettingValues() {
+
+        SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+//        @SuppressLint("ResourceType") String setCount = SP.getString(String.valueOf(this.getResources().getDrawable(R.string.setscore_key)),"1");
+//        @SuppressLint("ResourceType") String gameTime = SP.getString(String.valueOf(this.getResources().getDrawable(R.string.gametime_key)),"1");
+
+
+        String setCount = SP.getString(this.getResources().getString(R.string.setscore_key),"1");
+        String gameTime = SP.getString(this.getResources().getString(R.string.gametime_key),"1");
+        Log.d("Derrick" , "setCount value : " + setCount);
+        Log.d("Derrick" , "gameTime value : " + gameTime);
     }
 
     private void initGuiComoment() {
@@ -140,6 +160,20 @@ public class MainActivity extends Activity {
     };
 
 
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
+        SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        @SuppressLint("ResourceType") String setCount = SP.getString(String.valueOf(this.getResources().getDrawable(R.string.setscore_key)),"1");
+        @SuppressLint("ResourceType") String gameTime = SP.getString(String.valueOf(this.getResources().getDrawable(R.string.gametime_key)),"1");
+
+
+        Log.d("Derrick" , "setCount value : " + setCount);
+        Log.d("Derrick" , "gameTime value : " + gameTime);
+
+    }
 
 
 }
