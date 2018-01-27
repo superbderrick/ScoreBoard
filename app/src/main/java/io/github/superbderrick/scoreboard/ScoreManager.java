@@ -56,28 +56,33 @@ public class ScoreManager {
 
     private void regulateFirstScore(Operation operation) {
 
-        if (mFirstScore < mScoreMaxRange && mFirstScore >=0) {
-
-            Log.d("Derrick" , "Vallue" + mFirstScore);
-            if(operation == Operation.Increase) {
+        if(operation == Operation.Increase) {
+            if (mFirstScore < mScoreMaxRange && mFirstScore >=0) {
                 mFirstScore ++;
-            } else {
+            }
+        } else {
+            if(mFirstScore > 0 && mFirstScore < mScoreMaxRange+1) {
                 mFirstScore --;
             }
-            mListener.onFirstScoreChanged(mFirstScore);
         }
+
+        mListener.onFirstScoreChanged(mFirstScore);
 
     }
 
     private void regulateSecondScore(Operation operation) {
-        if (mSecondScore < mScoreMaxRange && mSecondScore >=0) {
-            if(operation == Operation.Increase) {
+        if(operation == Operation.Increase) {
+            if (mSecondScore < mScoreMaxRange && mSecondScore >=0) {
                 mSecondScore ++;
-            } else {
+            }
+        } else {
+            if(mSecondScore > 0 && mSecondScore < mScoreMaxRange+1) {
                 mSecondScore --;
             }
-            mListener.onSecondScoreChanged(mSecondScore);
         }
+
+        mListener.onSecondScoreChanged(mSecondScore);
+
     }
 
     public void resetScore() {
