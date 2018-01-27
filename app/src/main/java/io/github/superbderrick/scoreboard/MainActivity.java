@@ -15,16 +15,19 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-
     private TouchLayout mLeftUpperTouchView ,mLeftBottomTouchView , mRightUpperTouchView , mRightBottomTouchView;
 
     private TextView mLeftScoreTextView , mRightScoreTextView;
 
-    private int testValue , secondTestValue = 0;
 
     private Handler mMainHandler = new Handler();
 
     private EditText mLeftUserName , mRightUserName;
+
+    private ScoreManager mScoreManager;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +39,21 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        mScoreManager = new ScoreManager();
+        mScoreManager.setScoreMaxRange(ScoreManager.DEFAULT_MAXIMUM_SCORE);
+
+        mScoreManager.setListener(mScoreListener);
+
         initGuiComoment();
+
     }
 
     private void initGuiComoment() {
         initLeftSideComponents();
-        initRightSideComponennts();
+        initRightSideComponents();
     }
 
-    private void initRightSideComponennts() {
+    private void initRightSideComponents() {
         mRightUpperTouchView = (TouchLayout)findViewById(R.id.rightUpperTouchView);
         mRightBottomTouchView = (TouchLayout)findViewById(R.id.rightBottomTouchView);
         mRightScoreTextView = (TextView)findViewById(R.id.rightScoreTextview);
@@ -52,35 +61,14 @@ public class MainActivity extends AppCompatActivity {
         mRightUpperTouchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mMainHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (secondTestValue < 30 && secondTestValue >=0) {
-                            secondTestValue ++;
-
-                            mRightScoreTextView.setText("" +secondTestValue);
-                        }
-                    }
-                });
-
-
+                mScoreManager.changeScore(ScoreManager.Operation.Increase , ScoreManager.UserType.Second);
             }
         });
         mRightBottomTouchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                mMainHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        if (secondTestValue >0 && secondTestValue <31 ) {
-                            secondTestValue --;
-                            mRightScoreTextView.setText("" +secondTestValue);
-                        }
-                    }
-                });
-
+                mScoreManager.changeScore(ScoreManager.Operation.Decrease , ScoreManager.UserType.Second);
             }
         });
     }
@@ -95,16 +83,7 @@ public class MainActivity extends AppCompatActivity {
         mLeftUpperTouchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mMainHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (testValue < 30 && testValue >=0) {
-                            testValue ++;
-                            mLeftScoreTextView.setText("" +testValue);
-                        }
-                    }
-                });
-
+                mScoreManager.changeScore(ScoreManager.Operation.Increase , ScoreManager.UserType.First);
 
             }
         });
@@ -112,20 +91,40 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                mMainHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (testValue >0 && testValue <31 ) {
-                            testValue --;
-                            mLeftScoreTextView.setText("" +testValue);
-                        }
-                    }
-                });
-
+                mScoreManager.changeScore(ScoreManager.Operation.Decrease , ScoreManager.UserType.First);
             }
         });
 
 
     }
+
+    ScoreManager.OnScoreChangeListener mScoreListener = new ScoreManager.OnScoreChangeListener() {
+        @Override
+        public void onFirstScoreChanged(final int score) {
+
+            mMainHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    String finalScore = "" + score;
+                    mLeftScoreTextView.setText(finalScore);
+                }
+            });
+
+        }
+
+        @Override
+        public void onSecondScoreChanged(final int score) {
+            mMainHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    String finalScore = "" + score;
+                    mRightScoreTextView.setText(finalScore);
+                }
+            });
+        }
+    };
+
+
+
 
 }
