@@ -15,4 +15,10 @@
         android:entries="@array/gameTimeArray"
         android:entryValues="@array/gameTimeValues" />
 
+    <ListPreference android:title="@string/handy_def_setting"
+        android:summary="@string/handy_def_setting"
+        android:key="@string/handyy_key"
+        android:defaultValue="1"
+        android:entries="@array/sethandyArray"
+        android:entryValues="@array/setHandyValues" />
 </PreferenceScreen>
