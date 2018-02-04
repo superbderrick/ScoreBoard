@@ -6,4 +6,10 @@
     <string name="TIMER">TIME : </string>
     <string name="TIME_DEFAULT">30:00 </string>
 
+    <string name="timer_start">start</string>
+    <string name="timer_pause">pause</string>
+    <string name="def_setting">setting button image</string>
+    <string name="def_reset">reset button image</string>
+    <string name="def_timer">timer button image</string>
+
 </resources>

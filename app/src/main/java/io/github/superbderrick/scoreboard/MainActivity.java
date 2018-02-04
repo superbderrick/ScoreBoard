@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -33,7 +34,6 @@ public class MainActivity extends Activity {
     private EditText mLeftUserName , mRightUserName;
     private ImageButton mSettingButton , mTimerButton , mTimerResetButton;
     private ScoreManager mScoreManager;
-
 
 
     @Override
@@ -73,10 +73,36 @@ public class MainActivity extends Activity {
 
     private void initTimerButton() {
         mTimerButton = (ImageButton)findViewById(R.id.timerButton);
+
+        final String startTag =  getString(R.string.timer_start);
+        final String pauseTag =  getString(R.string.timer_pause);
+        final int pauseImage = R.drawable.ic_pause_circle_outline_white_24dp;
+        final int startImage = R.drawable.ic_play_circle_outline_white_24dp;
+
         mTimerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(LOG_TAG , "timer Button Check ");
+
+                int tempImage = startImage;
+                if(mTimerButton.getTag().equals(startTag)) {
+                    tempImage = pauseImage;
+                    mTimerButton.setTag(pauseTag);
+
+                } else {
+                    tempImage = startImage;
+                    mTimerButton.setTag(startTag);
+                }
+
+                final int finalTempImage = tempImage;
+                mMainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        final int timerImage = finalTempImage;
+                        mTimerButton.setImageResource(timerImage);
+                    }
+                });
+
+
             }
         });
     }
