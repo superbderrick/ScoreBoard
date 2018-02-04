@@ -21,6 +21,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends Activity {
 
     private static final String LOG_TAG = "MainActivity";
@@ -30,7 +32,9 @@ public class MainActivity extends Activity {
     private TextView mLeftScoreTextView , mRightScoreTextView;
     private EditText mLeftUserName , mRightUserName;
     private ImageButton mSettingButton , mTimerButton , mTimerResetButton;
+
     private LinearLayout mLeftScoreLayout , mRightScoreLayout;
+    private ArrayList<CircleView> mLeftCircleViewArray;
 
     private Handler mMainHandler = new Handler();
 
@@ -65,6 +69,8 @@ public class MainActivity extends Activity {
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         String setCount = SP.getString(this.getResources().getString(R.string.setscore_key),"1");
         String gameTime = SP.getString(this.getResources().getString(R.string.gametime_key),"1");
+
+        Log.d(LOG_TAG , "TEST" + setCount);
     }
 
     private void initGuiComoment() {
@@ -80,7 +86,23 @@ public class MainActivity extends Activity {
         mLeftScoreLayout = findViewById(R.id.leftScoreLayout);
         mRightScoreLayout = findViewById(R.id.rightScoreLayout);
 
-        
+        mLeftCircleViewArray = new ArrayList<CircleView>();
+
+        CircleView firstLeftCircleView = new CircleView(this);
+        CircleView secondLeftCircleView = new CircleView(this);
+        CircleView thirdLeftCircleView = new CircleView(this);
+
+        LinearLayout.LayoutParams lp= new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                0, 1);
+
+        secondLeftCircleView.setLayoutParams(lp);
+        firstLeftCircleView.setLayoutParams(lp);
+        thirdLeftCircleView.setLayoutParams(lp);
+
+        mLeftScoreLayout.addView(firstLeftCircleView);
+        mLeftScoreLayout.addView(secondLeftCircleView);
+        mLeftScoreLayout.addView(thirdLeftCircleView);
 
     }
 
