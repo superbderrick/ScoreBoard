@@ -46,6 +46,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Log.d(LOG_TAG , "Activity API onCreate is called ");
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -60,10 +61,11 @@ public class MainActivity extends Activity {
         mMatchTimer = new MatchTimer(100);
         mMatchTimer.setListener(mMatchTimerListener);
 
-        setSettingValues();
         initGuiComoment();
 
     }
+
+
 
     private void setSettingValues() {
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
@@ -155,7 +157,7 @@ public class MainActivity extends Activity {
     }
 
     private void initSettingButton() {
-        mSettingButton = (ImageButton)findViewById(R.id.settingButton);
+        mSettingButton = findViewById(R.id.settingButton);
         mSettingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -253,18 +255,11 @@ public class MainActivity extends Activity {
 
 
     @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
+    protected void onResume() {
+        super.onResume();
 
-        SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        @SuppressLint("ResourceType") String setCount = SP.getString(String.valueOf(this.getResources().getDrawable(R.string.setscore_key)),"1");
-        @SuppressLint("ResourceType") String gameTime = SP.getString(String.valueOf(this.getResources().getDrawable(R.string.gametime_key)),"1");
+        Log.d(LOG_TAG , "Activity API onResume is called ");
 
-
-        Log.d("Derrick" , "setCount value : " + setCount);
-        Log.d("Derrick" , "gameTime value : " + gameTime);
-
+        setSettingValues();
     }
-
-
 }
