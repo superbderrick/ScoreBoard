@@ -338,6 +338,7 @@
                     android:layout_height="40dip" />
 
                 <ImageButton
+                    android:id="@+id/timerResetButton"
                     android:contentDescription="@string/def_reset"
                     android:layout_gravity="center"
                     android:background="@color/tr"

@@ -24,16 +24,16 @@ public class MainActivity extends Activity {
 
     private static final String LOG_TAG = "MainActivity";
 
+    //GuiComponents.
     private TouchLayout mLeftUpperTouchView ,mLeftBottomTouchView , mRightUpperTouchView , mRightBottomTouchView;
-
     private TextView mLeftScoreTextView , mRightScoreTextView;
-
+    private EditText mLeftUserName , mRightUserName;
+    private ImageButton mSettingButton , mTimerButton , mTimerResetButton;
 
     private Handler mMainHandler = new Handler();
 
-    private EditText mLeftUserName , mRightUserName;
-    private ImageButton mSettingButton , mTimerButton , mTimerResetButton;
     private ScoreManager mScoreManager;
+    private MatchTimer mMatchTimer;
 
 
     @Override
@@ -46,11 +46,13 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
 
+
         mScoreManager = new ScoreManager();
         mScoreManager.setScoreMaxRange(ScoreManager.DEFAULT_MAXIMUM_SCORE);
-
         mScoreManager.setListener(mScoreListener);
 
+        mMatchTimer = new MatchTimer(100);
+        mMatchTimer.setListener(mMatchTimerListener);
 
         setSettingValues();
         initGuiComoment();
@@ -58,7 +60,6 @@ public class MainActivity extends Activity {
     }
 
     private void setSettingValues() {
-
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         String setCount = SP.getString(this.getResources().getString(R.string.setscore_key),"1");
         String gameTime = SP.getString(this.getResources().getString(R.string.gametime_key),"1");
@@ -69,6 +70,17 @@ public class MainActivity extends Activity {
         initRightSideComponents();
         initSettingButton();
         initTimerButton();
+        initResetButton();
+    }
+
+    private void initResetButton() {
+        mTimerResetButton = (ImageButton)findViewById(R.id.timerResetButton);
+        mTimerResetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(LOG_TAG , "Reset button clicked ");
+            }
+        });
     }
 
     private void initTimerButton() {
@@ -87,6 +99,8 @@ public class MainActivity extends Activity {
                 if(mTimerButton.getTag().equals(startTag)) {
                     tempImage = pauseImage;
                     mTimerButton.setTag(pauseTag);
+
+                    mMatchTimer.startTimer();
 
                 } else {
                     tempImage = startImage;
@@ -184,6 +198,23 @@ public class MainActivity extends Activity {
                     mRightScoreTextView.setText(finalScore);
                 }
             });
+        }
+    };
+
+    MatchTimer.OnTimerChangeListener mMatchTimerListener = new MatchTimer.OnTimerChangeListener() {
+        @Override
+        public void onTimerStarted() {
+
+        }
+
+        @Override
+        public void onTimerEnded() {
+
+        }
+
+        @Override
+        public void onTimerChanged() {
+
         }
     };
 
