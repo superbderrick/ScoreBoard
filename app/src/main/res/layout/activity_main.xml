@@ -59,32 +59,34 @@
         android:layout_weight="6">
 
         <LinearLayout
+            android:id="@+id/leftScoreLayout"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:background="@color/colorDefaultBackGround">
 
-            <io.github.superbderrick.scoreboard.CircleView
-                android:id="@+id/leftFirstCircleView"
-                android:layout_width="match_parent"
-                android:layout_height="0dip"
-                android:layout_weight="1"
-                />
+            <!--<io.github.superbderrick.scoreboard.CircleView-->
+                <!--android:id="@+id/leftFirstCircleView"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dip"-->
+                <!--android:layout_weight="1"-->
+                <!--/>-->
 
-            <io.github.superbderrick.scoreboard.CircleView
-                android:id="@+id/leftSecondCircleView"
-                android:layout_width="match_parent"
-                android:layout_height="0dip"
-                android:layout_weight="1"
-                />
+            <!--<io.github.superbderrick.scoreboard.CircleView-->
+                <!--android:id="@+id/leftSecondCircleView"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dip"-->
+                <!--android:layout_weight="1"-->
+                <!--/>-->
 
-            <io.github.superbderrick.scoreboard.CircleView
-                android:id="@+id/lefThirdCircleView"
-                android:layout_width="match_parent"
-                android:layout_height="0dip"
-                android:layout_weight="1"
-                />
+            <!--<io.github.superbderrick.scoreboard.CircleView-->
+                <!--android:id="@+id/lefThirdCircleView"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dip"-->
+                <!--android:layout_weight="1"-->
+                <!--/>-->
+
 
         </LinearLayout>
 
@@ -212,6 +214,7 @@
         </RelativeLayout>
 
         <LinearLayout
+            android:id="@+id/rightScoreLayout"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="0dip"

@@ -17,6 +17,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -29,6 +30,7 @@ public class MainActivity extends Activity {
     private TextView mLeftScoreTextView , mRightScoreTextView;
     private EditText mLeftUserName , mRightUserName;
     private ImageButton mSettingButton , mTimerButton , mTimerResetButton;
+    private LinearLayout mLeftScoreLayout , mRightScoreLayout;
 
     private Handler mMainHandler = new Handler();
 
@@ -71,6 +73,15 @@ public class MainActivity extends Activity {
         initSettingButton();
         initTimerButton();
         initResetButton();
+        initScoreLayout();
+    }
+
+    private void initScoreLayout() {
+        mLeftScoreLayout = findViewById(R.id.leftScoreLayout);
+        mRightScoreLayout = findViewById(R.id.rightScoreLayout);
+
+        
+
     }
 
     private void initResetButton() {
