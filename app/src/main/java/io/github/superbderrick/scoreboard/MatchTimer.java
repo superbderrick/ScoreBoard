@@ -5,9 +5,6 @@ import android.util.Log;
 import java.util.Timer;
 import java.util.TimerTask;
 
-/**
- * Created by derrick on 04/02/2018.
- */
 
 public final class MatchTimer {
     private static final String LOG_TAG = "MatchTimer";
@@ -47,7 +44,8 @@ public final class MatchTimer {
     }
 
     public void startTimer() {
-            mInnerTimer.schedule(mTimerTask,0,10000);
+            mInnerTimer.schedule(mTimerTask,0,1000);
+
     }
 
     public void resetTimer() {

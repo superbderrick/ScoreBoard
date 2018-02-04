@@ -74,7 +74,7 @@ public class MainActivity extends Activity {
     }
 
     private void initResetButton() {
-        mTimerResetButton = (ImageButton)findViewById(R.id.timerResetButton);
+        mTimerResetButton = findViewById(R.id.timerResetButton);
         mTimerResetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,7 +84,7 @@ public class MainActivity extends Activity {
     }
 
     private void initTimerButton() {
-        mTimerButton = (ImageButton)findViewById(R.id.timerButton);
+        mTimerButton = findViewById(R.id.timerButton);
 
         final String startTag =  getString(R.string.timer_start);
         final String pauseTag =  getString(R.string.timer_pause);
@@ -100,7 +100,7 @@ public class MainActivity extends Activity {
                     tempImage = pauseImage;
                     mTimerButton.setTag(pauseTag);
 
-                    mMatchTimer.startTimer();
+                   // mMatchTimer.startTimer();
 
                 } else {
                     tempImage = startImage;
@@ -132,9 +132,9 @@ public class MainActivity extends Activity {
         });
     }
     private void initRightSideComponents() {
-        mRightUpperTouchView = (TouchLayout)findViewById(R.id.rightUpperTouchView);
-        mRightBottomTouchView = (TouchLayout)findViewById(R.id.rightBottomTouchView);
-        mRightScoreTextView = (TextView)findViewById(R.id.rightScoreTextview);
+        mRightUpperTouchView = findViewById(R.id.rightUpperTouchView);
+        mRightBottomTouchView = findViewById(R.id.rightBottomTouchView);
+        mRightScoreTextView = findViewById(R.id.rightScoreTextview);
 
         mRightUpperTouchView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,10 +151,10 @@ public class MainActivity extends Activity {
         });
     }
     private void initLeftSideComponents() {
-        mLeftUpperTouchView = (TouchLayout) findViewById(R.id.leftUpperTouchView);
-        mLeftBottomTouchView = (TouchLayout)findViewById(R.id.leftBottomTouchView);
-        mLeftScoreTextView = (TextView)findViewById(R.id.leftScoreTextview);
-        mLeftUserName = (EditText)findViewById(R.id.leftUserName) ;
+        mLeftUpperTouchView =  findViewById(R.id.leftUpperTouchView);
+        mLeftBottomTouchView = findViewById(R.id.leftBottomTouchView);
+        mLeftScoreTextView = findViewById(R.id.leftScoreTextview);
+        mLeftUserName = findViewById(R.id.leftUserName) ;
 
 
         mLeftUpperTouchView.setOnClickListener(new View.OnClickListener() {
