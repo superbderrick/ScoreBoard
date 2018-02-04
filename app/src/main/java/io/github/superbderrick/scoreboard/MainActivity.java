@@ -21,6 +21,8 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
+    private static final String LOG_TAG = "MainActivity";
+
     private TouchLayout mLeftUpperTouchView ,mLeftBottomTouchView , mRightUpperTouchView , mRightBottomTouchView;
 
     private TextView mLeftScoreTextView , mRightScoreTextView;
@@ -29,10 +31,8 @@ public class MainActivity extends Activity {
     private Handler mMainHandler = new Handler();
 
     private EditText mLeftUserName , mRightUserName;
-    private ImageButton mSettingButton;
+    private ImageButton mSettingButton , mTimerButton , mTimerResetButton;
     private ScoreManager mScoreManager;
-
-
 
 
 
@@ -55,27 +55,30 @@ public class MainActivity extends Activity {
         setSettingValues();
         initGuiComoment();
 
-
-
     }
 
     private void setSettingValues() {
 
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-//        @SuppressLint("ResourceType") String setCount = SP.getString(String.valueOf(this.getResources().getDrawable(R.string.setscore_key)),"1");
-//        @SuppressLint("ResourceType") String gameTime = SP.getString(String.valueOf(this.getResources().getDrawable(R.string.gametime_key)),"1");
-
-
         String setCount = SP.getString(this.getResources().getString(R.string.setscore_key),"1");
         String gameTime = SP.getString(this.getResources().getString(R.string.gametime_key),"1");
-        Log.d("Derrick" , "setCount value : " + setCount);
-        Log.d("Derrick" , "gameTime value : " + gameTime);
     }
 
     private void initGuiComoment() {
         initLeftSideComponents();
         initRightSideComponents();
         initSettingButton();
+        initTimerButton();
+    }
+
+    private void initTimerButton() {
+        mTimerButton = (ImageButton)findViewById(R.id.timerButton);
+        mTimerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(LOG_TAG , "timer Button Check ");
+            }
+        });
     }
 
     private void initSettingButton() {
@@ -107,7 +110,6 @@ public class MainActivity extends Activity {
             }
         });
     }
-
     private void initLeftSideComponents() {
         mLeftUpperTouchView = (TouchLayout) findViewById(R.id.leftUpperTouchView);
         mLeftBottomTouchView = (TouchLayout)findViewById(R.id.leftBottomTouchView);
@@ -158,7 +160,6 @@ public class MainActivity extends Activity {
             });
         }
     };
-
 
 
     @Override

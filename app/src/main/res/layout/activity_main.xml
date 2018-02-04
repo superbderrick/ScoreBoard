@@ -326,6 +326,7 @@
                     android:layout_height="wrap_content" />
 
                 <ImageButton
+                    android:id="@+id/timerButton"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_play_circle_outline_white_24dp"
                     android:background="@color/tr"
