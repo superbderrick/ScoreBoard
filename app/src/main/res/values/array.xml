@@ -28,12 +28,18 @@
     </string-array>
 
     <string-array name="sethandyArray">
-        <item>+1</item>
-        <item>+2</item>
-        <item>+3</item>
-        <item>+4</item>
-        <item>+5</item>
-        <item>+6</item>
+        <item>left +1</item>
+        <item>left +2</item>
+        <item>left +3</item>
+        <item>left +4</item>
+        <item>left +5</item>
+        <item>left +6</item>
+        <item>Right +1</item>
+        <item>Right +2</item>
+        <item>Right +3</item>
+        <item>Right +4</item>
+        <item>Right +5</item>
+        <item>Right+6</item>
     </string-array>
 
 
@@ -45,6 +51,10 @@
         <item>5</item>
         <item>6</item>
         <item>7</item>
-
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
     </string-array>
 </resources>

@@ -71,8 +71,9 @@ public class MainActivity extends Activity {
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         String setCount = SP.getString(this.getResources().getString(R.string.setscore_key),"1");
         String gameTime = SP.getString(this.getResources().getString(R.string.gametime_key),"1");
+        String handyValue = SP.getString(this.getResources().getString(R.string.handyy_key),"1");
 
-        Log.d(LOG_TAG , "TEST" + setCount);
+        Log.d(LOG_TAG , "handyValue" + handyValue);
     }
 
     private void initGuiComoment() {
