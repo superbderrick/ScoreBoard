@@ -1,4 +1,4 @@
-package io.github.superbderrick.scoreboard;
+package io.github.superbderrick.scoreboard.activities;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
@@ -7,6 +7,8 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.util.Log;
+
+import io.github.superbderrick.scoreboard.R;
 
 /**
  * Created by derricks on 27/01/2018.

@@ -1,27 +1,29 @@
-package io.github.superbderrick.scoreboard;
+package io.github.superbderrick.scoreboard.activities;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import io.github.superbderrick.scoreboard.R;
+import io.github.superbderrick.scoreboard.helper.MatchTimer;
+import io.github.superbderrick.scoreboard.helper.ScoreManager;
+import io.github.superbderrick.scoreboard.settings.Handy;
+import io.github.superbderrick.scoreboard.settings.HandyCalculator;
+import io.github.superbderrick.scoreboard.ui.CircleView;
+import io.github.superbderrick.scoreboard.ui.TouchLayout;
 
 public class MainActivity extends Activity {
 
@@ -40,6 +42,7 @@ public class MainActivity extends Activity {
 
     private ScoreManager mScoreManager;
     private MatchTimer mMatchTimer;
+
 
 
     @Override
@@ -61,6 +64,8 @@ public class MainActivity extends Activity {
         mMatchTimer = new MatchTimer(100);
         mMatchTimer.setListener(mMatchTimerListener);
 
+
+
         initGuiComoment();
 
     }
@@ -73,7 +78,29 @@ public class MainActivity extends Activity {
         String gameTime = SP.getString(this.getResources().getString(R.string.gametime_key),"1");
         String handyValue = SP.getString(this.getResources().getString(R.string.handyy_key),"1");
 
-        Log.d(LOG_TAG , "handyValue" + handyValue);
+
+        setHandyPoint(handyValue);
+
+    }
+
+    private void setHandyPoint(String handyValue) {
+        final Handy handy = HandyCalculator.getHandy(Integer.parseInt(handyValue));
+        Log.d(LOG_TAG , "handyValue di" + handy.getDirection());
+        Log.d(LOG_TAG , "handyValue point" + handy.getHandyPoint());
+        mMainHandler.post(new Runnable() {
+            @Override
+            public void run() {
+
+                if(handy.getDirection() < Handy.RIGHT_USER) {
+                    // left
+                    mLeftScoreTextView.setText("" +handy.getHandyPoint());
+                } else {
+                    // right
+                    mRightScoreTextView.setText("" +handy.getHandyPoint());
+                }
+
+            }
+        });
     }
 
     private void initGuiComoment() {

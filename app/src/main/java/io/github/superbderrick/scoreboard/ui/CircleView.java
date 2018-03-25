@@ -1,4 +1,4 @@
-package io.github.superbderrick.scoreboard;
+package io.github.superbderrick.scoreboard.ui;
 
 import android.annotation.TargetApi;
 import android.content.Context;

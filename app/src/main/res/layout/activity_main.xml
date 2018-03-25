@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="io.github.superbderrick.scoreboard.MainActivity">
+    tools:context="io.github.superbderrick.scoreboard.activities.MainActivity">
 
     <LinearLayout
         android:id="@+id/topView"
@@ -66,26 +66,26 @@
             android:layout_height="match_parent"
             android:background="@color/colorDefaultBackGround">
 
-            <!--<io.github.superbderrick.scoreboard.CircleView-->
-                <!--android:id="@+id/leftFirstCircleView"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="0dip"-->
-                <!--android:layout_weight="1"-->
-                <!--/>-->
+            <!--<io.github.superbderrick.scoreboard.ui.CircleViewView&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/leftFirstCircleView"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="0dip"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+                <!--&lt;!&ndash;/>&ndash;&gt;-->
 
-            <!--<io.github.superbderrick.scoreboard.CircleView-->
-                <!--android:id="@+id/leftSecondCircleView"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="0dip"-->
-                <!--android:layout_weight="1"-->
-                <!--/>-->
+            <!--<io.github.superbderrick.scoreboard.ui.CircleViewView&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/leftSecondCircleView"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="0dip"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+                <!--&lt;!&ndash;/>&ndash;&gt;-->
 
-            <!--<io.github.superbderrick.scoreboard.CircleView-->
-                <!--android:id="@+id/lefThirdCircleView"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="0dip"-->
-                <!--android:layout_weight="1"-->
-                <!--/>-->
+            <!--<io.github.superbderrick.scoreboard.ui.CircleViewView&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/lefThirdCircleView"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="0dip"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+                <!--&lt;!&ndash;/>&ndash;&gt;-->
 
 
         </LinearLayout>
@@ -101,14 +101,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <io.github.superbderrick.scoreboard.TouchLayout
+                <io.github.superbderrick.scoreboard.ui.TouchLayout
                     android:id="@+id/leftUpperTouchView"
                     android:background="@color/colorTouch"
                     android:layout_weight="4.9"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
 
-                </io.github.superbderrick.scoreboard.TouchLayout>
+                </io.github.superbderrick.scoreboard.ui.TouchLayout>
 
                 <RelativeLayout
                     android:id="@+id/leftBar"
@@ -117,14 +117,14 @@
                     android:layout_height="0dip">
                 </RelativeLayout>
 
-                <io.github.superbderrick.scoreboard.TouchLayout
+                <io.github.superbderrick.scoreboard.ui.TouchLayout
                     android:id="@+id/leftBottomTouchView"
                     android:background="@color/colorTouch"
                     android:layout_weight="4.9"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
 
-                </io.github.superbderrick.scoreboard.TouchLayout>
+                </io.github.superbderrick.scoreboard.ui.TouchLayout>
 
             </LinearLayout>
 
@@ -170,14 +170,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <io.github.superbderrick.scoreboard.TouchLayout
+                <io.github.superbderrick.scoreboard.ui.TouchLayout
                     android:id="@+id/rightUpperTouchView"
                     android:background="@color/colorTouch"
                     android:layout_weight="4.9"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
 
-                </io.github.superbderrick.scoreboard.TouchLayout>
+                </io.github.superbderrick.scoreboard.ui.TouchLayout>
 
                 <RelativeLayout
                     android:id="@+id/rightbar"
@@ -187,14 +187,14 @@
 
                 </RelativeLayout>
 
-                <io.github.superbderrick.scoreboard.TouchLayout
+                <io.github.superbderrick.scoreboard.ui.TouchLayout
                     android:id="@+id/rightBottomTouchView"
                     android:background="@color/colorTouch"
                     android:layout_weight="4.9"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
 
-                </io.github.superbderrick.scoreboard.TouchLayout>
+                </io.github.superbderrick.scoreboard.ui.TouchLayout>
 
             </LinearLayout>
 
@@ -221,21 +221,21 @@
             android:layout_height="match_parent"
             android:background="@color/colorDefaultBackGround">
 
-            <io.github.superbderrick.scoreboard.CircleView
+            <io.github.superbderrick.scoreboard.ui.CircleView
                 android:id="@+id/rightFirstCircleView"
                 android:layout_width="match_parent"
                 android:layout_height="0dip"
                 android:layout_weight="1"
                 />
 
-            <io.github.superbderrick.scoreboard.CircleView
+            <io.github.superbderrick.scoreboard.ui.CircleView
                 android:id="@+id/rightSecondCircleView"
                 android:layout_width="match_parent"
                 android:layout_height="0dip"
                 android:layout_weight="1"
                 />
 
-            <io.github.superbderrick.scoreboard.CircleView
+            <io.github.superbderrick.scoreboard.ui.CircleView
                 android:id="@+id/rightThirdCircleView"
                 android:layout_width="match_parent"
                 android:layout_height="0dip"

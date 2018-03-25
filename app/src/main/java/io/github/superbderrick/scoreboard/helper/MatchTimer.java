@@ -1,4 +1,4 @@
-package io.github.superbderrick.scoreboard;
+package io.github.superbderrick.scoreboard.helper;
 
 import android.util.Log;
 
