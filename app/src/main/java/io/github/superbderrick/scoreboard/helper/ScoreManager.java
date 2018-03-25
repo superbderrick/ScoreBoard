@@ -54,6 +54,14 @@ public class ScoreManager {
         }
     }
 
+    public void changeScore(Operation operation , UserType type , int addtionalPoint) {
+        if(type == UserType.First) {
+            regulateFirstScore(operation , addtionalPoint);
+        } else {
+            regulateSecondScore(operation , addtionalPoint);
+        }
+    }
+
     private void regulateFirstScore(Operation operation) {
 
         if(operation == Operation.Increase) {
@@ -70,10 +78,41 @@ public class ScoreManager {
 
     }
 
+    private void regulateFirstScore(Operation operation , int addtionalPoint) {
+
+        if(operation == Operation.Increase) {
+            if (mFirstScore < mScoreMaxRange && mFirstScore >=0) {
+                mFirstScore = mFirstScore + addtionalPoint;
+            }
+        } else {
+            if(mFirstScore > 0 && mFirstScore < mScoreMaxRange+1) {
+                mFirstScore --;
+            }
+        }
+
+        mListener.onFirstScoreChanged(mFirstScore);
+
+    }
+
     private void regulateSecondScore(Operation operation) {
         if(operation == Operation.Increase) {
             if (mSecondScore < mScoreMaxRange && mSecondScore >=0) {
                 mSecondScore ++;
+            }
+        } else {
+            if(mSecondScore > 0 && mSecondScore < mScoreMaxRange+1) {
+                mSecondScore --;
+            }
+        }
+
+        mListener.onSecondScoreChanged(mSecondScore);
+
+    }
+
+    private void regulateSecondScore(Operation operation , int addtionalPoint) {
+        if(operation == Operation.Increase) {
+            if (mSecondScore < mScoreMaxRange && mSecondScore >=0) {
+                mSecondScore = mSecondScore + addtionalPoint;
             }
         } else {
             if(mSecondScore > 0 && mSecondScore < mScoreMaxRange+1) {

@@ -93,10 +93,10 @@ public class MainActivity extends Activity {
 
                 if(handy.getDirection() < Handy.RIGHT_USER) {
                     // left
-                    mLeftScoreTextView.setText("" +handy.getHandyPoint());
+                    mScoreManager.changeScore(ScoreManager.Operation.Increase , ScoreManager.UserType.First,handy.getHandyPoint());
                 } else {
                     // right
-                    mRightScoreTextView.setText("" +handy.getHandyPoint());
+                    mScoreManager.changeScore(ScoreManager.Operation.Increase , ScoreManager.UserType.Second,handy.getHandyPoint());
                 }
 
             }
