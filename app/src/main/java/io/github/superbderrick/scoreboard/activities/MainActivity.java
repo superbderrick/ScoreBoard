@@ -18,12 +18,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import io.github.superbderrick.scoreboard.R;
-import io.github.superbderrick.scoreboard.helper.MatchTimer;
 import io.github.superbderrick.scoreboard.helper.ScoreManager;
 import io.github.superbderrick.scoreboard.settings.Handy;
 import io.github.superbderrick.scoreboard.settings.HandyCalculator;
 import io.github.superbderrick.scoreboard.ui.CircleView;
 import io.github.superbderrick.scoreboard.ui.TouchLayout;
+import io.github.superbderrick.scoreboard.utils.MatchTimer;
 
 public class MainActivity extends Activity {
 
@@ -61,12 +61,51 @@ public class MainActivity extends Activity {
         mScoreManager.setScoreMaxRange(ScoreManager.DEFAULT_MAXIMUM_SCORE);
         mScoreManager.setListener(mScoreListener);
 
-        mMatchTimer = new MatchTimer(100);
-        mMatchTimer.setListener(mMatchTimerListener);
-
-
 
         initGuiComoment();
+
+    }
+
+    private void setTimer() {
+
+
+        MatchTimer.TimerTickListener circleTimerListener = new MatchTimer.TimerTickListener() {
+
+            @Override
+
+            public void onTick(long millisLeft) {
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+
+                    }
+                });
+
+            }
+
+            @Override
+
+            public void onFinish() {
+                mMainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+
+
+                    }
+                });
+            }
+            @Override
+
+            public void onCancel() {
+
+            }
+
+        };
+
+        MatchTimer timer = new MatchTimer(10000, 1000, circleTimerListener);
+        timer.start();
 
     }
 
@@ -264,22 +303,7 @@ public class MainActivity extends Activity {
         }
     };
 
-    MatchTimer.OnTimerChangeListener mMatchTimerListener = new MatchTimer.OnTimerChangeListener() {
-        @Override
-        public void onTimerStarted() {
 
-        }
-
-        @Override
-        public void onTimerEnded() {
-
-        }
-
-        @Override
-        public void onTimerChanged() {
-
-        }
-    };
 
 
     @Override
