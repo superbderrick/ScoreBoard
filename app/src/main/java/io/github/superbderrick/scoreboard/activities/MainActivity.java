@@ -36,14 +36,14 @@ public class MainActivity extends Activity {
     private ImageButton mSettingButton , mTimerButton , mTimerResetButton;
 
     private LinearLayout mLeftScoreLayout , mRightScoreLayout;
-    private ArrayList<CircleView> mLeftCircleViewArray;
+    private ArrayList<CircleView> mLeftCircleViewArray , mRightCircleViewArray;
 
     private Handler mMainHandler = new Handler();
 
     private ScoreManager mScoreManager;
     private MatchTimer mMatchTimer;
 
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,7 +121,8 @@ public class MainActivity extends Activity {
         Log.d(LOG_TAG , "check each value gameTime  : " + gameTime);
         Log.d(LOG_TAG , "check each value HandyValue  : " + handyValue);
 
-
+        int setNum = Integer.parseInt(setCount);
+        makeSetCircleViews(setNum);
 //        setHandyPoint(handyValue);
     }
 
@@ -159,22 +160,38 @@ public class MainActivity extends Activity {
         mRightScoreLayout = findViewById(R.id.rightScoreLayout);
 
         mLeftCircleViewArray = new ArrayList<CircleView>();
+        mRightCircleViewArray = new ArrayList<CircleView>();
 
-        CircleView firstLeftCircleView = new CircleView(this);
-        CircleView secondLeftCircleView = new CircleView(this);
-        CircleView thirdLeftCircleView = new CircleView(this);
+    }
 
-        LinearLayout.LayoutParams lp= new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                0, 1);
+    private void makeSetCircleViews(final int setNum) {
 
-        secondLeftCircleView.setLayoutParams(lp);
-        firstLeftCircleView.setLayoutParams(lp);
-        thirdLeftCircleView.setLayoutParams(lp);
+        mMainHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                if(mLeftScoreLayout != null) {
+                    makeCircleView(setNum , mLeftScoreLayout , mLeftCircleViewArray);
+                    makeCircleView(setNum , mRightScoreLayout , mRightCircleViewArray);
+                }
 
-        mLeftScoreLayout.addView(firstLeftCircleView);
-        mLeftScoreLayout.addView(secondLeftCircleView);
-        mLeftScoreLayout.addView(thirdLeftCircleView);
+            }
+        });
+
+    }
+
+    private void makeCircleView(int setNum ,LinearLayout layout ,ArrayList<CircleView> circleArray) {
+
+        layout.removeAllViews();
+
+        for(int i = 0 ; i < setNum ; i ++) {
+            CircleView circleView = new CircleView(MainActivity.this);
+            LinearLayout.LayoutParams lp= new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    0, 1);
+            circleView.setLayoutParams(lp);
+            circleArray.add(circleView);
+            layout.addView(circleView);
+        }
 
     }
 

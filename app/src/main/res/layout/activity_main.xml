@@ -221,26 +221,26 @@
             android:layout_height="match_parent"
             android:background="@color/colorDefaultBackGround">
 
-            <io.github.superbderrick.scoreboard.ui.CircleView
-                android:id="@+id/rightFirstCircleView"
-                android:layout_width="match_parent"
-                android:layout_height="0dip"
-                android:layout_weight="1"
-                />
+            <!--<io.github.superbderrick.scoreboard.ui.CircleView-->
+                <!--android:id="@+id/rightFirstCircleView"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dip"-->
+                <!--android:layout_weight="1"-->
+                <!--/>-->
 
-            <io.github.superbderrick.scoreboard.ui.CircleView
-                android:id="@+id/rightSecondCircleView"
-                android:layout_width="match_parent"
-                android:layout_height="0dip"
-                android:layout_weight="1"
-                />
+            <!--<io.github.superbderrick.scoreboard.ui.CircleView-->
+                <!--android:id="@+id/rightSecondCircleView"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dip"-->
+                <!--android:layout_weight="1"-->
+                <!--/>-->
 
-            <io.github.superbderrick.scoreboard.ui.CircleView
-                android:id="@+id/rightThirdCircleView"
-                android:layout_width="match_parent"
-                android:layout_height="0dip"
-                android:layout_weight="1"
-                />
+            <!--<io.github.superbderrick.scoreboard.ui.CircleView-->
+                <!--android:id="@+id/rightThirdCircleView"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="0dip"-->
+                <!--android:layout_weight="1"-->
+                <!--/>-->
 
         </LinearLayout>
 
