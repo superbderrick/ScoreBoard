@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 import io.github.superbderrick.scoreboard.R;
 import io.github.superbderrick.scoreboard.helper.ScoreManager;
+import io.github.superbderrick.scoreboard.set.SetManager;
 import io.github.superbderrick.scoreboard.settings.Handy;
 import io.github.superbderrick.scoreboard.settings.HandyCalculator;
 import io.github.superbderrick.scoreboard.ui.CircleView;
@@ -44,7 +45,7 @@ public class MainActivity extends Activity {
 
     private ScoreManager mScoreManager;
     private MatchTimer mMatchTimer;
-
+    private SetManager mSetManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +57,14 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
 
-        bringSettingValues();
-
         mScoreManager = new ScoreManager();
         mScoreManager.setScoreMaxRange(ScoreManager.DEFAULT_MAXIMUM_SCORE);
         mScoreManager.setListener(mScoreListener);
+
+        mSetManager = new SetManager();
+
+        bringSettingValues();
+
 
         initGUIComponent();
     }
@@ -108,7 +112,6 @@ public class MainActivity extends Activity {
 
     }
 
-
     private void bringSettingValues() {
 
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
@@ -122,6 +125,8 @@ public class MainActivity extends Activity {
     private void setupSettings(String setCount) {
         int setNum = Integer.parseInt(setCount);
         setupSetCircleView(setNum);
+        mSetManager.setSetNum(setNum);
+
 //        setHandyPoint(handyValue);
     }
 
@@ -334,6 +339,9 @@ public class MainActivity extends Activity {
         @Override
         public void onTouchedView(int id) {
             Log.d(LOG_TAG , "ID: " + id);
+            if(mSetManager != null) {
+                mSetManager.setScore(id);
+            }
         }
     };
 
