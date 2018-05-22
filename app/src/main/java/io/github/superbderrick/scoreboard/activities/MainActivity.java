@@ -39,7 +39,6 @@ public class MainActivity extends Activity {
     private EditText mLeftUserName , mRightUserName;
     private ImageButton mSettingButton , mTimerButton , mTimerResetButton;
     private LinearLayout mLeftScoreLayout , mRightScoreLayout;
-    private ArrayList<CircleView> mLeftCircleViewArray , mRightCircleViewArray;
 
     private Handler mMainHandler = new Handler();
 
@@ -164,9 +163,6 @@ public class MainActivity extends Activity {
         mLeftScoreLayout = findViewById(R.id.leftScoreLayout);
         mRightScoreLayout = findViewById(R.id.rightScoreLayout);
 
-        mLeftCircleViewArray = new ArrayList<CircleView>();
-        mRightCircleViewArray = new ArrayList<CircleView>();
-
     }
 
     private void setupSetCircleView(final int setNum) {
@@ -175,8 +171,8 @@ public class MainActivity extends Activity {
             @Override
             public void run() {
                 if(mLeftScoreLayout != null) {
-                    makeCircleView(setNum , mLeftScoreLayout , mLeftCircleViewArray , DIRECTION_LEFT);
-                    makeCircleView(setNum , mRightScoreLayout , mRightCircleViewArray , DIRECTION_RIGHT);
+                    makeCircleView(setNum , mLeftScoreLayout ,  DIRECTION_LEFT);
+                    makeCircleView(setNum , mRightScoreLayout ,  DIRECTION_RIGHT);
                 }
 
             }
@@ -184,7 +180,7 @@ public class MainActivity extends Activity {
 
     }
 
-    private void makeCircleView(int setNum ,LinearLayout layout ,ArrayList<CircleView> circleArray , int direction) {
+    private void makeCircleView(int setNum ,LinearLayout layout , int direction) {
 
         layout.removeAllViews();
 
@@ -197,7 +193,6 @@ public class MainActivity extends Activity {
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     0, 1);
             circleView.setLayoutParams(lp);
-            circleArray.add(circleView);
 
             layout.addView(circleView);
         }
