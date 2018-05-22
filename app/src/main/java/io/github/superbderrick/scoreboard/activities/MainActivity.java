@@ -122,7 +122,7 @@ public class MainActivity extends Activity {
         Log.d(LOG_TAG , "check each value HandyValue  : " + handyValue);
 
         int setNum = Integer.parseInt(setCount);
-        makeSetCircleViews(setNum);
+        setupSetCircleView(setNum);
 //        setHandyPoint(handyValue);
     }
 
@@ -164,7 +164,7 @@ public class MainActivity extends Activity {
 
     }
 
-    private void makeSetCircleViews(final int setNum) {
+    private void setupSetCircleView(final int setNum) {
 
         mMainHandler.post(new Runnable() {
             @Override
