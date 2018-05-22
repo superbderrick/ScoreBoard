@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
 
     private static final String LOG_TAG = "MainActivity";
 
-    //GuiComponents.
+
     private TouchLayout mLeftUpperTouchView ,mLeftBottomTouchView , mRightUpperTouchView , mRightBottomTouchView;
     private TextView mLeftScoreTextView , mRightScoreTextView;
     private EditText mLeftUserName , mRightUserName;
@@ -43,27 +43,24 @@ public class MainActivity extends Activity {
     private ScoreManager mScoreManager;
     private MatchTimer mMatchTimer;
 
-
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Log.d(LOG_TAG , "Activity API onCreate is called ");
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_main);
 
+        setSettingValues();
 
         mScoreManager = new ScoreManager();
         mScoreManager.setScoreMaxRange(ScoreManager.DEFAULT_MAXIMUM_SCORE);
         mScoreManager.setListener(mScoreListener);
 
-
-        initGuiComoment();
-
+        initGUIComponent();
     }
 
     private void setTimer() {
@@ -110,16 +107,22 @@ public class MainActivity extends Activity {
     }
 
 
-
     private void setSettingValues() {
+
+        Log.d(LOG_TAG , "setSettingValues is called ");
+
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         String setCount = SP.getString(this.getResources().getString(R.string.setscore_key),"1");
         String gameTime = SP.getString(this.getResources().getString(R.string.gametime_key),"1");
         String handyValue = SP.getString(this.getResources().getString(R.string.handyy_key),"1");
 
 
-        setHandyPoint(handyValue);
+        Log.d(LOG_TAG , "check each value setcount  : " + setCount);
+        Log.d(LOG_TAG , "check each value gameTime  : " + gameTime);
+        Log.d(LOG_TAG , "check each value HandyValue  : " + handyValue);
 
+
+//        setHandyPoint(handyValue);
     }
 
     private void setHandyPoint(String handyValue) {
@@ -142,7 +145,7 @@ public class MainActivity extends Activity {
         });
     }
 
-    private void initGuiComoment() {
+    private void initGUIComponent() {
         initLeftSideComponents();
         initRightSideComponents();
         initSettingButton();
@@ -304,14 +307,18 @@ public class MainActivity extends Activity {
     };
 
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
 
+        Log.d(LOG_TAG , "onRestart is called ");
+
+        setSettingValues();
+    }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        Log.d(LOG_TAG , "Activity API onResume is called ");
-
-        setSettingValues();
     }
 }

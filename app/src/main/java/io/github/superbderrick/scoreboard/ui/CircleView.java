@@ -93,6 +93,5 @@ public class CircleView extends View {
         mPaint.setColor(mCircleColor);
 
         canvas.drawCircle(this.getWidth()/2, 50, 20, mPaint);
-
     }
 }
