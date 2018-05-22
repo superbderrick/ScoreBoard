@@ -28,13 +28,15 @@ import io.github.superbderrick.scoreboard.utils.MatchTimer;
 public class MainActivity extends Activity {
 
     private static final String LOG_TAG = "MainActivity";
+    private static final int DIRECTION_LEFT = 100;
+    private static final int DIRECTION_RIGHT = 200;
+
 
 
     private TouchLayout mLeftUpperTouchView ,mLeftBottomTouchView , mRightUpperTouchView , mRightBottomTouchView;
     private TextView mLeftScoreTextView , mRightScoreTextView;
     private EditText mLeftUserName , mRightUserName;
     private ImageButton mSettingButton , mTimerButton , mTimerResetButton;
-
     private LinearLayout mLeftScoreLayout , mRightScoreLayout;
     private ArrayList<CircleView> mLeftCircleViewArray , mRightCircleViewArray;
 
@@ -54,7 +56,7 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
 
-        setSettingValues();
+        bringSettingValues();
 
         mScoreManager = new ScoreManager();
         mScoreManager.setScoreMaxRange(ScoreManager.DEFAULT_MAXIMUM_SCORE);
@@ -107,20 +109,17 @@ public class MainActivity extends Activity {
     }
 
 
-    private void setSettingValues() {
-
-        Log.d(LOG_TAG , "setSettingValues is called ");
+    private void bringSettingValues() {
 
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         String setCount = SP.getString(this.getResources().getString(R.string.setscore_key),"1");
         String gameTime = SP.getString(this.getResources().getString(R.string.gametime_key),"1");
         String handyValue = SP.getString(this.getResources().getString(R.string.handyy_key),"1");
 
+        setupSettings(setCount);
+    }
 
-        Log.d(LOG_TAG , "check each value setcount  : " + setCount);
-        Log.d(LOG_TAG , "check each value gameTime  : " + gameTime);
-        Log.d(LOG_TAG , "check each value HandyValue  : " + handyValue);
-
+    private void setupSettings(String setCount) {
         int setNum = Integer.parseInt(setCount);
         setupSetCircleView(setNum);
 //        setHandyPoint(handyValue);
@@ -170,8 +169,8 @@ public class MainActivity extends Activity {
             @Override
             public void run() {
                 if(mLeftScoreLayout != null) {
-                    makeCircleView(setNum , mLeftScoreLayout , mLeftCircleViewArray);
-                    makeCircleView(setNum , mRightScoreLayout , mRightCircleViewArray);
+                    makeCircleView(setNum , mLeftScoreLayout , mLeftCircleViewArray , DIRECTION_LEFT);
+                    makeCircleView(setNum , mRightScoreLayout , mRightCircleViewArray , DIRECTION_RIGHT);
                 }
 
             }
@@ -179,19 +178,27 @@ public class MainActivity extends Activity {
 
     }
 
-    private void makeCircleView(int setNum ,LinearLayout layout ,ArrayList<CircleView> circleArray) {
+    private void makeCircleView(int setNum ,LinearLayout layout ,ArrayList<CircleView> circleArray , int direction) {
 
         layout.removeAllViews();
 
         for(int i = 0 ; i < setNum ; i ++) {
             CircleView circleView = new CircleView(MainActivity.this);
+            circleView.setId(i+ direction);
+            circleView.setListener(mCircleViewListener);
+
             LinearLayout.LayoutParams lp= new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     0, 1);
             circleView.setLayoutParams(lp);
             circleArray.add(circleView);
+
             layout.addView(circleView);
         }
+
+
+
+
 
     }
 
@@ -323,19 +330,19 @@ public class MainActivity extends Activity {
         }
     };
 
+    CircleView.OnCircleViewChangeListener mCircleViewListener = new CircleView.OnCircleViewChangeListener() {
+        @Override
+        public void onTouchedView(int id) {
+            Log.d(LOG_TAG , "ID: " + id);
+        }
+    };
+
 
     @Override
     protected void onRestart() {
         super.onRestart();
 
-        Log.d(LOG_TAG , "onRestart is called ");
-
-        setSettingValues();
+        bringSettingValues();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-    }
 }
