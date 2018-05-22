@@ -32,8 +32,6 @@ public class MainActivity extends Activity {
     private static final int DIRECTION_LEFT = 100;
     private static final int DIRECTION_RIGHT = 200;
 
-
-
     private TouchLayout mLeftUpperTouchView ,mLeftBottomTouchView , mRightUpperTouchView , mRightBottomTouchView;
     private TextView mLeftScoreTextView , mRightScoreTextView;
     private EditText mLeftUserName , mRightUserName;
@@ -59,11 +57,9 @@ public class MainActivity extends Activity {
         mScoreManager = new ScoreManager();
         mScoreManager.setScoreMaxRange(ScoreManager.DEFAULT_MAXIMUM_SCORE);
         mScoreManager.setListener(mScoreListener);
-
         mSetManager = new SetManager();
 
         bringSettingValues();
-
 
         initGUIComponent();
     }
@@ -162,7 +158,6 @@ public class MainActivity extends Activity {
     private void initScoreLayout() {
         mLeftScoreLayout = findViewById(R.id.leftScoreLayout);
         mRightScoreLayout = findViewById(R.id.rightScoreLayout);
-
     }
 
     private void setupSetCircleView(final int setNum) {
@@ -196,10 +191,6 @@ public class MainActivity extends Activity {
 
             layout.addView(circleView);
         }
-
-
-
-
 
     }
 
@@ -341,6 +332,13 @@ public class MainActivity extends Activity {
         }
     };
 
+    SetManager.OnSetInfoListener mSetInfoListener = new SetManager.OnSetInfoListener() {
+
+        @Override
+        public void onSetInfo(int score, int direction) {
+
+        }
+    };
 
     @Override
     protected void onRestart() {

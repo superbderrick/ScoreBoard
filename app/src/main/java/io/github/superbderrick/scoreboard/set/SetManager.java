@@ -9,6 +9,16 @@ import java.util.ArrayList;
  */
 
 public class SetManager {
+
+    public interface OnSetInfoListener {
+        public void onSetInfo(int score , int direction);
+    }
+    private OnSetInfoListener mListener;
+
+    public void setListener(OnSetInfoListener mSetListener) {
+        this.mListener = mSetListener;
+    }
+
     private static final String LOG_TAG = "SetManager";
 
     private ArrayList<Set> mSetArrayList;
@@ -19,13 +29,11 @@ public class SetManager {
         mSetArrayList = new ArrayList<Set>();
     }
 
-    public int getSetNum() {
-        return mSetNum;
-    }
 
-    public void setSetNum(int mSetNum) {
-        this.mSetNum = mSetNum;
+    public void setSetNum(int setNum) {
+        mSetNum = setNum * 2;
 
+        Log.d(LOG_TAG, "inputed size" + mSetNum);
         makeSetArray(mSetNum);
     }
 
@@ -37,34 +45,30 @@ public class SetManager {
     }
 
     public void setScore(int score) {
-
-        Log.d(LOG_TAG , "score " + score);
-
         int index = 0;
+
         if(score < 200 ) {
-            //left
-            //100 0
-            //102 1
-            //103 2
              index = score - 100 ;
-
-
         } else {
-            //right
             if(mSetArrayList != null) {
                 index = score - 200 + mSetArrayList.size() ;
             }
-
         }
-
-        Log.d(LOG_TAG , "index num  " + index);
+        Log.d(LOG_TAG , "Current num : " + mSetArrayList.size());
+//
+//        mSetArrayList.get(index).setTouched(true);
+//
+//        Log.d(LOG_TAG , "index num  " + index);
+//
+//        for(Set value :mSetArrayList) {
+//            Log.d(LOG_TAG , "touched  " + value.isTouched());
+//        }
     }
 
-    public void reset() {
 
+    public void reset() {
         if(mSetArrayList != null && !mSetArrayList.isEmpty()) {
             mSetArrayList.clear();
         }
-
     }
 }
