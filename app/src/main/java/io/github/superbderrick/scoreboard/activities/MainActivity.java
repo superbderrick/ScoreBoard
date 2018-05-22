@@ -125,6 +125,7 @@ public class MainActivity extends Activity {
     private void setupSettings(String setCount) {
         int setNum = Integer.parseInt(setCount);
         setupSetCircleView(setNum);
+        mSetManager.reset();
         mSetManager.setSetNum(setNum);
 
 //        setHandyPoint(handyValue);
