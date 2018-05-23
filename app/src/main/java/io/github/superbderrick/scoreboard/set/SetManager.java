@@ -2,6 +2,7 @@ package io.github.superbderrick.scoreboard.set;
 
 import android.util.Log;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 public class SetManager {
 
     public interface OnSetInfoListener {
-        public void onSetInfo(int score , int direction);
+        public void onSetInfo(int [] scoreArray);
     }
     private OnSetInfoListener mListener;
 
@@ -22,14 +23,15 @@ public class SetManager {
     private static final String LOG_TAG = "SetManager";
 
     private ArrayList<Set> mSetArrayList;
-    private ArrayList<Integer> mFinalScoreList;
+    private int [] mFinalScoreList;
+    private int mLeftScore , mRightScore = 0;
 
     private int mSetNum = 0;
 
     public SetManager() {
 
         mSetArrayList = new ArrayList<Set>();
-        mFinalScoreList = new ArrayList<Integer>();
+        mFinalScoreList = new int[2];
     }
 
 
@@ -51,24 +53,37 @@ public class SetManager {
 
     public void setScore(int score) {
 
-
         arrangeTouchEvent(score);
-        calculateSetScore();
+
+        final int [] finalArrayList = calculateSetScore();
+
+        mLeftScore = 0;
+        mRightScore = 0;
+
+        mListener.onSetInfo(finalArrayList);
+
     }
 
-    private void calculateSetScore() {
-        int leftScore ,rightScore = 0;
-        for(int i = 0 ; i < mSetArrayList.size() ; i ++) {
-            Log.d(LOG_TAG , "Touch Value : " + mSetArrayList.get(i).getIndex());
-            Log.d(LOG_TAG , "Touch Value : " + mSetArrayList.get(i).isTouched());
+    private int[] calculateSetScore() {
 
+        for(int i = 0 ; i < mSetArrayList.size() ; i ++) {
             if(i < mSetArrayList.size() / 2) {
-                Log.d(LOG_TAG , "current index : " +i);
+                if(mSetArrayList.get(i).isTouched() == true) {
+                    mLeftScore ++;
+                }
 
             } else {
+                if(mSetArrayList.get(i).isTouched() == true) {
+                    mRightScore ++;
+                }
 
             }
+
         }
+        mFinalScoreList[0] = mLeftScore;
+        mFinalScoreList[1] = mRightScore;
+
+        return  mFinalScoreList;
     }
 
     private void arrangeTouchEvent(int score) {
@@ -100,5 +115,8 @@ public class SetManager {
         if(mSetArrayList != null && !mSetArrayList.isEmpty()) {
             mSetArrayList.clear();
         }
+
+        mLeftScore = 0;
+        mRightScore = 0;
     }
 }

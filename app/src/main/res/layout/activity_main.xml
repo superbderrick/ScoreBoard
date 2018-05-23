@@ -266,6 +266,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <TextView
+                        android:id="@+id/leftSetScoreTextview"
                         android:textColor="@color/colorDe"
                         android:text="@string/zero"
                         android:textAlignment="center"
@@ -280,6 +281,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
+                    android:id="@+id/rightsetscoretextview"
                     android:textColor="@color/colorDe"
                     android:text="@string/zero"
                     android:textAlignment="center"

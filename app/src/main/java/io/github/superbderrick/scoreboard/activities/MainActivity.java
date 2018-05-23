@@ -15,8 +15,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 import io.github.superbderrick.scoreboard.R;
 import io.github.superbderrick.scoreboard.helper.ScoreManager;
 import io.github.superbderrick.scoreboard.set.SetManager;
@@ -33,7 +31,7 @@ public class MainActivity extends Activity {
     private static final int DIRECTION_RIGHT = 200;
 
     private TouchLayout mLeftUpperTouchView ,mLeftBottomTouchView , mRightUpperTouchView , mRightBottomTouchView;
-    private TextView mLeftScoreTextView , mRightScoreTextView;
+    private TextView mLeftScoreTextView , mRightScoreTextView , mLeftSetScoreTextview, mRightSetScoreTextview;
     private EditText mLeftUserName , mRightUserName;
     private ImageButton mSettingButton , mTimerButton , mTimerResetButton;
     private LinearLayout mLeftScoreLayout , mRightScoreLayout;
@@ -58,6 +56,7 @@ public class MainActivity extends Activity {
         mScoreManager.setScoreMaxRange(ScoreManager.DEFAULT_MAXIMUM_SCORE);
         mScoreManager.setListener(mScoreListener);
         mSetManager = new SetManager();
+        mSetManager.setListener(mSetInfoListener);
 
         bringSettingValues();
 
@@ -153,6 +152,13 @@ public class MainActivity extends Activity {
         initTimerButton();
         initResetButton();
         initScoreLayout();
+        initSetScoreLayout();
+    }
+
+    private void initSetScoreLayout() {
+        mLeftSetScoreTextview = findViewById(R.id.leftSetScoreTextview);
+        mRightSetScoreTextview = findViewById(R.id.rightsetscoretextview);
+
     }
 
     private void initScoreLayout() {
@@ -335,10 +341,27 @@ public class MainActivity extends Activity {
     SetManager.OnSetInfoListener mSetInfoListener = new SetManager.OnSetInfoListener() {
 
         @Override
-        public void onSetInfo(int score, int direction) {
+        public void onSetInfo(int [] scores) {
+
+            Log.d(LOG_TAG , "left : " + scores[0]);
+            Log.d(LOG_TAG , "right : " + scores[1]);
+
+            setSetScoreLayout(scores[0] , scores[1]);
+
 
         }
     };
+
+    private void setSetScoreLayout(final int left , final int right) {
+        mMainHandler.post(new Runnable() {
+            @Override
+            public void run() {
+
+                mLeftSetScoreTextview.setText("" + left);
+                mRightSetScoreTextview.setText("" + right);
+            }
+        });
+    }
 
     @Override
     protected void onRestart() {
