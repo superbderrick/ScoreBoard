@@ -22,11 +22,14 @@ public class SetManager {
     private static final String LOG_TAG = "SetManager";
 
     private ArrayList<Set> mSetArrayList;
+    private ArrayList<Integer> mFinalScoreList;
+
     private int mSetNum = 0;
 
     public SetManager() {
 
         mSetArrayList = new ArrayList<Set>();
+        mFinalScoreList = new ArrayList<Integer>();
     }
 
 
@@ -47,10 +50,29 @@ public class SetManager {
     }
 
     public void setScore(int score) {
-        Log.d(LOG_TAG , "score :  " + score);
-        Log.d(LOG_TAG , "ArraySize : " + mSetArrayList.size());
-        int index = 0;
 
+
+        arrangeTouchEvent(score);
+        calculateSetScore();
+    }
+
+    private void calculateSetScore() {
+        int leftScore ,rightScore = 0;
+        for(int i = 0 ; i < mSetArrayList.size() ; i ++) {
+            Log.d(LOG_TAG , "Touch Value : " + mSetArrayList.get(i).getIndex());
+            Log.d(LOG_TAG , "Touch Value : " + mSetArrayList.get(i).isTouched());
+
+            if(i < mSetArrayList.size() / 2) {
+                Log.d(LOG_TAG , "current index : " +i);
+
+            } else {
+
+            }
+        }
+    }
+
+    private void arrangeTouchEvent(int score) {
+        int index = 0;
         if(score < 200 ) {
              index = score - 100 ;
         } else {
@@ -65,18 +87,10 @@ public class SetManager {
             }
         }
 
-        Log.d(LOG_TAG , "index : " + index);
         if(mSetArrayList.get(index).isTouched() == false) {
             mSetArrayList.get(index).setTouched(true);
         } else {
             mSetArrayList.get(index).setTouched(false);
-        }
-
-
-
-        for(int i = 0 ; i < mSetArrayList.size() ; i ++) {
-            Log.d(LOG_TAG , "Touch Value : " + mSetArrayList.get(i).getIndex());
-            Log.d(LOG_TAG , "Touch Value : " + mSetArrayList.get(i).isTouched());
         }
 
     }
