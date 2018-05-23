@@ -40,29 +40,45 @@ public class SetManager {
     private void makeSetArray(int mSetNum) {
         for(int i = 0 ; i< mSetNum ; i++) {
             Set set = new Set();
+            set.setIndex(i);
+            set.setTouched(false);
             mSetArrayList.add(set);
         }
     }
 
     public void setScore(int score) {
+        Log.d(LOG_TAG , "score :  " + score);
+        Log.d(LOG_TAG , "ArraySize : " + mSetArrayList.size());
         int index = 0;
 
         if(score < 200 ) {
              index = score - 100 ;
         } else {
             if(mSetArrayList != null) {
-                index = score - 200 + mSetArrayList.size() ;
+                index = score - 200  ;
+
+                if(index == 0) {
+                    index = mSetArrayList.size() / 2;
+                } else {
+                    index = index + mSetArrayList.size() /2 ;
+                }
             }
         }
-        Log.d(LOG_TAG , "Current num : " + mSetArrayList.size());
-//
-//        mSetArrayList.get(index).setTouched(true);
-//
-//        Log.d(LOG_TAG , "index num  " + index);
-//
-//        for(Set value :mSetArrayList) {
-//            Log.d(LOG_TAG , "touched  " + value.isTouched());
-//        }
+
+        Log.d(LOG_TAG , "index : " + index);
+        if(mSetArrayList.get(index).isTouched() == false) {
+            mSetArrayList.get(index).setTouched(true);
+        } else {
+            mSetArrayList.get(index).setTouched(false);
+        }
+
+
+
+        for(int i = 0 ; i < mSetArrayList.size() ; i ++) {
+            Log.d(LOG_TAG , "Touch Value : " + mSetArrayList.get(i).getIndex());
+            Log.d(LOG_TAG , "Touch Value : " + mSetArrayList.get(i).isTouched());
+        }
+
     }
 
 
