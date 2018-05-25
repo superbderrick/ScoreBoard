@@ -12,4 +12,8 @@
     <string name="def_reset">reset button image</string>
     <string name="def_timer">timer button image</string>
 
+    <string name="gamesetting_guide">If you change game settings, the current game history will be initialized</string>
+
+
+
 </resources>

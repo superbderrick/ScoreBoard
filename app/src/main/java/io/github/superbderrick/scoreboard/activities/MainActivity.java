@@ -22,6 +22,7 @@ import io.github.superbderrick.scoreboard.settings.Handy;
 import io.github.superbderrick.scoreboard.settings.HandyCalculator;
 import io.github.superbderrick.scoreboard.ui.CircleView;
 import io.github.superbderrick.scoreboard.ui.TouchLayout;
+import io.github.superbderrick.scoreboard.ui.Utils;
 import io.github.superbderrick.scoreboard.utils.MatchTimer;
 
 public class MainActivity extends Activity {
@@ -127,8 +128,6 @@ public class MainActivity extends Activity {
 
     private void setHandyPoint(String handyValue) {
         final Handy handy = HandyCalculator.getHandy(Integer.parseInt(handyValue));
-        Log.d(LOG_TAG , "handyValue di" + handy.getDirection());
-        Log.d(LOG_TAG , "handyValue point" + handy.getHandyPoint());
         mMainHandler.post(new Runnable() {
             @Override
             public void run() {
@@ -158,7 +157,6 @@ public class MainActivity extends Activity {
     private void initSetScoreLayout() {
         mLeftSetScoreTextview = findViewById(R.id.leftSetScoreTextview);
         mRightSetScoreTextview = findViewById(R.id.rightsetscoretextview);
-
     }
 
     private void initScoreLayout() {
@@ -253,8 +251,7 @@ public class MainActivity extends Activity {
         mSettingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext() , SettingActivity.class);
-                startActivity(intent);
+                Utils.showDialog(MainActivity.this , "Game Settings" , getString(R.string.gamesetting_guide));
             }
         });
     }
@@ -343,11 +340,7 @@ public class MainActivity extends Activity {
         @Override
         public void onSetInfo(int [] scores) {
 
-            Log.d(LOG_TAG , "left : " + scores[0]);
-            Log.d(LOG_TAG , "right : " + scores[1]);
-
             setSetScoreLayout(scores[0] , scores[1]);
-
 
         }
     };
