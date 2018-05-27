@@ -13,6 +13,7 @@ public class SetManager {
 
     public interface OnSetInfoListener {
         public void onSetInfo(int [] scoreArray);
+        public void onSetInitialized();
     }
     private OnSetInfoListener mListener;
 
@@ -50,6 +51,8 @@ public class SetManager {
             mSetArrayList.add(set);
         }
     }
+
+
 
     public void setScore(int score) {
 
@@ -112,11 +115,13 @@ public class SetManager {
 
 
     public void reset() {
+        Log.d(LOG_TAG , "reset is called ");
         if(mSetArrayList != null && !mSetArrayList.isEmpty()) {
             mSetArrayList.clear();
         }
 
         mLeftScore = 0;
         mRightScore = 0;
+        mListener.onSetInitialized();
     }
 }

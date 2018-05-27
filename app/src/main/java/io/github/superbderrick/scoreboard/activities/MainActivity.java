@@ -121,8 +121,11 @@ public class MainActivity extends Activity {
     }
 
     private void setupSettings(String setCount) {
+
+        Log.d(LOG_TAG, "setupSettings");
         int setNum = Integer.parseInt(setCount);
         setupSetCircleView(setNum);
+
         mSetManager.reset();
         mSetManager.setSetNum(setNum);
 
@@ -359,6 +362,11 @@ public class MainActivity extends Activity {
 
             setSetScoreLayout(scores[0] , scores[1]);
         }
+
+        @Override
+        public void onSetInitialized() {
+            setSetScoreLayout(0 ,0);
+        }
     };
 
     private void setSetScoreLayout(final int left , final int right) {
@@ -376,8 +384,10 @@ public class MainActivity extends Activity {
         mMainHandler.post(new Runnable() {
             @Override
             public void run() {
-                if(mScoreManager != null) {
+                if(mScoreManager != null && mSetManager != null) {
+                    Log.d(LOG_TAG , "resetValues is calledd");
                     mScoreManager.resetScore();
+                    //mSetManager.reset();
                 }
 
             }
@@ -390,6 +400,7 @@ public class MainActivity extends Activity {
     protected void onRestart() {
         super.onRestart();
 
+        Log.d(LOG_TAG,"check onRestart is called" + mIsResetValue);
         bringSettingValues();
     }
 

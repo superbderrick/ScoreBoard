@@ -23,7 +23,7 @@ public class CircleView extends View {
 
     private int mCircleColor = Color.parseColor("#ffffff");
 
-    private final static String CLICKEDCOLOR = "#ff99cc";
+    private final static String CLICKEDCOLOR = "#ffffff";
     private final static String ORIGINALCOLOR = "#ccebff";
 
     private Paint mPaint = new Paint();
