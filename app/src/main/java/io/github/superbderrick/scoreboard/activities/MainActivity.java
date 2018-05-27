@@ -328,6 +328,18 @@ public class MainActivity extends Activity {
                 }
             });
         }
+
+        @Override
+        public void onScoreInitialized(final int score) {
+            mMainHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    String finalScore = "" + score;
+                    mRightScoreTextView.setText(finalScore);
+                    mLeftScoreTextView.setText(finalScore);
+                }
+            });
+        }
     };
 
     CircleView.OnCircleViewChangeListener mCircleViewListener = new CircleView.OnCircleViewChangeListener() {
@@ -360,6 +372,20 @@ public class MainActivity extends Activity {
         });
     }
 
+    private void resetValues() {
+        mMainHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                if(mScoreManager != null) {
+                    mScoreManager.resetScore();
+                }
+
+            }
+        });
+
+
+    }
+
     @Override
     protected void onRestart() {
         super.onRestart();
@@ -379,6 +405,9 @@ public class MainActivity extends Activity {
         super.onPause();
 
         Log.d(LOG_TAG,"check onPause is called" + mIsResetValue);
+
+        if(mIsResetValue)
+            resetValues();
     }
 
     @Override

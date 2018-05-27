@@ -11,6 +11,7 @@ public class ScoreManager {
     public interface OnScoreChangeListener {
         public void onFirstScoreChanged(int score);
         public void onSecondScoreChanged(int score);
+        public void onScoreInitialized(int score);
     }
 
     public enum Operation { Increase, Decrease}
@@ -127,6 +128,7 @@ public class ScoreManager {
     public void resetScore() {
         mFirstScore = 0;
         mSecondScore = 0;
+        mListener.onScoreInitialized(0);
     }
 
 
