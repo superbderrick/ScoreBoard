@@ -32,11 +32,11 @@ public class MainActivity extends Activity {
     private static final int DIRECTION_LEFT = 100;
     private static final int DIRECTION_RIGHT = 200;
 
-    private TouchLayout mLeftUpperTouchView ,mLeftBottomTouchView , mRightUpperTouchView , mRightBottomTouchView;
-    private TextView mLeftScoreTextView , mRightScoreTextView , mLeftSetScoreTextview, mRightSetScoreTextview;
-    private EditText mLeftUserName , mRightUserName;
-    private ImageButton mSettingButton , mTimerButton , mTimerResetButton;
-    private LinearLayout mLeftScoreLayout , mRightScoreLayout;
+    private TouchLayout  mLeftUpperTouchView,mLeftBottomTouchView,mRightUpperTouchView,mRightBottomTouchView;
+    private TextView     mLeftScoreTextView,mRightScoreTextView,mLeftSetScoreTextview,mRightSetScoreTextview;
+    private EditText     mLeftUserName,mRightUserName;
+    private ImageButton  mSettingButton,mTimerButton,mTimerResetButton;
+    private LinearLayout mLeftScoreLayout,mRightScoreLayout;
 
     private Handler mMainHandler = new Handler();
 
@@ -107,7 +107,6 @@ public class MainActivity extends Activity {
 
         MatchTimer timer = new MatchTimer(10000, 1000, circleTimerListener);
         timer.start();
-
     }
 
     private void bringSettingValues() {
@@ -121,9 +120,6 @@ public class MainActivity extends Activity {
     }
 
     private void setupSettings(String setCount , String handyValue) {
-
-        Log.d(LOG_TAG, "setupSettings");
-
         setSetModule(setCount);
         setHandyPoint(handyValue);
     }
@@ -388,7 +384,6 @@ public class MainActivity extends Activity {
             @Override
             public void run() {
                 if(mScoreManager != null && mSetManager != null) {
-                    Log.d(LOG_TAG , "resetValues is calledd");
                     mScoreManager.resetScore();
                     //mSetManager.reset();
                 }
@@ -410,8 +405,6 @@ public class MainActivity extends Activity {
     @Override
     protected void onStop() {
         super.onStop();
-
-        Log.d(LOG_TAG,"check onstop is called");
     }
 
     @Override
