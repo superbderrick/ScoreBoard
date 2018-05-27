@@ -117,19 +117,22 @@ public class MainActivity extends Activity {
         String gameTime = SP.getString(this.getResources().getString(R.string.gametime_key),"1");
         String handyValue = SP.getString(this.getResources().getString(R.string.handyy_key),"1");
 
-        setupSettings(setCount);
+        setupSettings(setCount , handyValue);
     }
 
-    private void setupSettings(String setCount) {
+    private void setupSettings(String setCount , String handyValue) {
 
         Log.d(LOG_TAG, "setupSettings");
+
+        setSetModule(setCount);
+        setHandyPoint(handyValue);
+    }
+
+    private void setSetModule(String setCount) {
         int setNum = Integer.parseInt(setCount);
         setupSetCircleView(setNum);
-
         mSetManager.reset();
         mSetManager.setSetNum(setNum);
-
-//        setHandyPoint(handyValue);
     }
 
     private void setHandyPoint(String handyValue) {
