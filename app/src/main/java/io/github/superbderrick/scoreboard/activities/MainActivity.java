@@ -28,6 +28,7 @@ import io.github.superbderrick.scoreboard.utils.MatchTimer;
 public class MainActivity extends Activity {
 
     private static final String LOG_TAG = "MainActivity";
+
     private static final int DIRECTION_LEFT = 100;
     private static final int DIRECTION_RIGHT = 200;
 
@@ -42,6 +43,8 @@ public class MainActivity extends Activity {
     private ScoreManager mScoreManager;
     private MatchTimer mMatchTimer;
     private SetManager mSetManager;
+
+    private boolean mIsResetValue = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -252,6 +255,8 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Utils.showDialog(MainActivity.this , "Game Settings" , getString(R.string.gamesetting_guide));
+
+                mIsResetValue = true;
             }
         });
     }
@@ -341,7 +346,6 @@ public class MainActivity extends Activity {
         public void onSetInfo(int [] scores) {
 
             setSetScoreLayout(scores[0] , scores[1]);
-
         }
     };
 
@@ -363,4 +367,25 @@ public class MainActivity extends Activity {
         bringSettingValues();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        Log.d(LOG_TAG,"check onstop is called");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        Log.d(LOG_TAG,"check onPause is called" + mIsResetValue);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        mIsResetValue = false;
+        Log.d(LOG_TAG,"check onResume is called");
+    }
 }

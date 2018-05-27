@@ -21,7 +21,7 @@ public class CircleView extends View {
 
     private OnCircleViewChangeListener mListener;
 
-    private int mCircleColor = Color.parseColor("#ff99cc");
+    private int mCircleColor = Color.parseColor("#ffffff");
 
     private final static String CLICKEDCOLOR = "#ff99cc";
     private final static String ORIGINALCOLOR = "#ccebff";
