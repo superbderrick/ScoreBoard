@@ -1,7 +1,6 @@
 package io.github.superbderrick.scoreboard.activities;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -23,7 +22,6 @@ import io.github.superbderrick.scoreboard.settings.HandyCalculator;
 import io.github.superbderrick.scoreboard.ui.CircleView;
 import io.github.superbderrick.scoreboard.ui.TouchLayout;
 import io.github.superbderrick.scoreboard.ui.Utils;
-import io.github.superbderrick.scoreboard.utils.MatchTimer;
 
 public class MainActivity extends Activity {
 
@@ -41,7 +39,7 @@ public class MainActivity extends Activity {
     private Handler mMainHandler = new Handler();
 
     private ScoreManager mScoreManager;
-    private MatchTimer mMatchTimer;
+
     private SetManager mSetManager;
 
     private boolean mIsResetValue = false;
@@ -64,50 +62,11 @@ public class MainActivity extends Activity {
 
         bringSettingValues();
 
+
         initGUIComponent();
     }
 
-    private void setTimer() {
 
-
-        MatchTimer.TimerTickListener circleTimerListener = new MatchTimer.TimerTickListener() {
-
-            @Override
-
-            public void onTick(long millisLeft) {
-
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-
-
-                    }
-                });
-
-            }
-
-            @Override
-
-            public void onFinish() {
-                mMainHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-
-
-                    }
-                });
-            }
-            @Override
-
-            public void onCancel() {
-
-            }
-
-        };
-
-        MatchTimer timer = new MatchTimer(10000, 1000, circleTimerListener);
-        timer.start();
-    }
 
     private void bringSettingValues() {
 
@@ -122,6 +81,7 @@ public class MainActivity extends Activity {
     private void setupSettings(String setCount , String handyValue) {
         setSetModule(setCount);
         setHandyPoint(handyValue);
+
     }
 
     private void setSetModule(String setCount) {
@@ -230,7 +190,9 @@ public class MainActivity extends Activity {
                     tempImage = pauseImage;
                     mTimerButton.setTag(pauseTag);
 
-                   // mMatchTimer.startTimer();
+
+
+
 
                 } else {
                     tempImage = startImage;
@@ -424,4 +386,5 @@ public class MainActivity extends Activity {
         mIsResetValue = false;
         Log.d(LOG_TAG,"check onResume is called");
     }
+
 }
