@@ -3,6 +3,8 @@ package io.github.superbderrick.scoreboard.activities;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.ListPreference;
+import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
@@ -16,13 +18,25 @@ import io.github.superbderrick.scoreboard.R;
 
 public class SettingActivity extends PreferenceActivity {
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getFragmentManager().beginTransaction().replace(android.R.id.content, new MyPreferenceFragment()).commit();
 
-        
+//        ListPreference mPref = (ListPreference) findPreference("gameTimekey");
+//        mPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+//            @Override
+//            public boolean onPreferenceClick(Preference preference) {
+//                return false;
+//            }
+//        });
+
     }
+
+
+
 
     public static class MyPreferenceFragment extends PreferenceFragment
     {
