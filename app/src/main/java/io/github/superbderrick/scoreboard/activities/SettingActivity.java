@@ -24,14 +24,7 @@ public class SettingActivity extends PreferenceActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getFragmentManager().beginTransaction().replace(android.R.id.content, new MyPreferenceFragment()).commit();
-
-//        ListPreference mPref = (ListPreference) findPreference("gameTimekey");
-//        mPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-//            @Override
-//            public boolean onPreferenceClick(Preference preference) {
-//                return false;
-//            }
-//        });
+        
 
     }
 
