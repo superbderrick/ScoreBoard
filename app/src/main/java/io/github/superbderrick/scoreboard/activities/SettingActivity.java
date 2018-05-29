@@ -53,8 +53,17 @@ public class SettingActivity extends PreferenceActivity {
         }
         SharedPreferences.OnSharedPreferenceChangeListener prefListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
             @Override
-            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
-                Log.d("derrick" , "s: " + s);
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                Log.d("derrick" , "s: " + key);
+                if(key.equals("gameTimekey")) {
+
+                    Log.d("derrick" , "value: " + mGameTimePreference.getValue());
+
+                } else if(key.equals("handkey")) {
+                    Log.d("derrick" , "value: " + mGameHandyPreference.getValue());
+                } else if(key.equals("setscorekey")) {
+                    Log.d("derrick" , "value: " + mGameScorereference.getValue());
+                }
             }
         };
     }
