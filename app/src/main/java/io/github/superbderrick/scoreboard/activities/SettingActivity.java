@@ -17,8 +17,6 @@ import io.github.superbderrick.scoreboard.R;
 
 public class SettingActivity extends PreferenceActivity {
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +27,6 @@ public class SettingActivity extends PreferenceActivity {
 
     public static class MyPreferenceFragment extends PreferenceFragment
     {
-        ListPreference mGameTimePreference;
         ListPreference mGameScorereference;
         ListPreference mGameHandyPreference;
         SharedPreferences mPrefs;
@@ -42,8 +39,6 @@ public class SettingActivity extends PreferenceActivity {
             addPreferencesFromResource(R.xml.preference);
             mPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
-            //@string/gametime_key"
-            mGameTimePreference = (ListPreference)findPreference("gameTimekey");
             mGameHandyPreference = (ListPreference)findPreference("handkey");
             mGameScorereference = (ListPreference)findPreference("setscorekey");
             mKeywordScreen = (PreferenceScreen)findPreference("keyword_screen");
@@ -55,11 +50,7 @@ public class SettingActivity extends PreferenceActivity {
             @Override
             public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
                 Log.d("derrick" , "s: " + key);
-                if(key.equals("gameTimekey")) {
-
-                    Log.d("derrick" , "value: " + mGameTimePreference.getValue());
-
-                } else if(key.equals("handkey")) {
+                if(key.equals("handkey")) {
                     Log.d("derrick" , "value: " + mGameHandyPreference.getValue());
                 } else if(key.equals("setscorekey")) {
                     Log.d("derrick" , "value: " + mGameScorereference.getValue());
