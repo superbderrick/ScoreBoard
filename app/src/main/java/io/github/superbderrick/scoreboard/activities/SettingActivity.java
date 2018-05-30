@@ -40,7 +40,9 @@ public class SettingActivity extends PreferenceActivity {
             mPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
             mGameHandyPreference = (ListPreference)findPreference("handkey");
+            mGameHandyPreference.setSummary("Game set : ");
             mGameScorereference = (ListPreference)findPreference("setscorekey");
+            mGameScorereference.setSummary("Current handy : ");
             mKeywordScreen = (PreferenceScreen)findPreference("keyword_screen");
 
 

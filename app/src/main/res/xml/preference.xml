@@ -4,7 +4,6 @@
     <PreferenceCategory android:title="Game Settings" >
 
         <ListPreference android:title="@string/setscore_setting"
-            android:summary="@string/setscore_def_setting"
             android:key="@string/setscore_key"
             android:defaultValue="1"
             android:entries="@array/setScoreArray"
@@ -12,10 +11,12 @@
 
 
         <ListPreference android:title="@string/handy_def_setting"
-            android:summary="@string/handy_def_setting"
             android:key="@string/handyy_key"
             android:defaultValue="1"
             android:entries="@array/sethandyArray"
             android:entryValues="@array/setHandyValues" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Game Theme" >
+
     </PreferenceCategory>
 </PreferenceScreen>
