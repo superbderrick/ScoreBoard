@@ -40,9 +40,14 @@ public class SettingActivity extends PreferenceActivity {
             mPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
             mGameHandyPreference = (ListPreference)findPreference("handkey");
-            mGameHandyPreference.setSummary("Game set : ");
+            String handyString = "Handy Setting : " + mGameHandyPreference.getValue();
+
+            mGameHandyPreference.setSummary(handyString);
+
             mGameScorereference = (ListPreference)findPreference("setscorekey");
-            mGameScorereference.setSummary("Current handy : ");
+
+            String setString = "Game Set : " + mGameScorereference.getValue();
+            mGameScorereference.setSummary(setString);
             mKeywordScreen = (PreferenceScreen)findPreference("keyword_screen");
 
 
@@ -54,8 +59,16 @@ public class SettingActivity extends PreferenceActivity {
                 Log.d("derrick" , "s: " + key);
                 if(key.equals("handkey")) {
                     Log.d("derrick" , "value: " + mGameHandyPreference.getValue());
+
+                    String handyString = "Handy Setting : " + mGameHandyPreference.getValue();
+
+                    mGameHandyPreference.setSummary(handyString);
+
                 } else if(key.equals("setscorekey")) {
                     Log.d("derrick" , "value: " + mGameScorereference.getValue());
+
+                    String setString = "Game Set : " + mGameScorereference.getValue();
+                    mGameScorereference.setSummary(setString);
                 }
             }
         };
