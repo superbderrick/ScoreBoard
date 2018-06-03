@@ -61,4 +61,18 @@ public final class Utils {
 
         return setSentence;
     }
+
+    public static String  getGameThemeSentence(String prefSentence) {
+        final int setValue = Integer.parseInt(prefSentence);
+        String theme = "Dark";
+        if(setValue == 0) {
+            theme = "Dark";
+        } else {
+            theme = "Light";
+        }
+
+        String gameTheme =  "Game Theme  " + theme;
+
+        return gameTheme;
+    }
 }

@@ -19,6 +19,12 @@
 
     <PreferenceCategory android:title="Game Theme" >
 
+        <ListPreference android:title="@string/setting_theme_title"
+            android:key="@string/setting_theme_key"
+            android:defaultValue="0"
+            android:entries="@array/themeArray"
+            android:entryValues="@array/themeArrayValues" />
+
     </PreferenceCategory>
 
     <PreferenceCategory android:title="Help">

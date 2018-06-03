@@ -32,6 +32,7 @@ public class SettingActivity extends PreferenceActivity {
     {
         ListPreference mGameScoreReference;
         ListPreference mGameHandyPreference;
+        ListPreference mGameThemePreference;
         Preference mEmailPreference;
         SharedPreferences mPrefs;
         PreferenceScreen mKeywordScreen;
@@ -49,11 +50,17 @@ public class SettingActivity extends PreferenceActivity {
             mKeywordScreen = (PreferenceScreen)findPreference("keyword_screen");
             mEmailPreference = (Preference)findPreference("contactDevKey");
             mEmailPreference.setOnPreferenceClickListener(mPrefClickListener);
+            mGameThemePreference = (ListPreference)findPreference("themekey");
+            mGameThemePreference.setSummary("Dark");
+
 
             String handSentence = Utils.getHandaySettingSentence(mGameHandyPreference.getValue());
             mGameHandyPreference.setSummary(handSentence);
             String setSentence = Utils.getSetScoreSettingSentence(mGameScoreReference.getValue());
+
             mGameScoreReference.setSummary(setSentence);
+            String gameTheme = Utils.getGameThemeSentence(mGameThemePreference.getValue());
+            mGameThemePreference.setSummary(gameTheme);
 
         }
         SharedPreferences.OnSharedPreferenceChangeListener prefListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
@@ -66,6 +73,9 @@ public class SettingActivity extends PreferenceActivity {
                 } else if(key.equals("setscorekey")) {
                     String setSentence = Utils.getSetScoreSettingSentence(mGameScoreReference.getValue());
                     mGameScoreReference.setSummary(setSentence);
+                } else if(key.equals("themekey")) {
+                    String gameTheme = Utils.getGameThemeSentence(mGameThemePreference.getValue());
+                    mGameThemePreference.setSummary(gameTheme);
                 }
             }
         };
