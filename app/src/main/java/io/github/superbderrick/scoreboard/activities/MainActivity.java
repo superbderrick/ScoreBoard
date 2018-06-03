@@ -73,7 +73,7 @@ public class MainActivity extends Activity {
 
     private void applyGameTheme() {
         mThemeOperator = new ThemeOperator(mThemeValue , this);
-
+        mThemeOperator.applyTheme();
     }
 
     private void bringSettingValues() {

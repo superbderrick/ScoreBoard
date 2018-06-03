@@ -6,17 +6,21 @@ import android.graphics.Color;
  * Created by derrick on 03/06/2018.
  */
 
-public class DarkTheme {
-    private String mThemeName;
-    private Color mUserNameColor;
-    private Color mScoreColor;
-    private Color mSetScoreColor;
-    private Color mBarColor;
-    private Color mCircleViewColor;
-    private Color mBackgroundColor;
+public class DarkTheme extends Theme {
 
     public DarkTheme() {
 
+    }
+
+    @Override
+    void setupThemeColors() {
+
+        mUserNameColor = Color.parseColor("#ffff00");
+        mScoreColor = Color.parseColor("#ffff00");
+        mSetScoreColor = Color.parseColor("#ffff00");
+        mBarColor = Color.parseColor("#ffff00");
+        mCircleViewColor = Color.parseColor("#ffff00");
+        mBackgroundColor = Color.parseColor("#ffff00");
     }
 
 

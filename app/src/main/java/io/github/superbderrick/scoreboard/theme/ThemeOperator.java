@@ -10,24 +10,36 @@ public class ThemeOperator {
     private int mThemeStyle = 0;
     private Context mContext = null;
 
+    private ThemeFactory mThemeFactory;
+    private Theme mCurrentGameTheme;
+
+
     public ThemeOperator(int mThemeStyle , Context context) {
         init(mThemeStyle , context);
     }
 
     private void init(int theme , Context context) {
-        this.mThemeStyle = mThemeStyle;
+
+        mCurrentGameTheme = ThemeFactory.getTheme(theme);
+        mCurrentGameTheme.setupThemeColors();
 
         applyWholeColor();
     }
 
     private void applyWholeColor() {
+        
+
+
+    }
+
+    public void applyTheme() {
 
     }
 
 }
 
-public class ThemeFactory {
-    public static DarkTheme getTheme(int gameTheme) {
+ class ThemeFactory {
+    public static Theme getTheme(int gameTheme) {
 
         if(gameTheme > 0) {
             return new LightTheme();
