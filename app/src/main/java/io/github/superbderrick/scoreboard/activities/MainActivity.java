@@ -19,6 +19,7 @@ import io.github.superbderrick.scoreboard.helper.ScoreManager;
 import io.github.superbderrick.scoreboard.set.SetManager;
 import io.github.superbderrick.scoreboard.settings.Handy;
 import io.github.superbderrick.scoreboard.settings.HandyCalculator;
+import io.github.superbderrick.scoreboard.theme.ThemeOperator;
 import io.github.superbderrick.scoreboard.ui.CircleView;
 import io.github.superbderrick.scoreboard.ui.TouchLayout;
 import io.github.superbderrick.scoreboard.ui.Utils;
@@ -42,7 +43,10 @@ public class MainActivity extends Activity {
 
     private SetManager mSetManager;
 
+    private ThemeOperator mThemeOperator;
+
     private boolean mIsResetValue = false;
+    private int mThemeValue = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,10 +67,13 @@ public class MainActivity extends Activity {
         bringSettingValues();
 
         initGUIComponent();
+
+        applyGameTheme();
     }
 
     private void applyGameTheme() {
-        
+        mThemeOperator = new ThemeOperator(mThemeValue , this);
+
     }
 
     private void bringSettingValues() {
@@ -74,6 +81,10 @@ public class MainActivity extends Activity {
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         String setCount = SP.getString(this.getResources().getString(R.string.setscore_key),"1");
         String handyValue = SP.getString(this.getResources().getString(R.string.handyy_key),"1");
+
+        String themeValue = SP.getString("themekey" , "1");
+        mThemeValue = Integer.parseInt(themeValue);
+
 
         setupSettings(setCount , handyValue);
     }
