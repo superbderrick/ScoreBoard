@@ -16,6 +16,7 @@
     </string-array>
 
     <string-array name="sethandyArray">
+        <item>same</item>
         <item>left +1</item>
         <item>left +2</item>
         <item>left +3</item>
@@ -32,6 +33,7 @@
 
 
     <string-array name="setHandyValues">
+        <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>

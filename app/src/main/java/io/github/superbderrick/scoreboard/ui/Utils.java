@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 
 import io.github.superbderrick.scoreboard.activities.SettingActivity;
 
@@ -36,5 +37,28 @@ public final class Utils {
     private static void moveSettingScreen(Activity activity) {
         Intent intent = new Intent(activity , SettingActivity.class);
         activity.startActivity(intent);
+    }
+
+    public static String getHandaySettingSentence(String prefSentence) {
+        Log.d("derrick" , "util" + prefSentence);
+
+        final int handyValue = Integer.parseInt(prefSentence);
+        String handSentence = "same";
+
+        if(handyValue == 0) {
+            handSentence = "Same No Handy";
+        } else if (handyValue > 6) {
+            handSentence = "Right User " + " + "+ handyValue;
+        } else {
+            handSentence = "Left User" + " + "+ handyValue;
+        }
+
+        return handSentence;
+    }
+    public static String  getSetScoreSettingSentence(String prefSentence) {
+        final int setValue = Integer.parseInt(prefSentence);
+        String setSentence =  "Game Set : " + setValue;
+
+        return setSentence;
     }
 }

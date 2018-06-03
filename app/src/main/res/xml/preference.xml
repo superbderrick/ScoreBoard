@@ -1,22 +1,27 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:key="keyword_screen">
 
-    <PreferenceCategory android:title="Game Settings" >
+    <PreferenceCategory android:title="Game Settings"  >
 
         <ListPreference android:title="@string/setscore_setting"
+
             android:key="@string/setscore_key"
             android:defaultValue="1"
             android:entries="@array/setScoreArray"
             android:entryValues="@array/setScoreValues" />
 
-
         <ListPreference android:title="@string/handy_def_setting"
             android:key="@string/handyy_key"
-            android:defaultValue="1"
+            android:defaultValue="0"
             android:entries="@array/sethandyArray"
             android:entryValues="@array/setHandyValues" />
     </PreferenceCategory>
+
     <PreferenceCategory android:title="Game Theme" >
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Help" >
 
     </PreferenceCategory>
 </PreferenceScreen>

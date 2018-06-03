@@ -10,6 +10,7 @@ import android.preference.PreferenceScreen;
 import android.util.Log;
 
 import io.github.superbderrick.scoreboard.R;
+import io.github.superbderrick.scoreboard.ui.Utils;
 
 /**
  * Created by derricks on 27/01/2018.
@@ -22,12 +23,11 @@ public class SettingActivity extends PreferenceActivity {
         super.onCreate(savedInstanceState);
         getFragmentManager().beginTransaction().replace(android.R.id.content, new MyPreferenceFragment()).commit();
 
-
     }
 
     public static class MyPreferenceFragment extends PreferenceFragment
     {
-        ListPreference mGameScorereference;
+        ListPreference mGameScoreReference;
         ListPreference mGameHandyPreference;
         SharedPreferences mPrefs;
         PreferenceScreen mKeywordScreen;
@@ -38,37 +38,28 @@ public class SettingActivity extends PreferenceActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preference);
             mPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            mPrefs.registerOnSharedPreferenceChangeListener(prefListener);
 
             mGameHandyPreference = (ListPreference)findPreference("handkey");
-            String handyString = "Handy Setting : " + mGameHandyPreference.getValue();
-
-            mGameHandyPreference.setSummary(handyString);
-
-            mGameScorereference = (ListPreference)findPreference("setscorekey");
-
-            String setString = "Game Set : " + mGameScorereference.getValue();
-            mGameScorereference.setSummary(setString);
+            mGameScoreReference = (ListPreference)findPreference("setscorekey");
             mKeywordScreen = (PreferenceScreen)findPreference("keyword_screen");
 
+            String handSentence = Utils.getHandaySettingSentence(mGameHandyPreference.getValue());
+            mGameHandyPreference.setSummary(handSentence);
+            String setSentence = Utils.getSetScoreSettingSentence(mGameScoreReference.getValue());
+            mGameScoreReference.setSummary(setSentence);
 
-            mPrefs.registerOnSharedPreferenceChangeListener(prefListener);
         }
         SharedPreferences.OnSharedPreferenceChangeListener prefListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
             @Override
             public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-                Log.d("derrick" , "s: " + key);
                 if(key.equals("handkey")) {
-                    Log.d("derrick" , "value: " + mGameHandyPreference.getValue());
-
-                    String handyString = "Handy Setting : " + mGameHandyPreference.getValue();
-
-                    mGameHandyPreference.setSummary(handyString);
+                    String handSentence = Utils.getHandaySettingSentence(mGameHandyPreference.getValue());
+                    mGameHandyPreference.setSummary(handSentence);
 
                 } else if(key.equals("setscorekey")) {
-                    Log.d("derrick" , "value: " + mGameScorereference.getValue());
-
-                    String setString = "Game Set : " + mGameScorereference.getValue();
-                    mGameScorereference.setSummary(setString);
+                    String setSentence = Utils.getSetScoreSettingSentence(mGameScoreReference.getValue());
+                    mGameScoreReference.setSummary(setSentence);
                 }
             }
         };
