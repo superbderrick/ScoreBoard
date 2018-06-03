@@ -46,7 +46,7 @@ public final class Utils {
         String handSentence = "same";
 
         if(handyValue == 0) {
-            handSentence = "Same No Handy";
+            handSentence = "No Handy - Same Score";
         } else if (handyValue > 6) {
             handSentence = "Right User " + " + "+ handyValue;
         } else {

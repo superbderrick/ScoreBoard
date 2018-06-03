@@ -65,7 +65,9 @@ public class MainActivity extends Activity {
         initGUIComponent();
     }
 
-
+    private void applyGameTheme() {
+        
+    }
 
     private void bringSettingValues() {
 
@@ -170,7 +172,6 @@ public class MainActivity extends Activity {
         });
     }
 
-
     private void initSettingButton() {
         mSettingButton = findViewById(R.id.settingButton);
         mSettingButton.setOnClickListener(new View.OnClickListener() {
@@ -182,6 +183,7 @@ public class MainActivity extends Activity {
             }
         });
     }
+
     private void initRightSideComponents() {
         mRightUpperTouchView = findViewById(R.id.rightUpperTouchView);
         mRightBottomTouchView = findViewById(R.id.rightBottomTouchView);
@@ -201,6 +203,7 @@ public class MainActivity extends Activity {
             }
         });
     }
+
     private void initLeftSideComponents() {
         mLeftUpperTouchView =  findViewById(R.id.leftUpperTouchView);
         mLeftBottomTouchView = findViewById(R.id.leftBottomTouchView);
@@ -313,7 +316,6 @@ public class MainActivity extends Activity {
 
 
     }
-
     @Override
     protected void onRestart() {
         super.onRestart();
