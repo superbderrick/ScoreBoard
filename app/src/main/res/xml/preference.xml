@@ -21,7 +21,14 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="Help" >
+    <PreferenceCategory android:title="Help">
+
+        <Preference
+            android:key="contactDevKey"
+            android:title="Contact developer"
+            android:summary="@string/setting_title">
+
+        </Preference>
 
     </PreferenceCategory>
 </PreferenceScreen>

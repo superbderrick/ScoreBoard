@@ -3,6 +3,8 @@
 
 
     <string name="setscore_setting">Game Set Setting</string>
+    <string name="contact_developer_uri">kang.derrick@gmail.com</string>
+
     <string name="setscore_def_setting">Please set a game count, It will effect set circle count on the main screen.</string>
     <string name="setscore_key">setscorekey</string>
 
@@ -14,5 +16,8 @@
     <string name="handy_setting">Handy Setting</string>
     <string name="handy_def_setting">Game Handy Setting </string>
     <string name="handyy_key">handkey</string>
+    <string name="setting_email_key">emailkey</string>
+    <string name="setting_title">Please let me know if you have any inconvenience</string>
+    <string name="setting_title_email">Send email to developer</string>
 
 </resources>
