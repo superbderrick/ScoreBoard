@@ -1,7 +1,6 @@
 package io.github.superbderrick.scoreboard.theme;
 
 import android.content.Context;
-import android.util.Log;
 
 /**
  * Created by derrick on 03/06/2018.
@@ -25,4 +24,15 @@ public class ThemeOperator {
 
     }
 
+}
+
+public class ThemeFactory {
+    public static DarkTheme getTheme(int gameTheme) {
+
+        if(gameTheme > 0) {
+            return new LightTheme();
+        } else {
+            return new DarkTheme();
+        }
+    }
 }
