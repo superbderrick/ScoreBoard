@@ -2,7 +2,7 @@
 <resources>
 
 
-    <string name="setscore_setting">Set Score Setting</string>
+    <string name="setscore_setting">Game Set Setting</string>
     <string name="setscore_def_setting">Please set a game count, It will effect set circle count on the main screen.</string>
     <string name="setscore_key">setscorekey</string>
 
@@ -12,7 +12,7 @@
 
 
     <string name="handy_setting">Handy Setting</string>
-    <string name="handy_def_setting">Please set about handy </string>
+    <string name="handy_def_setting">Game Handy Setting </string>
     <string name="handyy_key">handkey</string>
 
 </resources>
