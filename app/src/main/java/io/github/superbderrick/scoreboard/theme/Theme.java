@@ -8,6 +8,7 @@ import android.graphics.Color;
 
 public abstract class Theme {
     protected int mUserNameColor;
+    protected int mUserNameSummaryColor;
     protected int mScoreColor;
     protected int mSetScoreColor;
     protected int mBarColor;
@@ -37,6 +38,10 @@ public abstract class Theme {
 
     public int getBackgroundColor() {
         return mBackgroundColor;
+    }
+
+    public int getUserSummaryColor() {
+        return mUserNameSummaryColor;
     }
 
     abstract void setupThemeColors();

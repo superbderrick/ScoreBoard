@@ -15,6 +15,7 @@ public class LightTheme extends Theme {
     @Override
     void setupThemeColors() {
         mUserNameColor = Color.parseColor("#fff000");
+        mUserNameSummaryColor = Color.parseColor("#fff000");
         mScoreColor = Color.parseColor("#fff000");
         mSetScoreColor = Color.parseColor("#fff000");
         mBarColor = Color.parseColor("#fff000");

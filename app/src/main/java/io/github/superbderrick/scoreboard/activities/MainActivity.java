@@ -37,6 +37,8 @@ public class MainActivity extends Activity {
     private ImageButton  mSettingButton,mTimerResetButton;
     private LinearLayout mLeftScoreLayout,mRightScoreLayout;
 
+    private View mCenterBar;
+
     private Handler mMainHandler = new Handler();
 
     private ScoreManager mScoreManager;
@@ -127,11 +129,16 @@ public class MainActivity extends Activity {
         initResetButton();
         initScoreLayout();
         initSetScoreLayout();
+        initCenterBar();
     }
 
     private void initSetScoreLayout() {
         mLeftSetScoreTextview = findViewById(R.id.leftSetScoreTextview);
         mRightSetScoreTextview = findViewById(R.id.rightsetscoretextview);
+    }
+
+    private void initCenterBar() {
+        mCenterBar = findViewById(R.id.middleView);
     }
 
     private void initScoreLayout() {
@@ -148,7 +155,6 @@ public class MainActivity extends Activity {
                     makeCircleView(setNum , mLeftScoreLayout ,  DIRECTION_LEFT);
                     makeCircleView(setNum , mRightScoreLayout ,  DIRECTION_RIGHT);
                 }
-
             }
         });
 

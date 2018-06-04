@@ -131,12 +131,12 @@
             android:background="@color/colorDefaultBackGround">
 
             <View
-                android:layout_centerInParent="true"
-                android:gravity="center"
+                android:id="@+id/centerbar"
                 android:layout_width="80dip"
                 android:layout_height="10dip"
+                android:layout_centerInParent="true"
                 android:background="@color/colorBarBackground"
-                />
+                android:gravity="center" />
 
         </RelativeLayout>
 
