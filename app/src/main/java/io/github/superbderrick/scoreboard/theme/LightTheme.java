@@ -14,12 +14,12 @@ public class LightTheme extends Theme {
 
     @Override
     void setupThemeColors() {
-        mUserNameColor = Color.parseColor("#fff000");
+        mUserNameColor = Color.parseColor("#ff0000");
         mUserNameSummaryColor = Color.parseColor("#fff000");
         mScoreColor = Color.parseColor("#fff000");
-        mSetScoreColor = Color.parseColor("#fff000");
-        mBarColor = Color.parseColor("#fff000");
-        mCircleViewColor = Color.parseColor("#fff000");
-        mBackgroundColor = Color.parseColor("#fff000");
+        mSetScoreColor = Color.parseColor("#f1f000");
+        mBarColor = Color.parseColor("#fff0s0");
+        mCircleViewColor = Color.parseColor("#f0f000");
+        mBackgroundColor = Color.parseColor("#ff0000");
     }
 }

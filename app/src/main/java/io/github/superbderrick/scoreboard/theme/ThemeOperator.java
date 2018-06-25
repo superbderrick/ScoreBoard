@@ -33,14 +33,12 @@ public class ThemeOperator {
     private void init(int theme , Context context) {
 
         mCurrentGameTheme = ThemeFactory.getTheme(theme);
-        mCurrentGameTheme.setupThemeColors();
-
         mContext = context;
 
-        setupViews();
+        setupViews(mCurrentGameTheme);
     }
 
-    private void setupViews() {
+    private void setupViews(Theme theme) {
 
         //for User EditText
         mLeftUserEditText = ((MainActivity) mContext).findViewById(R.id.leftUserName);
@@ -48,7 +46,7 @@ public class ThemeOperator {
 
         //for Score Color
         mLeftScoreTextView = ((MainActivity) mContext).findViewById(R.id.leftScoreTextview);
-        mLeftScoreTextView = ((MainActivity) mContext).findViewById(R.id.rightScoreTextview);
+        mRightScoreTextView = ((MainActivity) mContext).findViewById(R.id.rightScoreTextview);
 
         //for SetScore Color
         mLeftSetScoreTextView = ((MainActivity) mContext).findViewById(R.id.leftSetScoreTextview);
@@ -56,13 +54,18 @@ public class ThemeOperator {
 
         mCenterBar = ((MainActivity) mContext).findViewById(R.id.middleView);
 
+
+
+
     }
 
     public void applyTheme() {
-        //mLeftUserName = findViewById(R.id.leftUserName)
-//        EditText userText = ((MainActivity) mContext).findViewById(R.id.leftUserName);
-//        userText.setTextColor(Color.RED);
-
+        mLeftUserEditText.setBackgroundColor(mCurrentGameTheme.mUserNameColor);
+        mRightUserEditText.setBackgroundColor(mCurrentGameTheme.mUserNameColor);
+        mLeftScoreTextView.setBackgroundColor(mCurrentGameTheme.mScoreColor);
+        mRightScoreTextView.setBackgroundColor(mCurrentGameTheme.mScoreColor);
+        mLeftSetScoreTextView.setBackgroundColor(mCurrentGameTheme.mSetScoreColor);
+        mRightSetScoreTextView.setBackgroundColor(mCurrentGameTheme.mSetScoreColor);
 
     }
 

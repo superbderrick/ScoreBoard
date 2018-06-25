@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
 
     private ThemeOperator mThemeOperator;
 
-    private boolean mIsResetValue = false;
+    private boolean mClickedSettingButton = false;
     private int mThemeValue = 0;
 
     @Override
@@ -80,21 +80,23 @@ public class MainActivity extends Activity {
 
     private void bringSettingValues() {
 
+        Log.d("Derrick" , "bringSettingValues");
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        String setCount = SP.getString(this.getResources().getString(R.string.setscore_key),"1");
-        String handyValue = SP.getString(this.getResources().getString(R.string.handyy_key),"1");
-
+        String setCount = SP.getString(this.getResources().getString(R.string.setscore_key),"0");
+        String handyValue = SP.getString(this.getResources().getString(R.string.handyy_key),"0");
         String themeValue = SP.getString("themekey" , "1");
+
+
         mThemeValue = Integer.parseInt(themeValue);
 
 
         setupSettings(setCount , handyValue);
+
     }
 
     private void setupSettings(String setCount , String handyValue) {
         setSetModule(setCount);
         setHandyPoint(handyValue);
-
     }
 
     private void setSetModule(String setCount) {
@@ -196,7 +198,7 @@ public class MainActivity extends Activity {
             public void onClick(View view) {
                 Utils.showDialog(MainActivity.this , "Game Settings" , getString(R.string.gamesetting_guide));
 
-                mIsResetValue = true;
+                mClickedSettingButton = true;
             }
         });
     }
@@ -325,7 +327,7 @@ public class MainActivity extends Activity {
             public void run() {
                 if(mScoreManager != null && mSetManager != null) {
                     mScoreManager.resetScore();
-                    //mSetManager.reset();
+                    mSetManager.reset();
                 }
 
             }
@@ -337,8 +339,12 @@ public class MainActivity extends Activity {
     protected void onRestart() {
         super.onRestart();
 
-        Log.d(LOG_TAG,"check onRestart is called" + mIsResetValue);
-        bringSettingValues();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
     }
 
     @Override
@@ -350,18 +356,30 @@ public class MainActivity extends Activity {
     protected void onPause() {
         super.onPause();
 
-        Log.d(LOG_TAG,"check onPause is called" + mIsResetValue);
+            if(mClickedSettingButton) {
+                mMainHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        resetValues();
+                    }
+                });
 
-        if(mIsResetValue)
-            resetValues();
+            }
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        mIsResetValue = false;
-        Log.d(LOG_TAG,"check onResume is called");
+        if(mClickedSettingButton) {
+            Log.d("Derrick" , "check");
+            bringSettingValues();
+
+            mClickedSettingButton = false;
+        }
+
+
     }
 
 }

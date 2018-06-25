@@ -23,6 +23,8 @@
 .idea/modules.xml
 .idea/scopes/scope_settings.xml
 .idea/vcs.xml
+.idea/codeStyles/Project.xml
+.idea/caches
 *.iml
 # Package Files #
 *.jar
