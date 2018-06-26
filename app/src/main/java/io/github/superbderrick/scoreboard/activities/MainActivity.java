@@ -28,6 +28,8 @@ public class MainActivity extends Activity {
 
     private static final String LOG_TAG = "MainActivity";
 
+    public static final String PREFS_NAME = "MyPrefsFile";
+
     private static final int DIRECTION_LEFT = 100;
     private static final int DIRECTION_RIGHT = 200;
 
@@ -50,6 +52,11 @@ public class MainActivity extends Activity {
     private boolean mClickedSettingButton = false;
     private int mThemeValue = 0;
 
+    private int mLeftSetScore = 0;
+    private int mRightSetScore = 0;
+
+    private boolean mStartedAPP = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,17 +67,39 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
 
+        setGameListeners();
+
+        initGUIComponent();
+
+        getSavedGameData();
+
+        if(mStartedAPP)
+            bringSettingValues();
+
+    }
+
+    private void getSavedGameData() {
+
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+
+        int leftSetScore = settings.getInt("leftSetScore", 0);
+        int rightSetScore = settings.getInt("rightSetScore", 0);
+
+
+        Log.d("Derrick" , "get Data left " + leftSetScore);
+        Log.d("Derrick" , "get Data left " + rightSetScore);
+
+        mLeftSetScore = leftSetScore;
+        mRightSetScore = rightSetScore;
+
+    }
+
+    private void setGameListeners() {
         mScoreManager = new ScoreManager();
         mScoreManager.setScoreMaxRange(ScoreManager.DEFAULT_MAXIMUM_SCORE);
         mScoreManager.setListener(mScoreListener);
         mSetManager = new SetManager();
         mSetManager.setListener(mSetInfoListener);
-
-        bringSettingValues();
-
-        initGUIComponent();
-
-        applyGameTheme();
     }
 
     private void applyGameTheme() {
@@ -82,13 +111,10 @@ public class MainActivity extends Activity {
 
         Log.d("Derrick" , "bringSettingValues");
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        String setCount = SP.getString(this.getResources().getString(R.string.setscore_key),"0");
+        String setCount = SP.getString(this.getResources().getString(R.string.setscore_key),"5");
         String handyValue = SP.getString(this.getResources().getString(R.string.handyy_key),"0");
         String themeValue = SP.getString("themekey" , "1");
-
-
         mThemeValue = Integer.parseInt(themeValue);
-
 
         setupSettings(setCount , handyValue);
 
@@ -165,7 +191,7 @@ public class MainActivity extends Activity {
     private void makeCircleView(int setNum ,LinearLayout layout , int direction) {
 
         layout.removeAllViews();
-
+        Log.d("derrick" , "makeCircleView " + setNum);
         for(int i = 0 ; i < setNum ; i ++) {
             CircleView circleView = new CircleView(MainActivity.this);
             circleView.setId(i+ direction);
@@ -186,7 +212,6 @@ public class MainActivity extends Activity {
         mTimerResetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(LOG_TAG , "Reset button clicked ");
             }
         });
     }
@@ -289,7 +314,6 @@ public class MainActivity extends Activity {
     CircleView.OnCircleViewChangeListener mCircleViewListener = new CircleView.OnCircleViewChangeListener() {
         @Override
         public void onTouchedView(int id) {
-            Log.d(LOG_TAG , "ID: " + id);
             if(mSetManager != null) {
                 mSetManager.setScore(id);
             }
@@ -314,9 +338,11 @@ public class MainActivity extends Activity {
         mMainHandler.post(new Runnable() {
             @Override
             public void run() {
-
                 mLeftSetScoreTextview.setText("" + left);
                 mRightSetScoreTextview.setText("" + right);
+
+                mLeftSetScore = left;
+                mRightSetScore = right;
             }
         });
     }
@@ -327,7 +353,6 @@ public class MainActivity extends Activity {
             public void run() {
                 if(mScoreManager != null && mSetManager != null) {
                     mScoreManager.resetScore();
-                    mSetManager.reset();
                 }
 
             }
@@ -335,27 +360,40 @@ public class MainActivity extends Activity {
 
 
     }
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-
-    }
 
     @Override
     protected void onStart() {
         super.onStart();
-
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+
+        saveSetScoreData();
+    }
+
+    private void saveSetScoreData() {
+
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt("leftSetScore", mLeftSetScore);
+        editor.putInt("rightSetScore", mRightSetScore);
+
+        editor.commit();
+
+        Log.d("Derrick" , "save Data left " + mLeftSetScore);
+        Log.d("Derrick" , "save Data right " + mRightSetScore);
+
+
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+            Log.d("derrick" , "onPause : " + mClickedSettingButton);
 
+            mStartedAPP = false;
             if(mClickedSettingButton) {
                 mMainHandler.post(new Runnable() {
                     @Override
@@ -371,15 +409,19 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-
+        Log.d("derrick" , "onResume : " + mClickedSettingButton);
         if(mClickedSettingButton) {
-            Log.d("Derrick" , "check");
-            bringSettingValues();
-
             mClickedSettingButton = false;
         }
 
 
     }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        mStartedAPP = true;
+    }
 }

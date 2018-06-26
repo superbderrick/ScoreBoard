@@ -6,7 +6,7 @@
         <ListPreference android:title="@string/setscore_setting"
 
             android:key="@string/setscore_key"
-            android:defaultValue="1"
+            android:defaultValue="5"
             android:entries="@array/setScoreArray"
             android:entryValues="@array/setScoreValues" />
 
