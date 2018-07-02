@@ -2,6 +2,7 @@ package io.github.superbderrick.scoreboard.activities;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.os.Bundle;
@@ -76,6 +77,29 @@ public class MainActivity extends Activity {
         if(mStartedAPP)
             bringSettingValues();
 
+        Log.d(LOG_TAG , "onCreate is called ");
+
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        Log.d(LOG_TAG , "onConfigurationChanged is called ");
+    }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        Log.d(LOG_TAG , "onSaveInstanceState is called ");
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Log.d(LOG_TAG , "onRestoreInstanceState is called ");
     }
 
     private void getSavedGameData() {
@@ -84,10 +108,6 @@ public class MainActivity extends Activity {
 
         int leftSetScore = settings.getInt("leftSetScore", 0);
         int rightSetScore = settings.getInt("rightSetScore", 0);
-
-
-        Log.d("Derrick" , "get Data left " + leftSetScore);
-        Log.d("Derrick" , "get Data left " + rightSetScore);
 
         mLeftSetScore = leftSetScore;
         mRightSetScore = rightSetScore;
@@ -109,7 +129,6 @@ public class MainActivity extends Activity {
 
     private void bringSettingValues() {
 
-        Log.d("Derrick" , "bringSettingValues");
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         String setCount = SP.getString(this.getResources().getString(R.string.setscore_key),"5");
         String handyValue = SP.getString(this.getResources().getString(R.string.handyy_key),"0");
@@ -191,7 +210,7 @@ public class MainActivity extends Activity {
     private void makeCircleView(int setNum ,LinearLayout layout , int direction) {
 
         layout.removeAllViews();
-        Log.d("derrick" , "makeCircleView " + setNum);
+
         for(int i = 0 ; i < setNum ; i ++) {
             CircleView circleView = new CircleView(MainActivity.this);
             circleView.setId(i+ direction);
@@ -382,16 +401,13 @@ public class MainActivity extends Activity {
 
         editor.commit();
 
-        Log.d("Derrick" , "save Data left " + mLeftSetScore);
-        Log.d("Derrick" , "save Data right " + mRightSetScore);
-
-
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-            Log.d("derrick" , "onPause : " + mClickedSettingButton);
+
+        Log.d(LOG_TAG , "onPuase is called ");
 
             mStartedAPP = false;
             if(mClickedSettingButton) {
@@ -401,7 +417,6 @@ public class MainActivity extends Activity {
                         resetValues();
                     }
                 });
-
             }
 
     }
@@ -409,12 +424,12 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("derrick" , "onResume : " + mClickedSettingButton);
+
+        Log.d(LOG_TAG , "onResume is called ");
+
         if(mClickedSettingButton) {
             mClickedSettingButton = false;
         }
-
-
     }
 
 
@@ -422,6 +437,7 @@ public class MainActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
 
+        Log.d(LOG_TAG , "onDestroy is called ");
         mStartedAPP = true;
     }
 }
