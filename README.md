@@ -1,4 +1,9 @@
-# ScoreBoard
+# Score Board
+
+<h1 align=center>
+<img src="Logo/horizontal.png" width=80%>
+</h1>
+
 - 2018 first Toy project.
 - Table Tennis ScoreBoard , Android APP. 
  
