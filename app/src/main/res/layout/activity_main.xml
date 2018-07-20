@@ -93,6 +93,7 @@
 
                 <RelativeLayout
                     android:id="@+id/leftBar"
+                    android:background="@color/colormiddle"
                     android:layout_weight="0.2"
                     android:layout_width="match_parent"
                     android:layout_height="0dip">
@@ -108,8 +109,6 @@
                 </io.github.superbderrick.scoreboard.ui.TouchLayout>
 
             </LinearLayout>
-
-
 
 
             <TextView

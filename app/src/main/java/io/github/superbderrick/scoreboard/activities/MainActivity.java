@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import io.github.superbderrick.scoreboard.R;
@@ -39,6 +40,8 @@ public class MainActivity extends Activity {
     private EditText     mLeftUserName,mRightUserName;
     private ImageButton  mSettingButton,mTimerResetButton;
     private LinearLayout mLeftScoreLayout,mRightScoreLayout;
+
+    private RelativeLayout mLeftBarLayout , mRightBarLayout;
 
     private View mCenterBar;
 
@@ -73,6 +76,9 @@ public class MainActivity extends Activity {
         Log.d(LOG_TAG , "onCreate is called ");
 
         bringSettingValues();
+
+
+
 
     }
 
@@ -163,6 +169,7 @@ public class MainActivity extends Activity {
         initScoreLayout();
         initSetScoreLayout();
         initCenterBar();
+
     }
 
     private void resetUsersName() {
@@ -179,6 +186,10 @@ public class MainActivity extends Activity {
 
     private void initCenterBar() {
         mCenterBar = findViewById(R.id.middleView);
+        mLeftBarLayout = findViewById(R.id.leftBar);
+        mRightBarLayout = findViewById(R.id.rightbar);
+
+
     }
 
     private void initScoreLayout() {

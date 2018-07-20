@@ -8,7 +8,10 @@ public abstract class Theme {
     protected int mCurrentCode;
     protected int mUserNameColor;
     protected int mUserNameSummaryColor;
-    protected int mScoreColor;
+
+
+    protected int mJustScoreBackgroundColor;
+    protected int mJustScoreTextColor;
 
     protected int mSetScoreBackGroundColor;
     protected int mSetScoreTextColor;
@@ -30,7 +33,7 @@ public abstract class Theme {
     }
 
     public int getScoreColor() {
-        return mScoreColor;
+        return mJustScoreBackgroundColor;
     }
 
     public int getSetScoreColor() {

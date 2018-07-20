@@ -4,10 +4,12 @@ import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import io.github.superbderrick.scoreboard.R;
 import io.github.superbderrick.scoreboard.activities.MainActivity;
+import io.github.superbderrick.scoreboard.ui.TouchLayout;
 
 /**
  * Created by derrick on 03/06/2018.
@@ -24,6 +26,9 @@ public class ThemeOperator {
 
     private TextView mLeftScoreTextView,mRightScoreTextView,mLeftSetScoreTextView,mRightSetScoreTextView;
 
+    private TouchLayout mLeftUpperTouchView , mLeftBottomTouchView , mRightUpperTouchView ,  mRightBottomTouchView;
+
+    private RelativeLayout mLeftCenterBar , mRightCenterBar;
 
     private View mCenterBar;
 
@@ -56,6 +61,14 @@ public class ThemeOperator {
 
         mCenterBar = ((MainActivity) mContext).findViewById(R.id.middleView);
 
+        mLeftUpperTouchView =((MainActivity) mContext).findViewById(R.id.leftUpperTouchView);
+        mLeftBottomTouchView =((MainActivity) mContext).findViewById(R.id.leftBottomTouchView);
+
+        mRightUpperTouchView = ((MainActivity) mContext).findViewById(R.id.rightUpperTouchView);
+        mRightBottomTouchView =((MainActivity) mContext).findViewById(R.id.rightBottomTouchView);
+
+        mLeftCenterBar = ((MainActivity) mContext).findViewById(R.id.leftBar);
+        mRightCenterBar = ((MainActivity) mContext).findViewById(R.id.rightbar);
     }
 
     public void applyTheme() {
@@ -63,9 +76,21 @@ public class ThemeOperator {
         Log.d(LOG_TAG , "applyGameTheme inside :  ");
         mLeftUserEditText.setBackgroundColor(mCurrentGameTheme.mUserNameColor);
         mRightUserEditText.setBackgroundColor(mCurrentGameTheme.mUserNameColor);
-        mLeftScoreTextView.setBackgroundColor(mCurrentGameTheme.mScoreColor);
-        mRightScoreTextView.setBackgroundColor(mCurrentGameTheme.mScoreColor);
 
+
+
+        // for just score
+        mLeftScoreTextView.setTextColor(mCurrentGameTheme.mJustScoreTextColor);
+        mRightScoreTextView.setTextColor(mCurrentGameTheme.mJustScoreTextColor);
+
+        mLeftUpperTouchView.setBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColor);
+        mLeftBottomTouchView.setBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColor);
+
+        mRightUpperTouchView.setBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColor);
+        mRightBottomTouchView.setBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColor);
+
+        mLeftCenterBar.setBackgroundColor(mCurrentGameTheme.mBarColor);
+        mRightCenterBar.setBackgroundColor(mCurrentGameTheme.mBarColor);
 
 
         //for set score view color and text color
