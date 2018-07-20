@@ -7,6 +7,7 @@ import android.graphics.Color;
  */
 
 public abstract class Theme {
+    protected int mCurrentCode;
     protected int mUserNameColor;
     protected int mUserNameSummaryColor;
     protected int mScoreColor;

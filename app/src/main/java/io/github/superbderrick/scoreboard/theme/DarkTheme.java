@@ -14,7 +14,7 @@ public class DarkTheme extends Theme {
 
     @Override
     void setupThemeColors() {
-
+        mCurrentCode = 0;
         mUserNameColor = Color.parseColor("#ffff00");
         mScoreColor = Color.parseColor("#ffff00");
         mSetScoreColor = Color.parseColor("#ffff00");

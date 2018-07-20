@@ -2,6 +2,7 @@ package io.github.superbderrick.scoreboard.theme;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -32,7 +33,10 @@ public class ThemeOperator {
 
     private void init(int theme , Context context) {
 
-        mCurrentGameTheme = ThemeFactory.getTheme(theme);
+        //mCurrentGameTheme = ThemeFactory.getTheme(theme);
+
+        mCurrentGameTheme = new LightTheme();
+        Log.d("derrick" , "currentCode : " + mCurrentGameTheme.mCurrentCode);
         mContext = context;
 
         setupViews(mCurrentGameTheme);
@@ -54,9 +58,6 @@ public class ThemeOperator {
 
         mCenterBar = ((MainActivity) mContext).findViewById(R.id.middleView);
 
-
-
-
     }
 
     public void applyTheme() {
@@ -66,7 +67,6 @@ public class ThemeOperator {
         mRightScoreTextView.setBackgroundColor(mCurrentGameTheme.mScoreColor);
         mLeftSetScoreTextView.setBackgroundColor(mCurrentGameTheme.mSetScoreColor);
         mRightSetScoreTextView.setBackgroundColor(mCurrentGameTheme.mSetScoreColor);
-
     }
 
 }
