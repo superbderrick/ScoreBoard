@@ -1,7 +1,6 @@
 package io.github.superbderrick.scoreboard.theme;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -35,7 +34,7 @@ public class ThemeOperator {
     private void init(int theme , Context context) {
 
         mCurrentGameTheme = ThemeFactory.getTheme(theme);
-        
+
         mContext = context;
 
         setupViews(mCurrentGameTheme);
@@ -66,8 +65,14 @@ public class ThemeOperator {
         mRightUserEditText.setBackgroundColor(mCurrentGameTheme.mUserNameColor);
         mLeftScoreTextView.setBackgroundColor(mCurrentGameTheme.mScoreColor);
         mRightScoreTextView.setBackgroundColor(mCurrentGameTheme.mScoreColor);
-        mLeftSetScoreTextView.setBackgroundColor(mCurrentGameTheme.mSetScoreColor);
-        mRightSetScoreTextView.setBackgroundColor(mCurrentGameTheme.mSetScoreColor);
+
+
+
+        //for set score view color and text color
+        mLeftSetScoreTextView.setTextColor(mCurrentGameTheme.mSetScoreTextColor);
+        mRightSetScoreTextView.setTextColor(mCurrentGameTheme.mSetScoreTextColor);
+        mLeftSetScoreTextView.setBackgroundColor(mCurrentGameTheme.mSetScoreBackGroundColor);
+        mRightSetScoreTextView.setBackgroundColor(mCurrentGameTheme.mSetScoreBackGroundColor);
     }
 
 }

@@ -1,7 +1,5 @@
 package io.github.superbderrick.scoreboard.theme;
 
-import android.graphics.Color;
-
 /**
  * Created by derrick on 03/06/2018.
  */
@@ -11,11 +9,21 @@ public abstract class Theme {
     protected int mUserNameColor;
     protected int mUserNameSummaryColor;
     protected int mScoreColor;
-    protected int mSetScoreColor;
+
+    protected int mSetScoreBackGroundColor;
+    protected int mSetScoreTextColor;
+
     protected int mBarColor;
     protected int mCircleViewColor;
     protected int mBackgroundColor;
 
+    public int getSetScoreTextColor() {
+        return mSetScoreTextColor;
+    }
+
+    public void setSetScoreTextColor(int mSetScoreTextColor) {
+        this.mSetScoreTextColor = mSetScoreTextColor;
+    }
 
     public int getUserNameColor() {
         return mUserNameColor;
@@ -26,7 +34,7 @@ public abstract class Theme {
     }
 
     public int getSetScoreColor() {
-        return mSetScoreColor;
+        return mSetScoreBackGroundColor;
     }
 
     public int getBarColor() {

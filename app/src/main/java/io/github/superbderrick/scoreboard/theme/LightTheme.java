@@ -16,11 +16,17 @@ public class LightTheme extends Theme {
     void setupThemeColors() {
         mCurrentCode = 1;
         mUserNameColor = Color.parseColor("#000000");
-        mUserNameSummaryColor = Color.parseColor("#fff000");
-        mScoreColor = Color.parseColor("#ff0000");
-        mSetScoreColor = Color.parseColor("#f1f000");
-        mBarColor = Color.parseColor("#fff000");
-        mCircleViewColor = Color.parseColor("#f0f000");
+        mUserNameSummaryColor = Color.parseColor("#EDEBEC");
+
+        mScoreColor = Color.parseColor("#EDEB00");
+
+        mBarColor = Color.parseColor("#ff0000");
+        mCircleViewColor = Color.parseColor("#ff0000");
         mBackgroundColor = Color.parseColor("#ff0000");
+
+
+        //setscore backgroundview and text color
+        mSetScoreTextColor = Color.parseColor("#000000");
+        mSetScoreBackGroundColor = Color.parseColor("#D9D9D9");
     }
 }
