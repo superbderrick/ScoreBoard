@@ -164,6 +164,13 @@ public class MainActivity extends Activity {
         initCenterBar();
     }
 
+    private void resetUsersName() {
+        if(mLeftUserName != null && mRightUserName != null) {
+            mLeftUserName.setText("");
+            mRightUserName.setText("");
+        }
+    }
+
     private void initSetScoreLayout() {
         mLeftSetScoreTextview = findViewById(R.id.leftSetScoreTextview);
         mRightSetScoreTextview = findViewById(R.id.rightsetscoretextview);
@@ -257,6 +264,7 @@ public class MainActivity extends Activity {
         mLeftBottomTouchView = findViewById(R.id.leftBottomTouchView);
         mLeftScoreTextView = findViewById(R.id.leftScoreTextview);
         mLeftUserName = findViewById(R.id.leftUserName) ;
+        mRightUserName = findViewById(R.id.rightUserEdit) ;
 
 
         mLeftUpperTouchView.setOnClickListener(new View.OnClickListener() {
@@ -359,9 +367,10 @@ public class MainActivity extends Activity {
                     mScoreManager.resetScore();
                 }
 
+                resetUsersName();
+
             }
         });
-
 
     }
 
