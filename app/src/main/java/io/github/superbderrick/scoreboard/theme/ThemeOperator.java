@@ -16,6 +16,7 @@ import io.github.superbderrick.scoreboard.activities.MainActivity;
 
 public class ThemeOperator {
 
+    private static final String LOG_TAG = "ThemeOperator";
 
     private Context mContext = null;
     private Theme mCurrentGameTheme;
@@ -33,10 +34,8 @@ public class ThemeOperator {
 
     private void init(int theme , Context context) {
 
-        //mCurrentGameTheme = ThemeFactory.getTheme(theme);
-
-        mCurrentGameTheme = new LightTheme();
-        Log.d("derrick" , "currentCode : " + mCurrentGameTheme.mCurrentCode);
+        mCurrentGameTheme = ThemeFactory.getTheme(theme);
+        
         mContext = context;
 
         setupViews(mCurrentGameTheme);
@@ -61,6 +60,8 @@ public class ThemeOperator {
     }
 
     public void applyTheme() {
+
+        Log.d(LOG_TAG , "applyGameTheme inside :  ");
         mLeftUserEditText.setBackgroundColor(mCurrentGameTheme.mUserNameColor);
         mRightUserEditText.setBackgroundColor(mCurrentGameTheme.mUserNameColor);
         mLeftScoreTextView.setBackgroundColor(mCurrentGameTheme.mScoreColor);

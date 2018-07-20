@@ -9,7 +9,7 @@ import android.graphics.Color;
 public class DarkTheme extends Theme {
 
     public DarkTheme() {
-
+        setupThemeColors();
     }
 
     @Override

@@ -51,12 +51,10 @@ public class MainActivity extends Activity {
     private ThemeOperator mThemeOperator;
 
     private boolean mClickedSettingButton = false;
-    private int mThemeValue = 0;
 
     private int mLeftSetScore = 0;
     private int mRightSetScore = 0;
 
-    private boolean mStartedAPP = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,8 +96,9 @@ public class MainActivity extends Activity {
         mSetManager.setListener(mSetInfoListener);
     }
 
-    private void applyGameTheme() {
-        mThemeOperator = new ThemeOperator(mThemeValue , this);
+    private void applyGameTheme(int themeValue) {
+        Log.d(LOG_TAG , "applyGameTheme themeValue :  " + themeValue);
+        mThemeOperator = new ThemeOperator(themeValue , this);
 
         mThemeOperator.applyTheme();
     }
@@ -111,14 +110,16 @@ public class MainActivity extends Activity {
         String setCount = SP.getString(this.getResources().getString(R.string.setscore_key),"5");
         String handyValue = SP.getString(this.getResources().getString(R.string.handyy_key),"0");
         String themeValue = SP.getString("themekey" , "1");
-        mThemeValue = Integer.parseInt(themeValue);
 
-        setupSettings(setCount , handyValue);
+        int iThemeValue = Integer.parseInt(themeValue);
+
+        setupSettings(setCount , handyValue , iThemeValue);
     }
 
-    private void setupSettings(String setCount , String handyValue) {
+    private void setupSettings(String setCount , String handyValue , int themeValue) {
         setSetModule(setCount);
         setHandyPoint(handyValue);
+        applyGameTheme(themeValue);
     }
 
     private void setSetModule(final String setCount) {
@@ -403,7 +404,6 @@ public class MainActivity extends Activity {
 
         Log.d(LOG_TAG , "onPuase is called ");
 
-            mStartedAPP = false;
             if(mClickedSettingButton) {
                 mMainHandler.post(new Runnable() {
                     @Override
@@ -434,6 +434,5 @@ public class MainActivity extends Activity {
         super.onDestroy();
 
         Log.d(LOG_TAG , "onDestroy is called ");
-        mStartedAPP = true;
     }
 }
