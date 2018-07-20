@@ -8,7 +8,6 @@ import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.RelativeLayout;
 
 
@@ -18,8 +17,24 @@ import android.widget.RelativeLayout;
 
 public class TouchLayout extends RelativeLayout {
 
-    private  final  static String DEFAULTCOLOR = "#202020";
-    private  final  static String TOUCHEDCOLOR = "#111111";
+    private static final String LOG_TAG = "TouchLayout";
+
+    private   String mDefaultBackgroundColor = "#202020";
+    private   String mTouchedBackgroundColor = "#111111";
+
+    public String getDefaultBackgroundColor() {
+        return mDefaultBackgroundColor;
+    }
+
+    public String getTouchedBackgroundColor() {
+        return mTouchedBackgroundColor;
+    }
+
+    public void setTouchedBackgroundColor(String mTouchedBackgroundColor) {
+        this.mTouchedBackgroundColor = mTouchedBackgroundColor;
+    }
+
+
 
     public TouchLayout(Context context) {
         super(context);
@@ -43,17 +58,19 @@ public class TouchLayout extends RelativeLayout {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
          super.onTouchEvent(event);
-        String color = DEFAULTCOLOR;
+        String color = mDefaultBackgroundColor;
+
+        Log.d(LOG_TAG , "onTouchEvent : " + color);
         switch (event.getAction()) {
 
             case MotionEvent.ACTION_DOWN:
-                color = TOUCHEDCOLOR;
+                color = mTouchedBackgroundColor;
                 break;
             case MotionEvent.ACTION_MOVE:
-                color = DEFAULTCOLOR;
+                color = mDefaultBackgroundColor;
                 break;
             case MotionEvent.ACTION_UP:
-                color = DEFAULTCOLOR;
+                color = mDefaultBackgroundColor;
                 break;
         }
 

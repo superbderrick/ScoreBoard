@@ -64,6 +64,7 @@ public class ThemeOperator {
         mLeftUpperTouchView =((MainActivity) mContext).findViewById(R.id.leftUpperTouchView);
         mLeftBottomTouchView =((MainActivity) mContext).findViewById(R.id.leftBottomTouchView);
 
+
         mRightUpperTouchView = ((MainActivity) mContext).findViewById(R.id.rightUpperTouchView);
         mRightBottomTouchView =((MainActivity) mContext).findViewById(R.id.rightBottomTouchView);
 
@@ -84,7 +85,10 @@ public class ThemeOperator {
         mRightScoreTextView.setTextColor(mCurrentGameTheme.mJustScoreTextColor);
 
         mLeftUpperTouchView.setBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColor);
+
         mLeftBottomTouchView.setBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColor);
+
+
 
         mRightUpperTouchView.setBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColor);
         mRightBottomTouchView.setBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColor);
