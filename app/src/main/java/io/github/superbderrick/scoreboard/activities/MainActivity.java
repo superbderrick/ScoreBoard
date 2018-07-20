@@ -72,34 +72,10 @@ public class MainActivity extends Activity {
 
         initGUIComponent();
 
-        getSavedGameData();
-
-        if(mStartedAPP)
-            bringSettingValues();
-
         Log.d(LOG_TAG , "onCreate is called ");
 
-    }
+        bringSettingValues();
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-
-        Log.d(LOG_TAG , "onConfigurationChanged is called ");
-    }
-
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        Log.d(LOG_TAG , "onSaveInstanceState is called ");
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        Log.d(LOG_TAG , "onRestoreInstanceState is called ");
     }
 
     private void getSavedGameData() {
@@ -130,6 +106,7 @@ public class MainActivity extends Activity {
 
     private void bringSettingValues() {
 
+        Log.d(LOG_TAG , "bring Setting value ");
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         String setCount = SP.getString(this.getResources().getString(R.string.setscore_key),"5");
         String handyValue = SP.getString(this.getResources().getString(R.string.handyy_key),"0");
@@ -137,7 +114,6 @@ public class MainActivity extends Activity {
         mThemeValue = Integer.parseInt(themeValue);
 
         setupSettings(setCount , handyValue);
-
     }
 
     private void setupSettings(String setCount , String handyValue) {
@@ -145,11 +121,19 @@ public class MainActivity extends Activity {
         setHandyPoint(handyValue);
     }
 
-    private void setSetModule(String setCount) {
-        int setNum = Integer.parseInt(setCount);
-        setupSetCircleView(setNum);
-        mSetManager.reset();
-        mSetManager.setSetNum(setNum);
+    private void setSetModule(final String setCount) {
+
+        mMainHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                int setNum = Integer.parseInt(setCount);
+                setupSetCircleView(setNum);
+                mSetManager.reset();
+                mSetManager.setSetNum(setNum);
+
+            }
+        });
+
     }
 
     private void setHandyPoint(String handyValue) {
@@ -430,6 +414,8 @@ public class MainActivity extends Activity {
 
         if(mClickedSettingButton) {
             mClickedSettingButton = false;
+
+            bringSettingValues();
         }
     }
 
