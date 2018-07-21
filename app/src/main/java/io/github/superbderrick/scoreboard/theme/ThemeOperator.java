@@ -1,7 +1,7 @@
 package io.github.superbderrick.scoreboard.theme;
 
 import android.content.Context;
-import android.util.Log;
+import android.graphics.Color;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -59,7 +59,8 @@ public class ThemeOperator {
         mLeftSetScoreTextView = ((MainActivity) mContext).findViewById(R.id.leftSetScoreTextview);
         mRightSetScoreTextView = ((MainActivity) mContext).findViewById(R.id.rightsetscoretextview);
 
-        mCenterBar = ((MainActivity) mContext).findViewById(R.id.middleView);
+        mCenterBar = ((MainActivity) mContext).findViewById(R.id.centerbar);
+
 
         mLeftUpperTouchView =((MainActivity) mContext).findViewById(R.id.leftUpperTouchView);
 
@@ -103,8 +104,9 @@ public class ThemeOperator {
         mLeftBottomTouchView.setTouchedBackgroundColor(mCurrentGameTheme.mJustScoreTouchBackgroundColorString);
         mRightUpperTouchView.setTouchedBackgroundColor(mCurrentGameTheme.mJustScoreTouchBackgroundColorString);
         mRightBottomTouchView.setTouchedBackgroundColor(mCurrentGameTheme.mJustScoreTouchBackgroundColorString);
-        mLeftCenterBar.setBackgroundColor(mCurrentGameTheme.mBarColor);
-        mRightCenterBar.setBackgroundColor(mCurrentGameTheme.mBarColor);
+        mLeftCenterBar.setBackgroundColor(mCurrentGameTheme.mGapColor);
+        mRightCenterBar.setBackgroundColor(mCurrentGameTheme.mGapColor);
+        mCenterBar.setBackgroundColor(mCurrentGameTheme.mCenterBarColor);
     }
 
 }

@@ -13,9 +13,10 @@ public abstract class Theme {
     protected int mJustScoreTextColor;
     protected int mSetScoreBackGroundColor;
     protected int mSetScoreTextColor;
-    protected int mBarColor;
+    protected int mGapColor;
     protected int mCircleViewColor;
     protected int mBackgroundColor;
+    protected int mCenterBarColor;
 
 
     abstract void setupThemeColors();

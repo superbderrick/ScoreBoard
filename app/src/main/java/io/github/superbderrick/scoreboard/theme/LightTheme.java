@@ -30,8 +30,8 @@ public class LightTheme extends Theme {
         mJustScoreTouchBackgroundColorString = "#F5F5F5";
 
         mJustScoreTextColor = Color.parseColor("#000000");
-        mBarColor = Color.parseColor("#ffffff");
-
+        mGapColor = Color.parseColor("#ffffff");
+        mCenterBarColor = Color.parseColor("#00ff00");
 
         //setscore backgroundview and text color
 
