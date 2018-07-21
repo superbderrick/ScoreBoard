@@ -31,7 +31,7 @@ public class ThemeOperator {
     private RelativeLayout mLeftCenterBar , mRightCenterBar , mBottomLeftLayout , mBottomRightLayout ,
             mLeftTopBackgroundView , mRightTopBackgroundView , mCenterMiddleLayout;
 
-    private LinearLayout mLeftMiddleLayout , mRightMiddleLayout , mBottonParentLayout ;
+    private LinearLayout mLeftMiddleLayout , mRightMiddleLayout , mBottomParent;
 
     private View mCenterBar;
 
@@ -87,7 +87,7 @@ public class ThemeOperator {
 
         mBottomLeftLayout = ((MainActivity) mContext).findViewById(R.id.bottomLeftbackgroundview);
         mBottomRightLayout = ((MainActivity) mContext).findViewById(R.id.bottomRightBackgroundView);
-        mBottonParentLayout = ((MainActivity) mContext).findViewById(R.id.bottomView);
+        mBottomParent = ((MainActivity) mContext).findViewById(R.id.bottomView);
     }
 
     public void applyTheme() {
@@ -116,7 +116,7 @@ public class ThemeOperator {
         mCenterMiddleLayout.setBackgroundColor(mCurrentGameTheme.mWholeBackgroundColor);
         mBottomRightLayout.setBackgroundColor(mCurrentGameTheme.mWholeBackgroundColor);
         mBottomLeftLayout.setBackgroundColor(mCurrentGameTheme.mWholeBackgroundColor);
-        mBottonParentLayout.setBackgroundColor(mCurrentGameTheme.mWholeBackgroundColor);
+        mBottomParent.setBackgroundColor(mCurrentGameTheme.mWholeBackgroundColor);
 
     }
 

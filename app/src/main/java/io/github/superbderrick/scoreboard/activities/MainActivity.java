@@ -41,9 +41,6 @@ public class MainActivity extends Activity {
     private ImageButton  mSettingButton,mTimerResetButton;
     private LinearLayout mLeftScoreLayout,mRightScoreLayout;
 
-    private RelativeLayout mLeftBarLayout , mRightBarLayout;
-
-    private View mCenterBar;
 
     private Handler mMainHandler = new Handler();
 
@@ -76,9 +73,6 @@ public class MainActivity extends Activity {
         Log.d(LOG_TAG , "onCreate is called ");
 
         bringSettingValues();
-
-
-
 
     }
 
@@ -123,18 +117,18 @@ public class MainActivity extends Activity {
     }
 
     private void setupSettings(String setCount , String handyValue , int themeValue) {
-        setSetModule(setCount);
+        setSetModule(setCount , themeValue);
         setHandyPoint(handyValue);
         applyGameTheme(themeValue);
     }
 
-    private void setSetModule(final String setCount) {
+    private void setSetModule(final String setCount , final int themeValue) {
 
         mMainHandler.post(new Runnable() {
             @Override
             public void run() {
                 int setNum = Integer.parseInt(setCount);
-                setupSetCircleView(setNum);
+                setupSetCircleView(setNum , themeValue);
                 mSetManager.reset();
                 mSetManager.setSetNum(setNum);
 
@@ -168,7 +162,7 @@ public class MainActivity extends Activity {
         initResetButton();
         initScoreLayout();
         initSetScoreLayout();
-        initCenterBar();
+
 
     }
 
@@ -184,39 +178,35 @@ public class MainActivity extends Activity {
         mRightSetScoreTextview = findViewById(R.id.rightsetscoretextview);
     }
 
-    private void initCenterBar() {
-        mCenterBar = findViewById(R.id.middleView);
-        mLeftBarLayout = findViewById(R.id.leftBar);
-        mRightBarLayout = findViewById(R.id.rightbar);
 
-
-    }
 
     private void initScoreLayout() {
         mLeftScoreLayout = findViewById(R.id.leftScoreLayout);
         mRightScoreLayout = findViewById(R.id.rightScoreLayout);
     }
 
-    private void setupSetCircleView(final int setNum) {
+    private void setupSetCircleView(final int setNum , final int themeValue) {
 
         mMainHandler.post(new Runnable() {
             @Override
             public void run() {
                 if(mLeftScoreLayout != null) {
-                    makeCircleView(setNum , mLeftScoreLayout ,  DIRECTION_LEFT);
-                    makeCircleView(setNum , mRightScoreLayout ,  DIRECTION_RIGHT);
+                    makeCircleView(setNum , mLeftScoreLayout ,  DIRECTION_LEFT , themeValue);
+                    makeCircleView(setNum , mRightScoreLayout ,  DIRECTION_RIGHT , themeValue);
                 }
             }
         });
 
     }
 
-    private void makeCircleView(int setNum ,LinearLayout layout , int direction) {
+    private void makeCircleView(int setNum ,LinearLayout layout , int direction , int themeValue) {
 
         layout.removeAllViews();
 
         for(int i = 0 ; i < setNum ; i ++) {
             CircleView circleView = new CircleView(MainActivity.this);
+            circleView.setCircleColor(themeValue);
+            circleView.setNormalColor(themeValue);
             circleView.setId(i+ direction);
             circleView.setListener(mCircleViewListener);
 

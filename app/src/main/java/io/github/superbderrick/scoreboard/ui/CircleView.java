@@ -8,23 +8,38 @@ import android.graphics.Paint;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
 
 
 public class CircleView extends View {
+
+    private  static String CIRCLEVIEW_ORIGINAL_COLOR [];
+    private  static String CIRCLEVIEW_CLICKED_COLOR [];
     public interface OnCircleViewChangeListener {
         public void onTouchedView(int score);
     }
 
     private OnCircleViewChangeListener mListener;
 
-    private int mCircleColor = Color.parseColor("#ffffff");
+    private int mCircleColor = Color.parseColor("#D9D9D9");
 
-    private final static String CLICKEDCOLOR = "#ffffff";
-    private final static String ORIGINALCOLOR = "#ccebff";
+    public void setNormalColor(int themeValue) {
+        if(themeValue == 0) {
+
+        } else if(themeValue == 1) {
+            mNormalColor = "#D9D9D9";
+
+        } else {
+
+        }
+
+
+    }
+
+    private  String mNormalColor = "#D9D9D9";
+    private  String mClickedColor = "#FF1493";
 
     private Paint mPaint = new Paint();
     private boolean isTouch = false;
@@ -35,7 +50,7 @@ public class CircleView extends View {
 
     public CircleView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        mCircleColor = Color.parseColor(ORIGINALCOLOR);
+        mCircleColor = Color.parseColor(mClickedColor);
     }
 
     public CircleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -50,12 +65,18 @@ public class CircleView extends View {
         this.mListener = circleListener;
     }
 
-    public int getCircleColor() {
-        return mCircleColor;
-    }
+    public void setCircleColor(int themeColor) {
 
-    public void setCircleColor(int mCircleColor) {
-        this.mCircleColor = mCircleColor;
+        if(themeColor == 0) {
+
+        } else if(themeColor == 1) {
+            mClickedColor = "#FF1493";
+
+        } else {
+
+        }
+
+
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -81,10 +102,10 @@ public class CircleView extends View {
     private void setCircleColor() {
         String tempColor = "#ccebff";
         if(isTouch) {
-            tempColor = CLICKEDCOLOR;
+            tempColor = mNormalColor;
             isTouch = false;
         } else {
-            tempColor = ORIGINALCOLOR;
+            tempColor = mClickedColor;
             isTouch = true;
         }
 

@@ -17,7 +17,7 @@ public class LightTheme extends Theme {
         mCurrentCode = 1;
         mUserNameBackgroundColor = Color.parseColor("#D9D9D9");
         mUserNameTextColor = Color.parseColor("#000000");
-        mUserNameSummaryColor = Color.parseColor("#C61D7F");
+        mUserNameSummaryColor = Color.parseColor("#FF1493");
 
 
 
