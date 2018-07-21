@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -28,7 +29,9 @@ public class ThemeOperator {
 
     private TouchLayout mLeftUpperTouchView , mLeftBottomTouchView , mRightUpperTouchView ,  mRightBottomTouchView;
 
-    private RelativeLayout mLeftCenterBar , mRightCenterBar;
+    private RelativeLayout mLeftCenterBar , mRightCenterBar , mLeftTopBackgroundView , mRightTopBackgroundView , mCenterMiddleLayout;
+
+    private LinearLayout mLeftMiddleLayout , mRightMiddleLayout;
 
     private View mCenterBar;
 
@@ -72,6 +75,16 @@ public class ThemeOperator {
 
         mLeftCenterBar = ((MainActivity) mContext).findViewById(R.id.leftBar);
         mRightCenterBar = ((MainActivity) mContext).findViewById(R.id.rightbar);
+
+        //Just Background views
+
+        mLeftTopBackgroundView = ((MainActivity) mContext).findViewById(R.id.topLeftBackground);
+        mRightTopBackgroundView = ((MainActivity) mContext).findViewById(R.id.topRightBackground);
+
+        mLeftMiddleLayout = ((MainActivity) mContext).findViewById(R.id.leftScoreLayout);
+        mRightMiddleLayout = ((MainActivity) mContext).findViewById(R.id.rightScoreLayout);
+        mCenterMiddleLayout = ((MainActivity) mContext).findViewById(R.id.centerParent);
+
     }
 
     public void applyTheme() {
@@ -79,11 +92,22 @@ public class ThemeOperator {
         mLeftUserEditText.setBackgroundColor(mCurrentGameTheme.mUserNameColor);
         mRightUserEditText.setBackgroundColor(mCurrentGameTheme.mUserNameColor);
 
+        setupWholeBackgroundView();
+
         //setup for bottom line background color for center point
         setupForMiddlePart();
 
         //setup for bottom line background color for setscore
         setupForBottomLine();
+    }
+
+    private void setupWholeBackgroundView() {
+        mLeftTopBackgroundView.setBackgroundColor(mCurrentGameTheme.mWholeBackgroundColor);
+        mRightTopBackgroundView.setBackgroundColor(mCurrentGameTheme.mWholeBackgroundColor);
+        mLeftMiddleLayout.setBackgroundColor(mCurrentGameTheme.mWholeBackgroundColor);
+        mRightMiddleLayout.setBackgroundColor(mCurrentGameTheme.mWholeBackgroundColor);
+        mCenterMiddleLayout.setBackgroundColor(mCurrentGameTheme.mWholeBackgroundColor);
+
     }
 
     private void setupForBottomLine() {

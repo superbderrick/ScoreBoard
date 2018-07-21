@@ -15,37 +15,41 @@
         android:layout_height="0dip"
         android:layout_weight="1.5"
         android:background="@color/colorDefaultBackGround">
-            <RelativeLayout
-                android:layout_weight="1"
-                android:layout_width="0dip"
-                android:layout_height="match_parent">
-                <EditText
-                    android:textAlignment="center"
-                    android:id="@+id/leftUserName"
-                    android:hint="User1"
-                    android:textColorHint="@color/colorTextviewBackground"
-                    android:textColor="@color/colorTextviewBackground"
-                    android:background="@color/colorTouch"
-                    android:layout_centerInParent="true"
-                    android:layout_width="150dip"
-                    android:layout_height="wrap_content" />
-            </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/topLeftBackground"
             android:layout_width="0dip"
-            android:layout_weight="1"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/leftUserName"
+                android:layout_width="150dip"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@color/colorTouch"
+                android:hint="User1"
+                android:textAlignment="center"
+                android:textColor="@color/colorTextviewBackground"
+                android:textColorHint="@color/colorTextviewBackground" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/topRightBackground"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
             <EditText
                 android:id="@+id/rightUserEdit"
-                android:textAlignment="center"
-                android:hint="@string/user_second"
-                android:textColorHint="@color/colorTextviewBackground"
-                android:textColor="@color/colorTextviewBackground"
-                android:background="@color/colorTouch"
-                android:layout_centerInParent="true"
                 android:layout_width="150dip"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@color/colorTouch"
+                android:hint="@string/user_second"
+                android:textAlignment="center"
+                android:textColor="@color/colorTextviewBackground"
+                android:textColorHint="@color/colorTextviewBackground" />
 
         </RelativeLayout>
 
@@ -124,9 +128,10 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_weight="2"
+            android:id="@+id/centerParent"
             android:layout_width="0dip"
             android:layout_height="match_parent"
+            android:layout_weight="2"
             android:background="@color/colorDefaultBackGround">
 
             <View

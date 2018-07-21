@@ -17,7 +17,7 @@ public abstract class Theme {
     protected int mCircleViewColor;
     protected int mBackgroundColor;
     protected int mCenterBarColor;
-
+    protected int mWholeBackgroundColor;
 
     abstract void setupThemeColors();
 }

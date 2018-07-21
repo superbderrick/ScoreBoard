@@ -24,16 +24,16 @@ public class LightTheme extends Theme {
         mBackgroundColor = Color.parseColor("#ff0000");
 
 
-        // just score background color
+        //whole background
+
+        mWholeBackgroundColor = Color.parseColor("#FFFEFF");
+
         //middle
         mJustScoreBackgroundColorString = "#D9D9D9";
         mJustScoreTouchBackgroundColorString = "#F5F5F5";
-
         mJustScoreTextColor = Color.parseColor("#000000");
         mGapColor = Color.parseColor("#ffffff");
         mCenterBarColor = Color.parseColor("#00ff00");
-
-        //setscore backgroundview and text color
 
         //bottom
         mSetScoreTextColor = Color.parseColor("#000000");
