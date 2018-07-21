@@ -75,36 +75,36 @@ public class ThemeOperator {
 
     public void applyTheme() {
 
-        Log.d(LOG_TAG , "applyGameTheme inside :  ");
         mLeftUserEditText.setBackgroundColor(mCurrentGameTheme.mUserNameColor);
         mRightUserEditText.setBackgroundColor(mCurrentGameTheme.mUserNameColor);
 
+        //setup for bottom line background color for center point
+        setupForMiddlePart();
 
+        //setup for bottom line background color for setscore
+        setupForBottomLine();
+    }
 
-        // for just score
-        mLeftScoreTextView.setTextColor(mCurrentGameTheme.mJustScoreTextColor);
-        mRightScoreTextView.setTextColor(mCurrentGameTheme.mJustScoreTextColor);
-
-        mLeftUpperTouchView.setDefaultBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColorString);
-        mLeftBottomTouchView.setDefaultBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColorString);
-        mRightUpperTouchView.setDefaultBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColorString);
-        mRightBottomTouchView.setDefaultBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColorString);
-
-        mLeftUpperTouchView.setTouchedBackgroundColor(mCurrentGameTheme.mJustScoreTouchBackgroundColorString);
-        mLeftBottomTouchView.setTouchedBackgroundColor(mCurrentGameTheme.mJustScoreTouchBackgroundColorString);
-        mRightUpperTouchView.setTouchedBackgroundColor(mCurrentGameTheme.mJustScoreTouchBackgroundColorString);
-        mRightBottomTouchView.setTouchedBackgroundColor(mCurrentGameTheme.mJustScoreTouchBackgroundColorString);
-
-
-        mLeftCenterBar.setBackgroundColor(mCurrentGameTheme.mBarColor);
-        mRightCenterBar.setBackgroundColor(mCurrentGameTheme.mBarColor);
-
-
-        //for set score view color and text color
+    private void setupForBottomLine() {
         mLeftSetScoreTextView.setTextColor(mCurrentGameTheme.mSetScoreTextColor);
         mRightSetScoreTextView.setTextColor(mCurrentGameTheme.mSetScoreTextColor);
         mLeftSetScoreTextView.setBackgroundColor(mCurrentGameTheme.mSetScoreBackGroundColor);
         mRightSetScoreTextView.setBackgroundColor(mCurrentGameTheme.mSetScoreBackGroundColor);
+    }
+
+    private void setupForMiddlePart() {
+        mLeftScoreTextView.setTextColor(mCurrentGameTheme.mJustScoreTextColor);
+        mRightScoreTextView.setTextColor(mCurrentGameTheme.mJustScoreTextColor);
+        mLeftUpperTouchView.setDefaultBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColorString);
+        mLeftBottomTouchView.setDefaultBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColorString);
+        mRightUpperTouchView.setDefaultBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColorString);
+        mRightBottomTouchView.setDefaultBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColorString);
+        mLeftUpperTouchView.setTouchedBackgroundColor(mCurrentGameTheme.mJustScoreTouchBackgroundColorString);
+        mLeftBottomTouchView.setTouchedBackgroundColor(mCurrentGameTheme.mJustScoreTouchBackgroundColorString);
+        mRightUpperTouchView.setTouchedBackgroundColor(mCurrentGameTheme.mJustScoreTouchBackgroundColorString);
+        mRightBottomTouchView.setTouchedBackgroundColor(mCurrentGameTheme.mJustScoreTouchBackgroundColorString);
+        mLeftCenterBar.setBackgroundColor(mCurrentGameTheme.mBarColor);
+        mRightCenterBar.setBackgroundColor(mCurrentGameTheme.mBarColor);
     }
 
 }
