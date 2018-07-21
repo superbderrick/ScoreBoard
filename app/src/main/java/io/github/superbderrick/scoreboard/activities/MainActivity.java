@@ -231,6 +231,7 @@ public class MainActivity extends Activity {
 
     private void initSettingButton() {
         mSettingButton = findViewById(R.id.settingButton);
+        mSettingButton.bringToFront();
         mSettingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

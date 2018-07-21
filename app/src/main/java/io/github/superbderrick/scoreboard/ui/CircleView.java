@@ -27,7 +27,7 @@ public class CircleView extends View {
 
     public void setNormalColor(int themeValue) {
         if(themeValue == 0) {
-
+            mClickedColor = "#FF1493";
         } else if(themeValue == 1) {
             mNormalColor = "#D9D9D9";
 
@@ -68,7 +68,7 @@ public class CircleView extends View {
     public void setCircleColor(int themeColor) {
 
         if(themeColor == 0) {
-
+            mClickedColor = "#FF1493";
         } else if(themeColor == 1) {
             mClickedColor = "#FF1493";
 
