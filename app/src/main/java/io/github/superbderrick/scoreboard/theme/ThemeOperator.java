@@ -62,6 +62,7 @@ public class ThemeOperator {
         mCenterBar = ((MainActivity) mContext).findViewById(R.id.middleView);
 
         mLeftUpperTouchView =((MainActivity) mContext).findViewById(R.id.leftUpperTouchView);
+
         mLeftBottomTouchView =((MainActivity) mContext).findViewById(R.id.leftBottomTouchView);
 
 
@@ -84,14 +85,16 @@ public class ThemeOperator {
         mLeftScoreTextView.setTextColor(mCurrentGameTheme.mJustScoreTextColor);
         mRightScoreTextView.setTextColor(mCurrentGameTheme.mJustScoreTextColor);
 
-        mLeftUpperTouchView.setBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColor);
+        mLeftUpperTouchView.setDefaultBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColorString);
+        mLeftBottomTouchView.setDefaultBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColorString);
+        mRightUpperTouchView.setDefaultBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColorString);
+        mRightBottomTouchView.setDefaultBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColorString);
 
-        mLeftBottomTouchView.setBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColor);
+        mLeftUpperTouchView.setTouchedBackgroundColor(mCurrentGameTheme.mJustScoreTouchBackgroundColorString);
+        mLeftBottomTouchView.setTouchedBackgroundColor(mCurrentGameTheme.mJustScoreTouchBackgroundColorString);
+        mRightUpperTouchView.setTouchedBackgroundColor(mCurrentGameTheme.mJustScoreTouchBackgroundColorString);
+        mRightBottomTouchView.setTouchedBackgroundColor(mCurrentGameTheme.mJustScoreTouchBackgroundColorString);
 
-
-
-        mRightUpperTouchView.setBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColor);
-        mRightBottomTouchView.setBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColor);
 
         mLeftCenterBar.setBackgroundColor(mCurrentGameTheme.mBarColor);
         mRightCenterBar.setBackgroundColor(mCurrentGameTheme.mBarColor);

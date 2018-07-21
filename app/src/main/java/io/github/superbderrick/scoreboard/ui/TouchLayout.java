@@ -19,6 +19,17 @@ public class TouchLayout extends RelativeLayout {
 
     private static final String LOG_TAG = "TouchLayout";
 
+    public void setDefaultBackgroundColor(String mDefaultBackgroundColor) {
+        this.mDefaultBackgroundColor = mDefaultBackgroundColor;
+
+        setwholeBackGroundColor(Color.parseColor(this.mDefaultBackgroundColor));
+    }
+
+    private void setwholeBackGroundColor(int i) {
+        int finalColor = i;
+        setBackgroundColor(finalColor);
+    }
+
     private   String mDefaultBackgroundColor = "#202020";
     private   String mTouchedBackgroundColor = "#111111";
 
@@ -74,9 +85,7 @@ public class TouchLayout extends RelativeLayout {
                 break;
         }
 
-        int finalColor = Color.parseColor(color);
-
-        setBackgroundColor(finalColor);
+        setwholeBackGroundColor(Color.parseColor(color));
 
         return  true;
     }

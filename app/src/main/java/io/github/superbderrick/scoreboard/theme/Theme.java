@@ -10,7 +10,8 @@ public abstract class Theme {
     protected int mUserNameSummaryColor;
 
 
-    protected int mJustScoreBackgroundColor;
+    protected String mJustScoreBackgroundColorString;
+    protected String mJustScoreTouchBackgroundColorString;
     protected int mJustScoreTextColor;
 
     protected int mSetScoreBackGroundColor;
@@ -32,9 +33,7 @@ public abstract class Theme {
         return mUserNameColor;
     }
 
-    public int getScoreColor() {
-        return mJustScoreBackgroundColor;
-    }
+
 
     public int getSetScoreColor() {
         return mSetScoreBackGroundColor;

@@ -20,17 +20,21 @@ public class LightTheme extends Theme {
 
 
 
-        mBarColor = Color.parseColor("#ffffff");
-        
         mCircleViewColor = Color.parseColor("#ff0000");
         mBackgroundColor = Color.parseColor("#ff0000");
 
 
         // just score background color
-        mJustScoreBackgroundColor = Color.parseColor("#D9D9D9");
+
+        //middle
+        mJustScoreBackgroundColorString = "#D9D9D9";
+        mJustScoreTouchBackgroundColorString = "#F5F5F5";
+
         mJustScoreTextColor = Color.parseColor("#000000");
+        mBarColor = Color.parseColor("#ffffff");
 
         //setscore backgroundview and text color
+        //bottom
         mSetScoreTextColor = Color.parseColor("#000000");
         mSetScoreBackGroundColor = Color.parseColor("#D9D9D9");
     }

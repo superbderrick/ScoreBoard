@@ -16,8 +16,6 @@ public class DarkTheme extends Theme {
     void setupThemeColors() {
         mCurrentCode = 0;
         mUserNameColor = Color.parseColor("#ffff00");
-        mJustScoreBackgroundColor = Color.parseColor("#ffff00");
-        mSetScoreBackGroundColor = Color.parseColor("#ffff00");
         mBarColor = Color.parseColor("#ffff00");
         mCircleViewColor = Color.parseColor("#ffff00");
         mBackgroundColor = Color.parseColor("#ffff00");
