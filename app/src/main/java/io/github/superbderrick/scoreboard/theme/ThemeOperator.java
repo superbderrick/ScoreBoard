@@ -1,7 +1,6 @@
 package io.github.superbderrick.scoreboard.theme;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -29,9 +28,10 @@ public class ThemeOperator {
 
     private TouchLayout mLeftUpperTouchView , mLeftBottomTouchView , mRightUpperTouchView ,  mRightBottomTouchView;
 
-    private RelativeLayout mLeftCenterBar , mRightCenterBar , mLeftTopBackgroundView , mRightTopBackgroundView , mCenterMiddleLayout;
+    private RelativeLayout mLeftCenterBar , mRightCenterBar , mBottomLeftLayout , mBottomRightLayout ,
+            mLeftTopBackgroundView , mRightTopBackgroundView , mCenterMiddleLayout;
 
-    private LinearLayout mLeftMiddleLayout , mRightMiddleLayout;
+    private LinearLayout mLeftMiddleLayout , mRightMiddleLayout , mBottonParentLayout ;
 
     private View mCenterBar;
 
@@ -85,12 +85,19 @@ public class ThemeOperator {
         mRightMiddleLayout = ((MainActivity) mContext).findViewById(R.id.rightScoreLayout);
         mCenterMiddleLayout = ((MainActivity) mContext).findViewById(R.id.centerParent);
 
+        mBottomLeftLayout = ((MainActivity) mContext).findViewById(R.id.bottomLeftbackgroundview);
+        mBottomRightLayout = ((MainActivity) mContext).findViewById(R.id.bottomRightBackgroundView);
+        mBottonParentLayout = ((MainActivity) mContext).findViewById(R.id.bottomView);
     }
 
     public void applyTheme() {
 
-        mLeftUserEditText.setBackgroundColor(mCurrentGameTheme.mUserNameColor);
-        mRightUserEditText.setBackgroundColor(mCurrentGameTheme.mUserNameColor);
+        mLeftUserEditText.setBackgroundColor(mCurrentGameTheme.mUserNameBackgroundColor);
+        mRightUserEditText.setBackgroundColor(mCurrentGameTheme.mUserNameBackgroundColor);
+        mLeftUserEditText.setTextColor(mCurrentGameTheme.mUserNameTextColor);
+        mRightUserEditText.setTextColor(mCurrentGameTheme.mUserNameTextColor);
+        mLeftUserEditText.setHintTextColor(mCurrentGameTheme.mUserNameSummaryColor);
+        mRightUserEditText.setHintTextColor(mCurrentGameTheme.mUserNameSummaryColor);
 
         setupWholeBackgroundView();
 
@@ -107,6 +114,9 @@ public class ThemeOperator {
         mLeftMiddleLayout.setBackgroundColor(mCurrentGameTheme.mWholeBackgroundColor);
         mRightMiddleLayout.setBackgroundColor(mCurrentGameTheme.mWholeBackgroundColor);
         mCenterMiddleLayout.setBackgroundColor(mCurrentGameTheme.mWholeBackgroundColor);
+        mBottomRightLayout.setBackgroundColor(mCurrentGameTheme.mWholeBackgroundColor);
+        mBottomLeftLayout.setBackgroundColor(mCurrentGameTheme.mWholeBackgroundColor);
+        mBottonParentLayout.setBackgroundColor(mCurrentGameTheme.mWholeBackgroundColor);
 
     }
 
@@ -131,6 +141,7 @@ public class ThemeOperator {
         mLeftCenterBar.setBackgroundColor(mCurrentGameTheme.mGapColor);
         mRightCenterBar.setBackgroundColor(mCurrentGameTheme.mGapColor);
         mCenterBar.setBackgroundColor(mCurrentGameTheme.mCenterBarColor);
+
     }
 
 }

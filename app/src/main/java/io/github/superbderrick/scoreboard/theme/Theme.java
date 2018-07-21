@@ -6,7 +6,8 @@ package io.github.superbderrick.scoreboard.theme;
 
 public abstract class Theme {
     protected int mCurrentCode;
-    protected int mUserNameColor;
+    protected int mUserNameBackgroundColor;
+    protected int mUserNameTextColor;
     protected int mUserNameSummaryColor;
     protected String mJustScoreBackgroundColorString;
     protected String mJustScoreTouchBackgroundColorString;

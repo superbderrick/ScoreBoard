@@ -15,8 +15,9 @@ public class LightTheme extends Theme {
     @Override
     void setupThemeColors() {
         mCurrentCode = 1;
-        mUserNameColor = Color.parseColor("#000000");
-        mUserNameSummaryColor = Color.parseColor("#EDEBEC");
+        mUserNameBackgroundColor = Color.parseColor("#D9D9D9");
+        mUserNameTextColor = Color.parseColor("#000000");
+        mUserNameSummaryColor = Color.parseColor("#C61D7F");
 
 
 
@@ -33,7 +34,7 @@ public class LightTheme extends Theme {
         mJustScoreTouchBackgroundColorString = "#F5F5F5";
         mJustScoreTextColor = Color.parseColor("#000000");
         mGapColor = Color.parseColor("#ffffff");
-        mCenterBarColor = Color.parseColor("#00ff00");
+        mCenterBarColor = Color.parseColor("#000000");
 
         //bottom
         mSetScoreTextColor = Color.parseColor("#000000");
