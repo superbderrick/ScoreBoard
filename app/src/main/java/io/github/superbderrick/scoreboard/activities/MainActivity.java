@@ -70,7 +70,6 @@ public class MainActivity extends Activity {
 
         initGUIComponent();
 
-        Log.d(LOG_TAG , "onCreate is called ");
 
         bringSettingValues();
 
@@ -97,7 +96,6 @@ public class MainActivity extends Activity {
     }
 
     private void applyGameTheme(int themeValue) {
-        Log.d(LOG_TAG , "applyGameTheme themeValue :  " + themeValue);
         mThemeOperator = new ThemeOperator(themeValue , this);
 
         mThemeOperator.applyTheme();
@@ -105,7 +103,6 @@ public class MainActivity extends Activity {
 
     private void bringSettingValues() {
 
-        Log.d(LOG_TAG , "bring Setting value ");
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         String setCount = SP.getString(this.getResources().getString(R.string.setscore_key),"5");
         String handyValue = SP.getString(this.getResources().getString(R.string.handyy_key),"0");
@@ -404,8 +401,6 @@ public class MainActivity extends Activity {
     protected void onPause() {
         super.onPause();
 
-        Log.d(LOG_TAG , "onPuase is called ");
-
             if(mClickedSettingButton) {
                 mMainHandler.post(new Runnable() {
                     @Override
@@ -421,8 +416,6 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
 
-        Log.d(LOG_TAG , "onResume is called ");
-
         if(mClickedSettingButton) {
             mClickedSettingButton = false;
 
@@ -435,6 +428,5 @@ public class MainActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
 
-        Log.d(LOG_TAG , "onDestroy is called ");
     }
 }

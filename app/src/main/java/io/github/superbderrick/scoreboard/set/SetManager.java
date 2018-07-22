@@ -39,7 +39,6 @@ public class SetManager {
     public void setSetNum(int setNum) {
         mSetNum = setNum * 2;
 
-        Log.d(LOG_TAG, "inputed size" + mSetNum);
         makeSetArray(mSetNum);
     }
 

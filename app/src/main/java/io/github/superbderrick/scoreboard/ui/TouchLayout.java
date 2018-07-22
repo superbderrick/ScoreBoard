@@ -71,7 +71,6 @@ public class TouchLayout extends RelativeLayout {
          super.onTouchEvent(event);
         String color = mDefaultBackgroundColor;
 
-        Log.d(LOG_TAG , "onTouchEvent : " + color);
         switch (event.getAction()) {
 
             case MotionEvent.ACTION_DOWN:
