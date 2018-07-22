@@ -48,7 +48,9 @@ public final class Utils {
         if(handyValue == 0) {
             handSentence = "No Handy - Same Score";
         } else if (handyValue > 6) {
-            handSentence = "Right User " + " + "+ handyValue;
+
+            
+            handSentence = "Right User " + " + "+ (handyValue - 6) ;
         } else {
             handSentence = "Left User" + " + "+ handyValue;
         }
