@@ -299,7 +299,7 @@
                     android:layout_marginLeft="5dip"
                     android:background="@color/tr"
                     android:contentDescription="@string/def_reset"
-                    android:src="@drawable/ic_refresh_white_24dp" />
+                    android:src="@drawable/baseline_refresh_black_24" />
 
             </LinearLayout>
 
@@ -317,7 +317,7 @@
                     android:layout_marginRight="25dip"
                     android:background="@color/tr"
                     android:contentDescription="@string/def_setting"
-                    android:src="@drawable/ic_settings_white_24dp" />
+                    android:src="@drawable/baseline_settings_black_24" />
             </LinearLayout>
         </RelativeLayout>
 
