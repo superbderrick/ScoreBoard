@@ -1,8 +1,9 @@
 package io.github.superbderrick.scoreboard.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.os.Bundle;
@@ -13,8 +14,9 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import io.github.superbderrick.scoreboard.R;
 import io.github.superbderrick.scoreboard.helper.ScoreManager;
@@ -38,7 +40,7 @@ public class MainActivity extends Activity {
     private TouchLayout  mLeftUpperTouchView,mLeftBottomTouchView,mRightUpperTouchView,mRightBottomTouchView;
     private TextView     mLeftScoreTextView,mRightScoreTextView,mLeftSetScoreTextview,mRightSetScoreTextview;
     private EditText     mLeftUserName,mRightUserName;
-    private ImageButton  mSettingButton,mTimerResetButton;
+    private ImageButton  mSettingButton, mResetButton;
     private LinearLayout mLeftScoreLayout,mRightScoreLayout;
 
 
@@ -55,6 +57,8 @@ public class MainActivity extends Activity {
     private int mLeftSetScore = 0;
     private int mRightSetScore = 0;
 
+    private ArrayList<CircleView> mTempCircleViewArrayList = new ArrayList<CircleView>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,20 +74,7 @@ public class MainActivity extends Activity {
 
         initGUIComponent();
 
-
         bringSettingValues();
-
-    }
-
-    private void getSavedGameData() {
-
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-
-        int leftSetScore = settings.getInt("leftSetScore", 0);
-        int rightSetScore = settings.getInt("rightSetScore", 0);
-
-        mLeftSetScore = leftSetScore;
-        mRightSetScore = rightSetScore;
 
     }
 
@@ -176,7 +167,6 @@ public class MainActivity extends Activity {
     }
 
 
-
     private void initScoreLayout() {
         mLeftScoreLayout = findViewById(R.id.leftScoreLayout);
         mRightScoreLayout = findViewById(R.id.rightScoreLayout);
@@ -213,15 +203,39 @@ public class MainActivity extends Activity {
             circleView.setLayoutParams(lp);
 
             layout.addView(circleView);
+            mTempCircleViewArrayList.add(circleView);
         }
 
     }
 
     private void initResetButton() {
-        mTimerResetButton = findViewById(R.id.timerResetButton);
-        mTimerResetButton.setOnClickListener(new View.OnClickListener() {
+        mResetButton = findViewById(R.id.timerResetButton);
+        mResetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final AlertDialog.Builder alertbox = new AlertDialog.Builder(MainActivity.this);
+                alertbox.setTitle("Reset current game");
+                alertbox.setCancelable(false);
+                alertbox.setMessage("Do you want to reset all the game score?");
+                alertbox.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        resetValues();
+                        mSetManager.resetTouchValue();
+                        for(int i = 0 ; i < mTempCircleViewArrayList.size() ; i++) {
+                            mTempCircleViewArrayList.get(i).resetCircleViewColor();
+                        }
+
+                    }
+                });
+
+                alertbox.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                alertbox.show();
             }
         });
     }
@@ -235,6 +249,8 @@ public class MainActivity extends Activity {
                 Utils.showDialog(MainActivity.this , "Game Settings" , getString(R.string.gamesetting_guide));
 
                 mClickedSettingButton = true;
+
+                mTempCircleViewArrayList.clear();
             }
         });
     }

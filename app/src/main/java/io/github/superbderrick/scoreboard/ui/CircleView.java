@@ -17,6 +17,7 @@ public class CircleView extends View {
 
     private  static String CIRCLEVIEW_ORIGINAL_COLOR [];
     private  static String CIRCLEVIEW_CLICKED_COLOR [];
+
     public interface OnCircleViewChangeListener {
         public void onTouchedView(int score);
     }
@@ -34,8 +35,6 @@ public class CircleView extends View {
         } else {
 
         }
-
-
     }
 
     private  String mNormalColor = "#D9D9D9";
@@ -88,6 +87,12 @@ public class CircleView extends View {
 
     }
 
+    public void resetCircleViewColor() {
+        mCircleColor = Color.parseColor(mNormalColor);
+        isTouch = false;
+        invalidate();
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
          super.onTouchEvent(event);
@@ -113,6 +118,8 @@ public class CircleView extends View {
         invalidate();
         mListener.onTouchedView(this.getId());
     }
+
+
 
 
     @Override

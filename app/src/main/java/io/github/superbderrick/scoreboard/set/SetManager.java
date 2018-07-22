@@ -51,7 +51,21 @@ public class SetManager {
         }
     }
 
+    public void resetTouchValue() {
+        if(mSetArrayList != null) {
+            for(int i = 0 ; i < mSetArrayList.size(); i++) {
+              mSetArrayList.get(i).setTouched(false);
+            }
 
+            mLeftScore = 0;
+            mRightScore = 0;
+
+            mFinalScoreList[0] = 0;
+            mFinalScoreList[1] = 0;
+
+            mListener.onSetInfo(mFinalScoreList);
+        }
+    }
 
     public void setScore(int score) {
 
