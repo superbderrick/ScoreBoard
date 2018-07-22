@@ -15,25 +15,28 @@ public class DarkTheme extends Theme {
     @Override
     void setupThemeColors() {
         mCurrentCode = 0;
-        mUserNameBackgroundColor = Color.parseColor("#D9D9D9");
-        mUserNameTextColor = Color.parseColor("#000000");
-        mUserNameSummaryColor = Color.parseColor("#FF1493");
+        mUserNameBackgroundColor = Color.parseColor("#3F3E43");
+        mUserNameTextColor = Color.parseColor("#FB7E4F");
+        mUserNameSummaryColor = Color.parseColor("#0E6EB3");
 
         mCircleViewColor = Color.parseColor("#ff0000");
         mBackgroundColor = Color.parseColor("#ff0000");
 
-        mWholeBackgroundColor = Color.parseColor("#FFFEFF");
+        mWholeBackgroundColor = Color.parseColor("#00000f");
 
-        //middle
-        mJustScoreBackgroundColorString = "#D9D9D9";
-        mJustScoreTouchBackgroundColorString = "#F5F5F5";
-        mJustScoreTextColor = Color.parseColor("#000000");
-        mGapColor = Color.parseColor("#ffffff");
-        mCenterBarColor = Color.parseColor("#000000");
+        //middle3F3E43
+        mJustScoreBackgroundColorString = "#3F3E43";
+        mJustScoreTouchBackgroundColorString = "#6A6674";
+        mJustScoreTextColor = Color.parseColor("#ffffff");
+        mGapColor = Color.parseColor("#79747A");
+        mCenterBarColor = Color.parseColor("#79747A");
 
         //bottom
-        mSetScoreTextColor = Color.parseColor("#000000");
-        mSetScoreBackGroundColor = Color.parseColor("#D9D9D9");
+        mSetScoreTextColor = Color.parseColor("#ffffff");
+        mSetScoreBackGroundColor = Color.parseColor("#3F3E43");
+
+        mLeftJustScoreTextColor = Color.parseColor("#53CD6F");
+        mRightJustScoreTextColor = Color.parseColor("#FB7E4F");
     }
 
 

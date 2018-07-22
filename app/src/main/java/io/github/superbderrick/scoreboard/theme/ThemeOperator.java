@@ -128,8 +128,19 @@ public class ThemeOperator {
     }
 
     private void setupForMiddlePart() {
-        mLeftScoreTextView.setTextColor(mCurrentGameTheme.mJustScoreTextColor);
-        mRightScoreTextView.setTextColor(mCurrentGameTheme.mJustScoreTextColor);
+
+        if(mCurrentGameTheme.mCurrentCode  == 0) {
+            mLeftScoreTextView.setTextColor(mCurrentGameTheme.mLeftJustScoreTextColor);
+            mRightScoreTextView.setTextColor(mCurrentGameTheme.mRightJustScoreTextColor);
+
+        } else if(mCurrentGameTheme.mCurrentCode == 1) {
+            mLeftScoreTextView.setTextColor(mCurrentGameTheme.mJustScoreTextColor);
+            mRightScoreTextView.setTextColor(mCurrentGameTheme.mJustScoreTextColor);
+        }
+
+
+
+
         mLeftUpperTouchView.setDefaultBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColorString);
         mLeftBottomTouchView.setDefaultBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColorString);
         mRightUpperTouchView.setDefaultBackgroundColor(mCurrentGameTheme.mJustScoreBackgroundColorString);

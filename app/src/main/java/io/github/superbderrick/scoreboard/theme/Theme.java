@@ -12,6 +12,8 @@ public abstract class Theme {
     protected String mJustScoreBackgroundColorString;
     protected String mJustScoreTouchBackgroundColorString;
     protected int mJustScoreTextColor;
+    protected int mLeftJustScoreTextColor;
+    protected int mRightJustScoreTextColor;
     protected int mSetScoreBackGroundColor;
     protected int mSetScoreTextColor;
     protected int mGapColor;

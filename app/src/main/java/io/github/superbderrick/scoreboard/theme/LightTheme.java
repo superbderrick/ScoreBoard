@@ -34,5 +34,9 @@ public class LightTheme extends Theme {
         //bottom
         mSetScoreTextColor = Color.parseColor("#000000");
         mSetScoreBackGroundColor = Color.parseColor("#D9D9D9");
+
+
+        mLeftJustScoreTextColor = mJustScoreTextColor;
+        mRightJustScoreTextColor = mJustScoreTextColor;
     }
 }
