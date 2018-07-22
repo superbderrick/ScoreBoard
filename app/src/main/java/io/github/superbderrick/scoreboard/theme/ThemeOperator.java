@@ -3,6 +3,7 @@ package io.github.superbderrick.scoreboard.theme;
 import android.content.Context;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -34,6 +35,8 @@ public class ThemeOperator {
     private LinearLayout mLeftMiddleLayout , mRightMiddleLayout , mBottomParent;
 
     private View mCenterBar;
+
+    private ImageButton mSettingButton , mResetButton;
 
     public ThemeOperator(int themeStyle , Context context) {
         init(themeStyle , context);
@@ -88,6 +91,9 @@ public class ThemeOperator {
         mBottomLeftLayout = ((MainActivity) mContext).findViewById(R.id.bottomLeftbackgroundview);
         mBottomRightLayout = ((MainActivity) mContext).findViewById(R.id.bottomRightBackgroundView);
         mBottomParent = ((MainActivity) mContext).findViewById(R.id.bottomView);
+
+        mSettingButton = ((MainActivity) mContext).findViewById(R.id.settingButton);
+        mResetButton = ((MainActivity) mContext).findViewById(R.id.timerResetButton);
     }
 
     public void applyTheme() {
@@ -106,6 +112,20 @@ public class ThemeOperator {
 
         //setup for bottom line background color for setscore
         setupForBottomLine();
+
+
+        setupForImageButtons();
+    }
+
+    private void setupForImageButtons() {
+        if(mCurrentGameTheme.mCurrentCode == 0) {
+
+            mSettingButton.setImageResource(R.drawable.baseline_settings_white_24);
+            mResetButton.setImageResource(R.drawable.baseline_refresh_white_24);
+        } else if(mCurrentGameTheme.mCurrentCode == 1) {
+            mSettingButton.setImageResource(R.drawable.baseline_settings_black_24);
+            mResetButton.setImageResource(R.drawable.baseline_refresh_black_24);
+        }
     }
 
     private void setupWholeBackgroundView() {
