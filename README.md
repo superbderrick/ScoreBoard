@@ -1,5 +1,7 @@
 # Score Board
 
+### simple android app which can record table tennis score data
+
 <h1 align=center>
 <img src="Logo/horizontal.png" width=80%>
 </h1>
