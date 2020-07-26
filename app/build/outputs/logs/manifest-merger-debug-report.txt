@@ -1,0 +1,110 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:2:1-23:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/622c223743cccb6748b986dd7b3026eb/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/655b9453bf841f251247a5257afd77d4/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/1dd560bcb5aa11d386ce0875d93b327a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/921b1dda38ba48149b90c3dfd1432509/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/609bb17dbf18c4765c3843b233a7cf0b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/8b5261feebb7a7201a9c88a59047ace8/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/4059ce186598bf53149ad54a3c8e9499/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/derrick/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/ab0d6ef814aff317573cc0ac944bf357/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/derrick/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/f427d3a93c3baa8ec41de573ce02e05b/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/derrick/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/0c993fd3d110a3a36d29b5a082fce7c9/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] /Users/derrick/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/77a74c2d1cfef4d03efdeced50652741/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:2:1-23:12
+	package
+		ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:3:5-49
+		INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml
+		ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:2:1-23:12
+		INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml
+		ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:2:1-23:12
+		INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:5:5-21:19
+	android:supportsRtl
+		ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:11:9-40
+activity#io.github.superbderrick.scoreboard.activities.MainActivity
+ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:12:9-18:20
+	android:screenOrientation
+		ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:12:122-159
+	android:configChanges
+		ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:12:59-120
+	android:name
+		ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:12:19-58
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:13:13-17:29
+action#android.intent.action.MAIN
+ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:16:17-77
+	android:name
+		ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:16:27-74
+activity#io.github.superbderrick.scoreboard.activities.SettingActivity
+ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:20:9-154
+	android:screenOrientation
+		ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:20:62-99
+	android:theme
+		ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:20:100-142
+	android:name
+		ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml:20:19-61
+uses-sdk
+INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml
+INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/622c223743cccb6748b986dd7b3026eb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/622c223743cccb6748b986dd7b3026eb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/655b9453bf841f251247a5257afd77d4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/655b9453bf841f251247a5257afd77d4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/1dd560bcb5aa11d386ce0875d93b327a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/1dd560bcb5aa11d386ce0875d93b327a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/921b1dda38ba48149b90c3dfd1432509/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/921b1dda38ba48149b90c3dfd1432509/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/609bb17dbf18c4765c3843b233a7cf0b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/609bb17dbf18c4765c3843b233a7cf0b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/8b5261feebb7a7201a9c88a59047ace8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/8b5261feebb7a7201a9c88a59047ace8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/4059ce186598bf53149ad54a3c8e9499/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /Users/derrick/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/4059ce186598bf53149ad54a3c8e9499/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/derrick/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/ab0d6ef814aff317573cc0ac944bf357/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/derrick/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/ab0d6ef814aff317573cc0ac944bf357/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/derrick/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/f427d3a93c3baa8ec41de573ce02e05b/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/derrick/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/f427d3a93c3baa8ec41de573ce02e05b/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/derrick/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/0c993fd3d110a3a36d29b5a082fce7c9/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/derrick/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/0c993fd3d110a3a36d29b5a082fce7c9/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /Users/derrick/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/77a74c2d1cfef4d03efdeced50652741/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /Users/derrick/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/77a74c2d1cfef4d03efdeced50652741/AndroidManifest.xml:20:5-44
+INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml
+INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml
+		ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml
+		ADDED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/derrick/god/ScoreBoard/app/src/main/AndroidManifest.xml

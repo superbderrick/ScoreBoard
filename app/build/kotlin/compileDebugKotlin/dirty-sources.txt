@@ -1,0 +1,14 @@
+/Users/derrick/god/ScoreBoard/app/src/main/java/io/github/superbderrick/scoreboard/ui/Utils.kt
+/Users/derrick/god/ScoreBoard/app/src/main/java/io/github/superbderrick/scoreboard/ui/TouchLayout.kt
+/Users/derrick/god/ScoreBoard/app/src/main/java/io/github/superbderrick/scoreboard/ui/CircleView.kt
+/Users/derrick/god/ScoreBoard/app/src/main/java/io/github/superbderrick/scoreboard/settings/HandyCalculator.kt
+/Users/derrick/god/ScoreBoard/app/src/main/java/io/github/superbderrick/scoreboard/settings/Handy.kt
+/Users/derrick/god/ScoreBoard/app/src/main/java/io/github/superbderrick/scoreboard/theme/LightTheme.kt
+/Users/derrick/god/ScoreBoard/app/src/main/java/io/github/superbderrick/scoreboard/theme/DarkTheme.kt
+/Users/derrick/god/ScoreBoard/app/src/main/java/io/github/superbderrick/scoreboard/theme/Theme.kt
+/Users/derrick/god/ScoreBoard/app/src/main/java/io/github/superbderrick/scoreboard/theme/ThemeOperator.kt
+/Users/derrick/god/ScoreBoard/app/src/main/java/io/github/superbderrick/scoreboard/activities/MainActivity.kt
+/Users/derrick/god/ScoreBoard/app/src/main/java/io/github/superbderrick/scoreboard/activities/SettingActivity.kt
+/Users/derrick/god/ScoreBoard/app/src/main/java/io/github/superbderrick/scoreboard/set/Set.kt
+/Users/derrick/god/ScoreBoard/app/src/main/java/io/github/superbderrick/scoreboard/set/SetManager.kt
+/Users/derrick/god/ScoreBoard/app/src/main/java/io/github/superbderrick/scoreboard/helper/ScoreManager.kt
