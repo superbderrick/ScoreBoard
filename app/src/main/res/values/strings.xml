@@ -16,4 +16,22 @@
 
 
 
+    <string name="serving">● 发球</string>
+    <string name="unknown_ball">没看清 ?</string>
+    <string name="undo">撤销</string>
+    <string name="history">记录</string>
+    <string name="new_game_title">第 %1$d 局结束</string>
+    <string name="match_over_title">比赛结束</string>
+    <string name="next_game">下一局</string>
+    <string name="new_match">新比赛</string>
+    <string name="close">关闭</string>
+    <string name="resolve_pending">有 %1$d 个球没看清,请在“记录”里补录,才能确定本局是否结束</string>
+    <string name="pending_count">没看清: %1$d</string>
+    <string name="assign_ball_title">第 %1$d 球谁得分?</string>
+    <string name="cannot_resolve">这样分配会让本局在此之前就已结束,请检查</string>
+    <string name="reset_title">重置比赛</string>
+    <string name="reset_message">要清空当前整场比赛的比分吗?</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="history_empty">还没有记录</string>
 </resources>

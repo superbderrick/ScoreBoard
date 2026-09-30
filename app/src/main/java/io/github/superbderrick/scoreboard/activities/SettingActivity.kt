@@ -14,7 +14,7 @@ import io.github.superbderrick.scoreboard.ui.Utils
  * Created by derricks on 27/01/2018.
  */
 class SettingActivity : PreferenceActivity() {
-    public override fun onCreate(savedInstanceState: Bundle) {
+    public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         fragmentManager.beginTransaction().replace(android.R.id.content, MyPreferenceFragment()).commit()
     }
@@ -26,11 +26,11 @@ class SettingActivity : PreferenceActivity() {
         var mEmailPreference: Preference? = null
         var mPrefs: SharedPreferences? = null
         var mKeywordScreen: PreferenceScreen? = null
-        override fun onCreate(savedInstanceState: Bundle) {
+        override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             addPreferencesFromResource(R.xml.preference)
             mPrefs = PreferenceManager.getDefaultSharedPreferences(activity)
-            mPrefs.registerOnSharedPreferenceChangeListener(prefListener)
+            mPrefs!!.registerOnSharedPreferenceChangeListener(prefListener)
             mGameHandyPreference = findPreference("handkey") as ListPreference
             mGameScoreReference = findPreference("setscorekey") as ListPreference
             mKeywordScreen = findPreference("keyword_screen") as PreferenceScreen

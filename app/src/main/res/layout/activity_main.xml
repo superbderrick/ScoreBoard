@@ -22,6 +22,18 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
+            <TextView
+                android:id="@+id/leftServeIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/leftUserName"
+                android:layout_centerHorizontal="true"
+                android:text="@string/serving"
+                android:textColor="@color/colorDe"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="invisible" />
+
             <EditText
                 android:id="@+id/leftUserName"
                 android:layout_width="150dip"
@@ -39,6 +51,18 @@
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/rightServeIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/rightUserEdit"
+                android:layout_centerHorizontal="true"
+                android:text="@string/serving"
+                android:textColor="@color/colorDe"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="invisible" />
 
             <EditText
                 android:id="@+id/rightUserEdit"
@@ -133,6 +157,29 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:background="@color/colorDefaultBackGround">
+
+            <Button
+                android:id="@+id/unknownButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/centerbar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="12dip"
+                android:minWidth="110dip"
+                android:minHeight="70dip"
+                android:text="@string/unknown_ball"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/statusText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/centerbar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dip"
+                android:gravity="center"
+                android:textColor="@color/colorDe"
+                android:textSize="16sp" />
 
             <View
                 android:id="@+id/centerbar"
@@ -286,7 +333,7 @@
             android:layout_weight="1">
 
             <LinearLayout
-                android:layout_width="200dip"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true">
 
@@ -300,6 +347,24 @@
                     android:background="@color/tr"
                     android:contentDescription="@string/def_reset"
                     android:src="@drawable/baseline_refresh_black_24" />
+
+                <Button
+                    android:id="@+id/undoButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dip"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dip"
+                    android:padding="0dip"
+                    android:text="@string/undo" />
+
+                <Button
+                    android:id="@+id/historyButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dip"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dip"
+                    android:padding="0dip"
+                    android:text="@string/history" />
 
             </LinearLayout>
 

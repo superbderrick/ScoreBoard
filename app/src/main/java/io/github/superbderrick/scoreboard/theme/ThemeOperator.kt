@@ -122,14 +122,14 @@ class ThemeOperator(themeStyle: Int, context: Context) {
             mLeftScoreTextView!!.setTextColor(mCurrentGameTheme!!.mJustScoreTextColor)
             mRightScoreTextView!!.setTextColor(mCurrentGameTheme!!.mJustScoreTextColor)
         }
-        mLeftUpperTouchView.setDefaultBackgroundColor(mCurrentGameTheme!!.mJustScoreBackgroundColorString)
-        mLeftBottomTouchView.setDefaultBackgroundColor(mCurrentGameTheme!!.mJustScoreBackgroundColorString)
-        mRightUpperTouchView.setDefaultBackgroundColor(mCurrentGameTheme!!.mJustScoreBackgroundColorString)
-        mRightBottomTouchView.setDefaultBackgroundColor(mCurrentGameTheme!!.mJustScoreBackgroundColorString)
-        mLeftUpperTouchView.setTouchedBackgroundColor(mCurrentGameTheme!!.mJustScoreTouchBackgroundColorString)
-        mLeftBottomTouchView.setTouchedBackgroundColor(mCurrentGameTheme!!.mJustScoreTouchBackgroundColorString)
-        mRightUpperTouchView.setTouchedBackgroundColor(mCurrentGameTheme!!.mJustScoreTouchBackgroundColorString)
-        mRightBottomTouchView.setTouchedBackgroundColor(mCurrentGameTheme!!.mJustScoreTouchBackgroundColorString)
+        mLeftUpperTouchView!!.defaultBackgroundColor = mCurrentGameTheme!!.mJustScoreBackgroundColorString
+        mLeftBottomTouchView!!.defaultBackgroundColor = mCurrentGameTheme!!.mJustScoreBackgroundColorString
+        mRightUpperTouchView!!.defaultBackgroundColor = mCurrentGameTheme!!.mJustScoreBackgroundColorString
+        mRightBottomTouchView!!.defaultBackgroundColor = mCurrentGameTheme!!.mJustScoreBackgroundColorString
+        mLeftUpperTouchView!!.touchedBackgroundColor = mCurrentGameTheme!!.mJustScoreTouchBackgroundColorString
+        mLeftBottomTouchView!!.touchedBackgroundColor = mCurrentGameTheme!!.mJustScoreTouchBackgroundColorString
+        mRightUpperTouchView!!.touchedBackgroundColor = mCurrentGameTheme!!.mJustScoreTouchBackgroundColorString
+        mRightBottomTouchView!!.touchedBackgroundColor = mCurrentGameTheme!!.mJustScoreTouchBackgroundColorString
         mLeftCenterBar!!.setBackgroundColor(mCurrentGameTheme!!.mGapColor)
         mRightCenterBar!!.setBackgroundColor(mCurrentGameTheme!!.mGapColor)
         mCenterBar!!.setBackgroundColor(mCurrentGameTheme!!.mCenterBarColor)

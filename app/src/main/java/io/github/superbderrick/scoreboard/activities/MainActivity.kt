@@ -3,308 +3,236 @@ package io.github.superbderrick.scoreboard.activities
 import android.app.Activity
 import android.app.AlertDialog
 import android.os.Bundle
-import android.os.Handler
 import android.preference.PreferenceManager
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import io.github.superbderrick.scoreboard.R
-import io.github.superbderrick.scoreboard.activities.MainActivity
-import io.github.superbderrick.scoreboard.helper.ScoreManager
-import io.github.superbderrick.scoreboard.helper.ScoreManager.OnScoreChangeListener
-import io.github.superbderrick.scoreboard.helper.ScoreManager.UserType
-import io.github.superbderrick.scoreboard.set.SetManager
-import io.github.superbderrick.scoreboard.set.SetManager.OnSetInfoListener
-import io.github.superbderrick.scoreboard.settings.Handy
-import io.github.superbderrick.scoreboard.settings.HandyCalculator
+import io.github.superbderrick.scoreboard.match.Game
+import io.github.superbderrick.scoreboard.match.Match
+import io.github.superbderrick.scoreboard.match.Rally
+import io.github.superbderrick.scoreboard.match.Side
 import io.github.superbderrick.scoreboard.theme.ThemeOperator
-import io.github.superbderrick.scoreboard.ui.CircleView
-import io.github.superbderrick.scoreboard.ui.CircleView.OnCircleViewChangeListener
 import io.github.superbderrick.scoreboard.ui.TouchLayout
 import io.github.superbderrick.scoreboard.ui.Utils
-import java.util.*
 
+/**
+ * Table tennis scoreboard. All state lives in [Match]; this class only draws it and forwards taps.
+ *
+ * Upper half of each side: that player won the ball.
+ * Centre button: "didn't see who won" - the ball is recorded as unknown, so the score and serve
+ * order can go on, and the ball can be assigned later from the history dialog.
+ * Lower half of each side / undo button: undo the last ball.
+ */
 class MainActivity : Activity() {
-    private var mLeftUpperTouchView: TouchLayout? = null
-    private var mLeftBottomTouchView: TouchLayout? = null
-    private var mRightUpperTouchView: TouchLayout? = null
-    private var mRightBottomTouchView: TouchLayout? = null
-    private var mLeftScoreTextView: TextView? = null
-    private var mRightScoreTextView: TextView? = null
-    private var mLeftSetScoreTextview: TextView? = null
-    private var mRightSetScoreTextview: TextView? = null
-    private var mLeftUserName: EditText? = null
-    private var mRightUserName: EditText? = null
-    private var mSettingButton: ImageButton? = null
-    private var mResetButton: ImageButton? = null
-    private var mLeftScoreLayout: LinearLayout? = null
-    private var mRightScoreLayout: LinearLayout? = null
-    private val mMainHandler = Handler()
-    private var mScoreManager: ScoreManager? = null
-    private var mSetManager: SetManager? = null
-    private var mThemeOperator: ThemeOperator? = null
-    private var mClickedSettingButton = false
-    private var mLeftSetScore = 0
-    private var mRightSetScore = 0
-    private val mTempCircleViewArrayList = ArrayList<CircleView>()
-    override fun onCreate(savedInstanceState: Bundle) {
+    private lateinit var leftScoreText: TextView
+    private lateinit var rightScoreText: TextView
+    private lateinit var leftGamesText: TextView
+    private lateinit var rightGamesText: TextView
+    private lateinit var leftName: EditText
+    private lateinit var rightName: EditText
+    private lateinit var leftServe: TextView
+    private lateinit var rightServe: TextView
+    private lateinit var statusText: TextView
+    private lateinit var unknownButton: Button
+
+    private lateinit var match: Match
+    private var clickedSettingButton = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_main)
-        setGameListeners()
-        initGUIComponent()
-        bringSettingValues()
+        bindViews()
+        ThemeOperator(themeValue(), this).applyTheme()
+        leftServe.setTextColor(leftScoreText.currentTextColor)
+        rightServe.setTextColor(rightScoreText.currentTextColor)
+        statusText.setTextColor(leftScoreText.currentTextColor)
+
+        val saved = getSharedPreferences(PREFS_NAME, 0).getString(KEY_MATCH, null)
+        match = (if (saved != null) Match.decode(saved) else null) ?: newMatch()
+        refresh()
     }
 
-    private fun setGameListeners() {
-        mScoreManager = ScoreManager()
-        //mScoreManager.setScoreMaxRange(ScoreManager.Companion.DEFAULT_MAXIMUM_SCORE)
-        //mScoreManager.setListener(mScoreListener)
-        mSetManager = SetManager()
-        mSetManager!!.setListener(mSetInfoListener)
-    }
+    private fun bindViews() {
+        leftScoreText = findViewById(R.id.leftScoreTextview)
+        rightScoreText = findViewById(R.id.rightScoreTextview)
+        leftGamesText = findViewById(R.id.leftSetScoreTextview)
+        rightGamesText = findViewById(R.id.rightsetscoretextview)
+        leftName = findViewById(R.id.leftUserName)
+        rightName = findViewById(R.id.rightUserEdit)
+        leftServe = findViewById(R.id.leftServeIndicator)
+        rightServe = findViewById(R.id.rightServeIndicator)
+        statusText = findViewById(R.id.statusText)
+        unknownButton = findViewById(R.id.unknownButton)
 
-    private fun applyGameTheme(themeValue: Int) {
-        mThemeOperator = ThemeOperator(themeValue, this)
-        mThemeOperator!!.applyTheme()
-    }
-
-    private fun bringSettingValues() {
-        val SP = PreferenceManager.getDefaultSharedPreferences(baseContext)
-        val setCount = SP.getString(this.resources.getString(R.string.setscore_key), "5")
-        val handyValue = SP.getString(this.resources.getString(R.string.handyy_key), "0")
-        val themeValue = SP.getString("themekey", "1")
-        val iThemeValue = themeValue.toInt()
-        setupSettings(setCount, handyValue, iThemeValue)
-    }
-
-    private fun setupSettings(setCount: String, handyValue: String, themeValue: Int) {
-        setSetModule(setCount, themeValue)
-        setHandyPoint(handyValue)
-        applyGameTheme(themeValue)
-    }
-
-    private fun setSetModule(setCount: String, themeValue: Int) {
-        mMainHandler.post {
-            val setNum = setCount.toInt()
-            setupSetCircleView(setNum, themeValue)
-            mSetManager!!.reset()
-            mSetManager!!.setSetNum(setNum)
+        findViewById<TouchLayout>(R.id.leftUpperTouchView).setOnClickListener { addRally(Rally.LEFT) }
+        findViewById<TouchLayout>(R.id.rightUpperTouchView).setOnClickListener { addRally(Rally.RIGHT) }
+        findViewById<TouchLayout>(R.id.leftBottomTouchView).setOnClickListener { undo() }
+        findViewById<TouchLayout>(R.id.rightBottomTouchView).setOnClickListener { undo() }
+        unknownButton.setOnClickListener { addRally(Rally.UNKNOWN) }
+        findViewById<Button>(R.id.undoButton).setOnClickListener { undo() }
+        findViewById<Button>(R.id.historyButton).setOnClickListener { showHistory() }
+        findViewById<ImageButton>(R.id.timerResetButton).setOnClickListener { confirmReset() }
+        findViewById<ImageButton>(R.id.settingButton).setOnClickListener {
+            Utils.showDialog(this, "Game Settings", getString(R.string.gamesetting_guide))
+            clickedSettingButton = true
         }
     }
 
-    private fun setHandyPoint(handyValue: String) {
-        val handy = HandyCalculator.getHandy(handyValue.toInt())
-        mMainHandler.post {
-            if (handy.direction < Handy.Companion.RIGHT_USER) { // left
-                mScoreManager!!.changeScore(ScoreManager.Operation.Increase, UserType.First, handy.handyPoint)
-            } else { // right
-                mScoreManager!!.changeScore(ScoreManager.Operation.Increase, UserType.Second, handy.handyPoint)
+    private fun prefs() = PreferenceManager.getDefaultSharedPreferences(baseContext)
+
+    private fun themeValue(): Int = prefs().getString("themekey", "1")!!.toInt()
+
+    /** "5" / "3" / "1" games in the settings screen -> games needed to win the match. */
+    private fun newMatch(): Match {
+        val games = prefs().getString(getString(R.string.setscore_key), "5")!!.toInt()
+        return Match(games / 2 + 1)
+    }
+
+    private fun name(side: Side): String {
+        val text = (if (side == Side.LEFT) leftName else rightName).text.toString().trim()
+        return if (text.isNotEmpty()) text else if (side == Side.LEFT) "左" else "右"
+    }
+
+    private fun addRally(rally: Rally) {
+        if (!match.addRally(rally)) {
+            // Game is over (or match is over): re-show the end-of-game dialog instead of ignoring the tap.
+            checkGameEnd()
+            return
+        }
+        refresh()
+        checkGameEnd()
+    }
+
+    private fun undo() {
+        match.undo()
+        refresh()
+    }
+
+    private fun refresh() {
+        val game = match.currentGame
+        leftScoreText.text = game.leftScore.toString()
+        rightScoreText.text = game.rightScore.toString()
+        leftGamesText.text = match.leftGames.toString()
+        rightGamesText.text = match.rightGames.toString()
+
+        val serving = game.status != Game.Status.OVER
+        leftServe.visibility = if (serving && game.server == Side.LEFT) View.VISIBLE else View.INVISIBLE
+        rightServe.visibility = if (serving && game.server == Side.RIGHT) View.VISIBLE else View.INVISIBLE
+
+        val unknown = game.unknownCount
+        statusText.text = if (unknown > 0) getString(R.string.pending_count, unknown) else ""
+        unknownButton.text = getString(R.string.unknown_ball)
+    }
+
+    private fun checkGameEnd() {
+        val game = match.currentGame
+        when {
+            match.isOver -> AlertDialog.Builder(this)
+                    .setTitle(R.string.match_over_title)
+                    .setMessage("${name(match.winner!!)} 获胜  ${match.leftGames} : ${match.rightGames}")
+                    .setPositiveButton(R.string.new_match) { _, _ ->
+                        match = newMatch()
+                        refresh()
+                    }
+                    .setNegativeButton(R.string.close, null)
+                    .show()
+            game.status == Game.Status.OVER -> AlertDialog.Builder(this)
+                    .setTitle(getString(R.string.new_game_title, match.games.size))
+                    .setMessage("${game.leftScore} : ${game.rightScore}")
+                    .setPositiveButton(R.string.next_game) { _, _ ->
+                        match.startNextGame()
+                        refresh()
+                    }
+                    .setNegativeButton(R.string.close, null)
+                    .show()
+            game.status == Game.Status.MAYBE_OVER ->
+                Toast.makeText(this, getString(R.string.resolve_pending, game.unknownCount), Toast.LENGTH_LONG).show()
+            else -> {
             }
         }
     }
 
-    private fun initGUIComponent() {
-        initLeftSideComponents()
-        initRightSideComponents()
-        initSettingButton()
-        initResetButton()
-        initScoreLayout()
-        initSetScoreLayout()
-    }
-
-    private fun resetUsersName() {
-        if (mLeftUserName != null && mRightUserName != null) {
-            mLeftUserName!!.setText("")
-            mRightUserName!!.setText("")
+    /** Lists the balls of the current game; tapping an unknown ball lets you assign it. */
+    private fun showHistory() {
+        val game = match.currentGame
+        if (game.rallies.isEmpty()) {
+            Toast.makeText(this, R.string.history_empty, Toast.LENGTH_SHORT).show()
+            return
         }
-    }
-
-    private fun initSetScoreLayout() {
-        mLeftSetScoreTextview = findViewById(R.id.leftSetScoreTextview)
-        mRightSetScoreTextview = findViewById(R.id.rightsetscoretextview)
-    }
-
-    private fun initScoreLayout() {
-        mLeftScoreLayout = findViewById(R.id.leftScoreLayout)
-        mRightScoreLayout = findViewById(R.id.rightScoreLayout)
-    }
-
-    private fun setupSetCircleView(setNum: Int, themeValue: Int) {
-        mMainHandler.post {
-            if (mLeftScoreLayout != null) {
-                makeCircleView(setNum, mLeftScoreLayout, DIRECTION_LEFT, themeValue)
-                makeCircleView(setNum, mRightScoreLayout, DIRECTION_RIGHT, themeValue)
+        val labels = game.rallies.mapIndexed { i, r ->
+            val who = when (r) {
+                Rally.LEFT -> name(Side.LEFT) + " 得分"
+                Rally.RIGHT -> name(Side.RIGHT) + " 得分"
+                Rally.UNKNOWN -> "? 没看清 (点击补录)"
             }
-        }
+            "${i + 1}.  $who"
+        }.toTypedArray<CharSequence>()
+        AlertDialog.Builder(this)
+                .setTitle("第 ${match.games.size} 局  ${game.leftScore} : ${game.rightScore}")
+                .setItems(labels) { _, index ->
+                    if (game.rallies[index] == Rally.UNKNOWN) assignBall(index)
+                }
+                .setNegativeButton(R.string.close, null)
+                .show()
     }
 
-    private fun makeCircleView(setNum: Int, layout: LinearLayout?, direction: Int, themeValue: Int) {
-        layout!!.removeAllViews()
-        for (i in 0 until setNum) {
-            val circleView = CircleView(this@MainActivity)
-            circleView.setCircleColor(themeValue)
-            circleView.setNormalColor(themeValue)
-            circleView.id = i + direction
-//            circleView.listener = mCircleViewListener
-//            val lp = LinearLayout.LayoutParams(
-//                    LinearLayout.LayoutParams.MATCH_PARENT,
-//                    0, 1)
-//            circleView.layoutParams = lp
-//            layout.addView(circleView)
-//            mTempCircleViewArrayList.add(circleView)
-        }
+    private fun assignBall(index: Int) {
+        val game = match.currentGame
+        val options = arrayOf<CharSequence>(name(Side.LEFT) + " 得分", name(Side.RIGHT) + " 得分")
+        AlertDialog.Builder(this)
+                .setTitle(getString(R.string.assign_ball_title, index + 1))
+                .setItems(options) { _, which ->
+                    val side = if (which == 0) Side.LEFT else Side.RIGHT
+                    if (game.resolve(index, side)) {
+                        refresh()
+                        checkGameEnd()
+                    } else {
+                        Toast.makeText(this, R.string.cannot_resolve, Toast.LENGTH_LONG).show()
+                    }
+                }
+                .setNegativeButton(R.string.cancel, null)
+                .show()
     }
 
-    private fun initResetButton() {
-        mResetButton = findViewById(R.id.timerResetButton)
-//        mResetButton.setOnClickListener(View.OnClickListener {
-//            val alertbox = AlertDialog.Builder(this@MainActivity)
-//            alertbox.setTitle("Reset current game")
-//            alertbox.setCancelable(false)
-//            alertbox.setMessage("Do you want to reset all the game score?")
-//            alertbox.setPositiveButton("OK") { dialog, which ->
-//                resetValues()
-//                mSetManager!!.resetTouchValue()
-//                for (i in mTempCircleViewArrayList.indices) {
-//                    mTempCircleViewArrayList[i].resetCircleViewColor()
-//                }
-//            }
-//            alertbox.setNegativeButton("CANCEL") { dialog, which -> dialog.dismiss() }
-//            alertbox.show()
-//        })
-    }
-
-    private fun initSettingButton() {
-        mSettingButton = findViewById(R.id.settingButton)
-//        mSettingButton.bringToFront()
-//        mSettingButton.setOnClickListener(View.OnClickListener {
-//            Utils.showDialog(this@MainActivity, "Game Settings", getString(R.string.gamesetting_guide))
-//            mClickedSettingButton = true
-//            mTempCircleViewArrayList.clear()
-//        })
-    }
-
-    private fun initRightSideComponents() {
-        mRightUpperTouchView = findViewById(R.id.rightUpperTouchView)
-        mRightBottomTouchView = findViewById(R.id.rightBottomTouchView)
-        mRightScoreTextView = findViewById(R.id.rightScoreTextview)
-//        mRightUpperTouchView.setOnClickListener(View.OnClickListener { mScoreManager!!.changeScore(ScoreManager.Operation.Increase, UserType.Second) })
-//        mRightBottomTouchView.setOnClickListener(View.OnClickListener { mScoreManager!!.changeScore(ScoreManager.Operation.Decrease, UserType.Second) })
-    }
-
-    private fun initLeftSideComponents() {
-        mLeftUpperTouchView = findViewById(R.id.leftUpperTouchView)
-        mLeftBottomTouchView = findViewById(R.id.leftBottomTouchView)
-        mLeftScoreTextView = findViewById(R.id.leftScoreTextview)
-        mLeftUserName = findViewById(R.id.leftUserName)
-        mRightUserName = findViewById(R.id.rightUserEdit)
-//        mLeftUpperTouchView.setOnClickListener(View.OnClickListener { mScoreManager!!.changeScore(ScoreManager.Operation.Increase, UserType.First) })
-//        mLeftBottomTouchView.setOnClickListener(View.OnClickListener { mScoreManager!!.changeScore(ScoreManager.Operation.Decrease, UserType.First) })
-    }
-
-    var mScoreListener: OnScoreChangeListener = object : OnScoreChangeListener {
-        override fun onFirstScoreChanged(score: Int) {
-            mMainHandler.post {
-                val finalScore = "" + score
-                mLeftScoreTextView!!.text = finalScore
-            }
-        }
-
-        override fun onSecondScoreChanged(score: Int) {
-            mMainHandler.post {
-                val finalScore = "" + score
-                mRightScoreTextView!!.text = finalScore
-            }
-        }
-
-        override fun onScoreInitialized(score: Int) {
-            mMainHandler.post {
-                val finalScore = "" + score
-                mRightScoreTextView!!.text = finalScore
-                mLeftScoreTextView!!.text = finalScore
-            }
-        }
-    }
-//    var mCircleViewListener = OnCircleViewChangeListener { id ->
-//        if (mSetManager != null) {
-//            mSetManager!!.setScore(id)
-//        }
-//    }
-    var mSetInfoListener: OnSetInfoListener = object : OnSetInfoListener {
-        override fun onSetInfo(scores: IntArray) {
-            setSetScoreLayout(scores[0], scores[1])
-        }
-
-        override fun onSetInitialized() {
-            setSetScoreLayout(0, 0)
-        }
-    }
-
-    private fun setSetScoreLayout(left: Int, right: Int) {
-        mMainHandler.post {
-            mLeftSetScoreTextview!!.text = "" + left
-            mRightSetScoreTextview!!.text = "" + right
-            mLeftSetScore = left
-            mRightSetScore = right
-        }
-    }
-
-    private fun resetValues() {
-        mMainHandler.post {
-            if (mScoreManager != null && mSetManager != null) {
-                mScoreManager!!.resetScore()
-            }
-            resetUsersName()
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        saveSetScoreData()
-    }
-
-    private fun saveSetScoreData() {
-        val settings = getSharedPreferences(PREFS_NAME, 0)
-        val editor = settings.edit()
-        editor.putInt("leftSetScore", mLeftSetScore)
-        editor.putInt("rightSetScore", mRightSetScore)
-        editor.commit()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        if (mClickedSettingButton) {
-            mMainHandler.post { resetValues() }
-        }
+    private fun confirmReset() {
+        AlertDialog.Builder(this)
+                .setTitle(R.string.reset_title)
+                .setMessage(R.string.reset_message)
+                .setPositiveButton(R.string.ok) { _, _ ->
+                    match = newMatch()
+                    refresh()
+                }
+                .setNegativeButton(R.string.cancel, null)
+                .show()
     }
 
     override fun onResume() {
         super.onResume()
-        if (mClickedSettingButton) {
-            mClickedSettingButton = false
-            bringSettingValues()
+        if (clickedSettingButton) {
+            // Game settings changed: start a fresh match with them.
+            clickedSettingButton = false
+            match = newMatch()
+            ThemeOperator(themeValue(), this).applyTheme()
+            refresh()
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onStop() {
+        super.onStop()
+        getSharedPreferences(PREFS_NAME, 0).edit().putString(KEY_MATCH, match.encode()).apply()
     }
 
     companion object {
-        private const val LOG_TAG = "MainActivity"
         const val PREFS_NAME = "MyPrefsFile"
-        private const val DIRECTION_LEFT = 100
-        private const val DIRECTION_RIGHT = 200
+        private const val KEY_MATCH = "match"
     }
 }
